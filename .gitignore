@@ -1,0 +1,15 @@
+# Nix build results
+result
+result-*
+
+# Mac system files (just in case)
+.DS_Store
+
+# Editor temporary files
+*.swp
+*~
+.vscode/
+
+# Private keys / Secrets (Safety net)
+secrets.nix
+.env

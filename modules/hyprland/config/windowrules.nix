@@ -1,0 +1,11 @@
+{ ... }: {
+  wayland.windowManager.hyprland.settings = {
+    
+    # Must be a list [ ... ]
+    # The rule itself must be inside quotes " ... "
+    windowrule = [
+      "opacity 0.92, class:^(discord|firefox)$"
+    ];
+
+  };
+}
