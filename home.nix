@@ -9,12 +9,11 @@
 
     programs.git = {
         enable = true;
-        userName = "Omar-M-Y";
-        userEmail = "yahya.omar_@outlook.com";
-
-        extraConfig = {
+        settings = {
+            user.name = "Omar-M-Y";
+            user.email = "yahya.omar_@outlook.com";
             init.defaultBranch = "main";
-          };
+        };
       };
 
 
