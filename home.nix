@@ -74,12 +74,13 @@
         nixpkgs-fmt   # Nix Formatter
         stylua        # Lua Formatter
         nodePackages.typescript-language-server
+
+        microsoft-edge
     ];
 
-    fonts.fontconfig.enable = true;  
-
-
-
+    fonts.fontconfig.enable = true;
+  
+    programs.home-manager.enable = true;
 
     home.stateVersion = "25.11";
 }

@@ -25,10 +25,21 @@ Variants {
       implicitHeight: 30
       color: Colors.background
 
-      // Now we just use the custom component
-      Clock {
-          anchors.centerIn: parent
+
+
+      Workspaces {
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.leftMargin: 15
       }
+
+      ActiveWindow {
+        anchors.centerIn: parent
+      }
+      // Now we just use the custom component
+      Clock {}
+
+
     }
   }
 }

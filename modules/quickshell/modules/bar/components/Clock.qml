@@ -7,10 +7,19 @@ Text {
     
     // Default styling (can be overridden when you use the component)
     color: Colors.onBackgroundColor
-    anchors.centerIn: parent
+    // anchors.centerIn: parent
+    //
+    //
+    //
+    //
+    anchors.right: parent.right
 
+    anchors.verticalCenter: parent.verticalCenter
+
+    anchors.rightMargin: 15
+      
     function updateTime() {
-        text = Qt.formatDateTime(new Date(), "ddd MMM d hh:mm:ss")
+        text = Qt.formatDateTime(new Date(), "ddd MMM d hh:mm")
     }
 
     Component.onCompleted: updateTime()
