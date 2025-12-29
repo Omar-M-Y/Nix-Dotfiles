@@ -5,11 +5,13 @@ let
   hyprlandConfigDir = "${config.home.homeDirectory}/.config/hypr";
   kittyConfigDir = "${config.home.homeDirectory}/.config/kitty";
   fishConfigDir = "${config.home.homeDirectory}/.config/fish/conf.d";
+  # 1. Define Quickshell path
+  quickshellConfigDir = "${config.home.homeDirectory}/.config/quickshell";
 in
 {
   home.packages = [ inputs.matugen.packages.${pkgs.system}.default ];
 
-  # 1. Config.toml
+  # 2. Config.toml (Added Quickshell template)
   xdg.configFile."matugen/config.toml".text = ''
     [config]
     reload_apps = true
@@ -19,6 +21,8 @@ in
       "hyprctl reload",
       "pkill -SIGUSR2 waybar",
       "${pkgs.procps}/bin/pkill -SIGUSR1 kitty"
+      # Optional: Restart Quickshell to apply colors immediately
+      # "pkill quickshell; quickshell & disown" 
     ]
 
     # --- Templates ---
@@ -31,13 +35,17 @@ in
     input_path = "${matugenConfigDir}/templates/kitty-colors.conf"
     output_path = "${kittyConfigDir}/colors.conf"
 
-    # NEW: Fish Shell Template
     [templates.fish-colors]
     input_path = "${matugenConfigDir}/templates/fish-colors.fish"
     output_path = "${fishConfigDir}/matugen.fish"
+
+    # NEW: Quickshell Template
+    [templates.quickshell]
+    input_path = "${matugenConfigDir}/templates/quickshell-colors.qml"
+    output_path = "${quickshellConfigDir}/Colors.qml"
   '';
 
-  # 2. Hyprland Template
+  # 3. Hyprland Template
   xdg.configFile."matugen/templates/hyprland-colors.conf".text = ''
     $primary = rgb({{colors.primary.default.hex_stripped}})
     $secondary = rgb({{colors.secondary.default.hex_stripped}})
@@ -51,7 +59,7 @@ in
     $secondary_container = rgb({{colors.secondary_container.default.hex_stripped}})
   '';
 
-  # 3. Kitty Template
+  # 4. Kitty Template
   xdg.configFile."matugen/templates/kitty-colors.conf".text = ''
     foreground              #{{colors.on_surface.default.hex_stripped}}
     background              #{{colors.surface.default.hex_stripped}}
@@ -80,7 +88,7 @@ in
     color15 #{{colors.inverse_surface.default.hex_stripped}}
   '';
 
-  # 4. Fish Template (NEW)
+  # 5. Fish Template
   xdg.configFile."matugen/templates/fish-colors.fish".text = ''
     set -g fish_color_normal {{colors.on_surface.default.hex_stripped}}
     set -g fish_color_command {{colors.primary.default.hex_stripped}}
@@ -97,5 +105,29 @@ in
     set -g fish_color_escape {{colors.tertiary.default.hex_stripped}}
     set -g fish_color_autosuggestion {{colors.outline.default.hex_stripped}}
     set -g fish_color_cancel {{colors.error.default.hex_stripped}}
+  '';
+
+  # 6. Quickshell Template (NEW)
+  xdg.configFile."matugen/templates/quickshell-colors.qml".text = ''
+    pragma Singleton
+    import QtQuick
+
+    QtObject {
+        property color primary: "{{colors.primary.default.hex}}"
+        property color onPrimaryColor: "{{colors.on_primary.default.hex}}"
+        
+        property color secondary: "{{colors.secondary.default.hex}}"
+        property color onSecondaryColor: "{{colors.on_secondary.default.hex}}"
+        
+        property color background: "{{colors.background.default.hex}}"
+        property color onBackgroundColor: "{{colors.on_background.default.hex}}"
+        
+        property color surface: "{{colors.surface.default.hex}}"
+        property color onSurfaceColor: "{{colors.on_surface.default.hex}}"
+        
+        property color error: "{{colors.error.default.hex}}"
+        
+        property color outline: "{{colors.outline.default.hex}}"
+    }
   '';
 }

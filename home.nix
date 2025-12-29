@@ -7,25 +7,26 @@
         ./modules/quickshell/default.nix
     ];
 
-    programs.git = {
-        enable = true;
-        settings = {
-            user.name = "Omar-M-Y";
-            user.email = "yahya.omar_@outlook.com";
-            init.defaultBranch = "main";
-        };
+    programs = {
+        git = {
+            enable = true;
+            settings = {
+                user.name = "Omar-M-Y";
+                user.email = "yahya.omar_@outlook.com";
+                init.defaultBranch = "main";
+              };
+          };
+        neovim = {
+            enable = true;
+            defaultEditor = true;
+            viAlias = true;
+            vimAlias = true;
+
+            withNodeJs = true;
+            withPython3 = true;
+          };
       };
 
-
-    programs.neovim = {
-        enable = true;
-        defaultEditor = true;
-        viAlias = true;
-        vimAlias = true;
-        
-        withNodeJs = true;
-        withPython3 = true;
-    };
 
     #xdg.configFile."nvim".source = ./modules/nvim;
     # Correct usage:
