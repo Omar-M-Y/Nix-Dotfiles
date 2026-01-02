@@ -2,4 +2,5 @@ module modules.bar.components
 Clock 1.0 Clock.qml
 ActiveWindow 1.0 ActiveWindow.qml
 Workspaces 1.0 Workspaces.qml
+Audio 1.0 Audio.qml
 

@@ -75,12 +75,21 @@
         stylua        # Lua Formatter
         nodePackages.typescript-language-server
 
-        microsoft-edge
+        # microsoft-edge
     ];
 
     fonts.fontconfig.enable = true;
   
     programs.home-manager.enable = true;
 
-    home.stateVersion = "25.11";
+
+    home = {
+        stateVersion = "25.11";
+        sessionVariables = {
+            LIBVA_DRIVER_NAME = "nvidia";
+            XDG_SESSION_TYPE = "wayland";
+            GBM_BACKEND = "nvidia-drm";
+            __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+          };
+      };
 }

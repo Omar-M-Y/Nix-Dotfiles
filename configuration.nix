@@ -83,10 +83,18 @@ services.scx = {
   };
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "";
-  };
+  # services.xserver.xkb = {
+  #   layout = "gb";
+  #   variant = "";
+  # };
+
+  services.xserver = {
+      xkb = {
+          layout = "gb";
+          variant = "";
+        };
+      videoDrivers = ["nvidia"];
+    };
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -181,6 +189,22 @@ services.scx = {
       };
   };
 
+  hardware = {
+      graphics = {
+          enable = true;
+          enable32Bit = true;
+        };
+      nvidia = {
+          modesetting.enable = true;
+          open = false;
+          nvidiaSettings = true;
+          package = config.boot.kernelPackages.nvidiaPackages.stable;
+          powerManagement = {
+              enable = false;
+              finegrained = false;
+            };
+        };
+    }; 
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -22,8 +22,9 @@ Variants {
         right: true
       }
 
-      implicitHeight: 30
-      color: Colors.background
+      implicitHeight: 36
+      // color: Colors.background
+      color: "transparent"
 
 
 
@@ -38,6 +39,7 @@ Variants {
       }
       // Now we just use the custom component
       Clock {}
+
 
 
     }

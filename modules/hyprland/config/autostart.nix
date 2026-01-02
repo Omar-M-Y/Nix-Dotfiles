@@ -4,6 +4,7 @@
         exec-once = [
             "swww-daemon"
             "matugen"
+            # "ambxst"
             "quickshell"
             # "$terminal"
         ];
