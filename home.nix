@@ -76,6 +76,7 @@
         nodePackages.typescript-language-server
 
         # microsoft-edge
+        easyeffects
     ];
 
     fonts.fontconfig.enable = true;
