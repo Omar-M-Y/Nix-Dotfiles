@@ -10,14 +10,14 @@
 			url = "github:SergioRibera/s4rchiso-plymouth-theme";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		nix-cachyos-kernel = {
-			url = "github:xddxdd/nix-cachyos-kernel/release";
-		};
+#		nix-cachyos-kernel = {
+#			url = "github:xddxdd/nix-cachyos-kernel/release";
+#		};
 		matugen = {
 			url = "github:/InioX/Matugen";
 		};
 	};
-	outputs = { self, nixpkgs, quickshell, mac-style-plymouth, nix-cachyos-kernel, matugen, home-manager, ... }@inputs: {
+	outputs = { self, nixpkgs, quickshell, mac-style-plymouth, matugen, home-manager, ... }@inputs: {
 		nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
 			specialArgs = { inherit inputs; };
 			modules = [
@@ -32,7 +32,8 @@
 			{
 				nixpkgs.overlays = [
 					mac-style-plymouth.overlays.default
-          nix-cachyos-kernel.overlays.default
+          				#nix-cachyos-kernel.overlays.default
+					#nix-cachyos-kernel.overlays.pinned
 					];
 				}
 			];

@@ -13,9 +13,10 @@
     ];
 
   boot = {
-    loader.grub.enable = true;
-    loader.grub.device = "/dev/vda";
+    loader.grub.enable = true;    
+    loader.grub.device = "nodev";
     loader.grub.useOSProber = true;
+#    loader.grub.efiInstallAsRemovable = true;
     plymouth = {
       enable = true;
       theme = "mac-style";
@@ -37,7 +38,7 @@
     loader.timeout = 5;
 
     # Kernel - Cachyos
-    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts;
+#    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts;
 };
  
 services.scx = {
