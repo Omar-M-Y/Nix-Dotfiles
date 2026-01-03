@@ -9,13 +9,14 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix  # VM Hardware
-	    #./modules/hyprland/default.nix
+#      ./modules/hyprland/default.nix
     ];
 
   boot = {
     loader.grub.enable = true;    
     loader.grub.device = "nodev";
     loader.grub.useOSProber = true;
+    loader.grub.efiSupport = true;
 #    loader.grub.efiInstallAsRemovable = true;
     plymouth = {
       enable = true;
@@ -46,7 +47,9 @@ services.scx = {
     scheduler = "scx_rusty";
 }; 
 
-
+systemd.settings.Manager = {
+	DefaultTimeoutStopSec = "10s";
+};
 
   # Bootloader.
   #boot.loader.grub.enable = true;
@@ -168,8 +171,8 @@ services.scx = {
   services.displayManager.sddm = {
 	enable = true;	
 	wayland.enable = true;
-	package = pkgs.kdePackages.sddm;
-	theme = "sddm-astronaut-theme";
+	#package = pkgs.kdePackages.sddm;
+	#theme = "sddm-astronaut-theme";
 	extraPackages = with pkgs; [
 		kdePackages.qtsvg
 		kdePackages.qtmultimedia
@@ -206,16 +209,16 @@ services.scx = {
         };
     };
 
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-    settings = {
-        auto-optimise-store = true;
-      };
-  };
+#  nix = {
+ #   gc = {
+  #    automatic = true;
+   #   dates = "weekly";
+    #  options = "--delete-older-than 7d";
+   # };
+   # settings = {
+   #     auto-optimise-store = true;
+   #   };
+ # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
