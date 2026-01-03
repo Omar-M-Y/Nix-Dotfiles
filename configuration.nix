@@ -37,8 +37,7 @@
     loader.timeout = 5;
 
     # Kernel - Cachyos
-
-    kernelPackages = pkgs.linuxPackages_cachyos-lts;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts;
 };
  
 services.scx = {
@@ -204,7 +203,18 @@ services.scx = {
               finegrained = false;
             };
         };
-    }; 
+    };
+
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    settings = {
+        auto-optimise-store = true;
+      };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -77,6 +77,8 @@
 
         # microsoft-edge
         easyeffects
+        # discord
+        # steam
     ];
 
     fonts.fontconfig.enable = true;
