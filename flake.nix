@@ -27,8 +27,12 @@
         url = "github:Axenide/Ambxst";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+    zen-browser = {
+        url = "github:0xc000022070/zen-browser-flake";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
 	};
-	outputs = { self, nixpkgs, quickshell, mac-style-plymouth, nix-cachyos-kernel, nix-flatpak, matugen, home-manager, ambxst, ... }@inputs: {
+	outputs = { self, nixpkgs, quickshell, mac-style-plymouth, nix-cachyos-kernel, nix-flatpak, matugen, home-manager, ambxst, zen-browser ... }@inputs: {
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			specialArgs = { inherit inputs; };
 			modules = [

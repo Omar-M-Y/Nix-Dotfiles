@@ -5,6 +5,7 @@
         ./modules/hyprland/default.nix
         ./modules/matugen.nix
         ./modules/quickshell/default.nix
+        inputs.zen-browser.homeModules.twilight 
     ];
 
     programs = {
@@ -27,6 +28,9 @@
           };
           home-manager = {
               enable = false;
+            };
+          zen-browser = {
+              enable = true;
             };
       };
 
