@@ -222,7 +222,15 @@ environment.systemPackages = with pkgs; [
         "/mnt/Games" = {
             device = "/dev/disk/by-uuid/94FA6723FA6700BA";
             fsType = "ntfs3";
-            options = [ "rw" "uid=1000" "gid=100" "umask=0022" "nofail" ]; 
+            options = [ 
+            "rw"
+            "uid=1000"
+            "gid=100"
+            "dmask=0022"
+            "fmask=0022"
+            "windows_names"  # Prevents creation of names Windows hates
+            "ignore_case"    # Helps with case sensitivity issues 
+            ]; 
           };
     };
 
