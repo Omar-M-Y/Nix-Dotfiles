@@ -34,7 +34,7 @@
             };
       };
 
-
+    nixpkgs.config.allowUnfree = true;
     xdg.configFile."nvim".source = ./modules/nvim;
     # Correct usage:
     # xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/nvim";
