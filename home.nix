@@ -74,6 +74,7 @@
                 user.name = "Omar-M-Y";
                 user.email = "yahya.omar_@outlook.com";
                 init.defaultBranch = "main";
+                credential.helper = "store";
               };
           };
           home-manager = {
