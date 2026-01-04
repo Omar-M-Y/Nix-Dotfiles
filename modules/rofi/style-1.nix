@@ -3,7 +3,7 @@
 
 ''
 /* Import the Matugen colors */
-@import "colors.rasi"
+@import "~/.config/rofi/colors.rasi"
 
 * {
     background-color: transparent;
