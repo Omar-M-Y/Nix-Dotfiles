@@ -5,7 +5,7 @@
         ./modules/hyprland/default.nix
         ./modules/matugen.nix
         ./modules/quickshell/default.nix
-        inputs.zen-browser.homeModules.twilight 
+        inputs.zen-browser.homeModules.beta 
     ];
 
     programs = {
