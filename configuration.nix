@@ -209,6 +209,11 @@ environment.systemPackages = with pkgs; [
     heroic
   ];
   fileSystems = {
+      "/mnt/Cachyos" = {
+          device = "/dev/disk/by-uuid/aeab9848-46e9-407a-8569-6a2b918e478b";
+          fsType = "btrfs";
+          options = ["nofail" "subvol=@"]
+        }
       "/mnt/Backup" = {
           device = "/dev/disk/by-uuid/E85E9A215E99E898";
           fsType = "ntfs3";
