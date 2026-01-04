@@ -11,24 +11,32 @@
       ./hardware-configuration.nix  # VM Hardware
 #      ./modules/hyprland/default.nix
     ];
-boot.loader.systemd-boot.enable = false;
-  boot = {
-    loader.grub.enable = true;    
-    loader.grub.device = "nodev";
-    loader.grub.useOSProber = true;
-    loader.grub.efiSupport = true;
-   loader.grub.efiInstallAsRemovable = true;
-   supportedFilesystems = [ "ntfs" ];
-   # loader.efi.canTouchEfiVariables = true;
+
+
+boot = {
+    loader = {
+        systemd-boot = {
+            enable = true;
+          };
+        grub = {
+            enable = true;
+            device = "nodev";
+            useOSProber = true;
+            efiSupport = true;
+            efiInstallAsRemovable = true;
+            supportedFilesystems = ["ntfs"];
+          };
+        timeout = 5;
+      };
     plymouth = {
-      enable = true;
-      theme = "mac-style";
-      themePackages = [ pkgs.mac-style-plymouth ];
-    };
-    
-    # Silencing Boot
+        enable = true;
+        theme = "mac-style";
+        themePackages = [pkgs.mac-style-plymouth];
+      };
     consoleLogLevel = 0;
-    initrd.verbose = false;
+    initrd = {
+        verbose = false;
+      };
     kernelParams = [
       "quiet"
       "splash"
@@ -38,132 +46,213 @@ boot.loader.systemd-boot.enable = false;
       "rd.udev.log_level=3"
       "udev.log_priority=3"
     ];
-    kernelModules = [ "ntsync" ];
-    loader.timeout = 5;
-
-    # Kernel - Cachyos
-    # kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
-};
- 
-services.scx = {
-    enable = true;
-    scheduler = "scx_rusty";
-}; 
-
-systemd.settings.Manager = {
-	DefaultTimeoutStopSec = "10s";
+    kernelModules = ["ntsync"];
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
 };
 
-  # Bootloader.
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.device = "/dev/vda";
-  #boot.loader.grub.useOSProber = true;
-  
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/London";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_GB.UTF-8";
-    LC_IDENTIFICATION = "en_GB.UTF-8";
-    LC_MEASUREMENT = "en_GB.UTF-8";
-    LC_MONETARY = "en_GB.UTF-8";
-    LC_NAME = "en_GB.UTF-8";
-    LC_NUMERIC = "en_GB.UTF-8";
-    LC_PAPER = "en_GB.UTF-8";
-    LC_TELEPHONE = "en_GB.UTF-8";
-    LC_TIME = "en_GB.UTF-8";
-  };
-
-  # Configure keymap in X11
-  # services.xserver.xkb = {
-  #   layout = "gb";
-  #   variant = "";
-  # };
-
-  services.xserver = {
+services = {
+    scx = {
+        enable = true;
+        scheduler = "scx_rusty";
+    };
+    xserver = {
       xkb = {
-          layout = "gb";
-          variant = "";
-        };
-      videoDrivers = ["nvidia"];
-    };
-  # In configuration.nix
-  security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      extraConfig.pipewire."99-latency" = {
-        "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 1024;
-        "default.clock.min-quantum" = 1024;
-        "default.clock.max-quantum" = 4096;
+        layout = "gb";
+        variant = "";
       };
-  # If you want to use JACK applications, uncomment this
-  # jack.enable = true;
+        videoDrivers = ["nvidia"];
     };
+    pipewire = {
+        enable = true;
+        alsa = {
+            enable = true;
+            support32Bit = true;
+          };
+         pulse = {
+            enable = true;
+          };
+          extraConfig.pipewire."99-latency" = {
+            "context.properties" = {
+            "default.clock.rate" = 48000;
+            "default.clock.quantum" = 1024;
+            "default.clock.min-quantum" = 1024;
+            "default.clock.max-quantum" = 4096;
+          };
+      };
     };
-  # Configure console keymap
-  console.keyMap = "uk";
+    ananicy = {
+        enable = true;
+        package = pkgs.ananicy-cpp;
+        rulesProvider = pkgs.ananicy-rules-cachyos;
+    };
+    power-profiles-daemon = {
+        enable = true;
+    };
+    displayManager = {
+        sddm = {
+            enable = true;
+            wayland = {
+                enable = true;
+            };
+            package = pkgs.kdePackages.sddm;
+            theme = "sddm-astronaut-theme";
+            setupScript = ''
+              ${pkgs.xorg.xrandr}/bin/xrandr \
+              --output DP-3 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
+              --output HDMI-A-3 --mode 1920x1080 --pos 0x0 --rotate normal --same-as DP-3
+              '';
+            extraPackages = with pkgs; [
+              kdePackages.qtsvg
+              kdePackages.qtmultimedia
+            ];
+        };
+    };
+  flatpak = {
+      enable = true;
+      update = {
+          onActivation = true;
+        };
+      remotes = [{
+        name = "flathub";
+        location = "https://dl/flathub.org/repo/flathub.flatpakrepo";          
+      }];
+      packages = [
+        "org.vinegarhq.Sober"
+      ];
+  };
+};
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.yahya = {
-    isNormalUser = true;
-    description = "yahya";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
-    shell = pkgs.fish;
-    packages = with pkgs; [];
+zramSwap = {
+    enable = true;
+    memoryPercent = 100;
+};
+
+hardware = {
+  graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  nvidia = {
+    modesetting.enable = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    powerManagement = {
+      enable = false;
+      finegrained = false;
+    };
+  };
+  bluetooth = {
+    enable = true;
+  };
+};
+
+security = {
+  rtkit = {
+    enable = true;
+  };
+};
+
+console = {
+    keyMap = "uk";
+};
+
+networking = {
+    hostname = "nixos";
+    networkmanager = {
+        enable = true;
+    };
+};
+
+time = {
+    timeZone = "Europe/London";
+};
+
+i18n = {
+    defaultLocale = "en_GB.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_GB.UTF-8";
+      LC_IDENTIFICATION = "en_GB.UTF-8";
+      LC_MEASUREMENT = "en_GB.UTF-8";
+      LC_MONETARY = "en_GB.UTF-8";
+      LC_NAME = "en_GB.UTF-8";
+      LC_NUMERIC = "en_GB.UTF-8";
+      LC_PAPER = "en_GB.UTF-8";
+      LC_TELEPHONE = "en_GB.UTF-8";
+      LC_TIME = "en_GB.UTF-8";
+    };
+  };
+  
+users = {
+    users = {
+        yahya = {
+            isNormalUser = true;
+            description = "yahya";
+            extraGroups = ["networkmanager" "wheel" "audio" "video"];
+            shell = pkgs.fish;
+            packages = with pkgs; [];
+          };
+      };
   };
 
-  environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-  };
-  services.ananicy = {
-    enable = true;
-    package = pkgs.ananicy-cpp;
-    rulesProvider = pkgs.ananicy-rules-cachyos; # Use CachyOS's tuned rules
+xdg = {
+    portal = {
+        enable = true;
+        extraPortals = [pkgs.xdg-desktop-portal-hyprland];
     };
+};
 
-  zramSwap.enable = true;
-  zramSwap.memoryPercent = 100; # CachyOS usually allocates 1:1, or you can do 50
+programs = {
+    gamemode = {
+        enable = true;
+    };
+    steam = {
+        enable = true;
+        remotePlay = {
+            openFirewall = true;
+        };
+        dedicatedServer = {
+            openFirewall = true;
+        };
+        gamescopeSession = {
+            enable = true;
+          };
+    };
+    fish = {
+        enable = true;
+        interactiveShellInit = ''
+          starship init fish | source
+        '';
+    };
+    hyprland = {
+        enable = true;
+        xwayland = {
+            enable = true;
+        };
+    };
+};
 
-  programs.gamemode.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    gamescopeSession.enable = true; # Enable GameScope integration
-    }; 
+nix = {
+    settings = {
+        experimental-features = ["nix-command" "flakes"];
+        substituters = ["https://attic.xuyh0120.win/lantian"];
+        trusted-public-keys = ["lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="];
+    };
+  };
+
+nixpkgs = {
+    config = {
+        # Allow unfree packages
+        allowUnfree = true;    
+      };
+  };
 
 
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-environment.systemPackages = with pkgs; [
-    # --- Your Original Packages ---
+environment = {
+    pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
+    # List packages installed in system profile. To search, run:
+    # # $ nix search wget
+    systemPackages = with pkgs; [
     vim 
     wget
     git
@@ -215,121 +304,40 @@ environment.systemPackages = with pkgs; [
     protonup-qt
     lutris
     heroic
-  ];
-  fileSystems = {
-      "/mnt/Cachyos" = {
-          device = "/dev/disk/by-uuid/aeab9848-46e9-407a-8569-6a2b918e478b";
-          fsType = "btrfs";
-          options = ["nofail" "subvol=@"];
-        };
-      "/mnt/Backup" = {
-          device = "/dev/disk/by-uuid/E85E9A215E99E898";
-          fsType = "ntfs3";
-          options = [ "rw" "uid=1000" "gid=100" "umask=0022" "nofail" ];
-        };
-      "/mnt/Work" = {
-          device = "/dev/disk/by-uuid/6EFAE1F7FAE1BB89";
-          fsType = "ntfs3";
-          options = [ "rw" "uid=1000" "gid=100" "umask=0022" "nofail" ];
-        };
-        "/mnt/Games" = {
-            device = "/dev/disk/by-uuid/94FA6723FA6700BA";
-            fsType = "ntfs3";
-            options = [ 
-            "rw"
-            "uid=1000"
-            "gid=100"
-            "dmask=0022"
-            "fmask=0022"
-            "windows_names"  # Prevents creation of names Windows hates
-            # "ignore_case"    # Helps with case sensitivity issues 
-            "nofail"
-            ]; 
-          };
-    };
-
-  services.power-profiles-daemon.enable = true;
-  services.displayManager.sddm = {
-	enable = true;	
-	wayland.enable = true;
-	package = pkgs.kdePackages.sddm;
-	theme = "sddm-astronaut-theme";
-  setupScript = ''
-    ${pkgs.xorg.xrandr}/bin/xrandr \
-        --output DP-3 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
-        --output HDMI-A-3 --mode 1920x1080 --pos 0x0 --rotate normal --same-as DP-3
-  '';
-	extraPackages = with pkgs; [
-		kdePackages.qtsvg
-		kdePackages.qtmultimedia
-	];
-   };
-
-  programs = {
-      fish = {
-          enable = true;
-          interactiveShellInit = ''
-          starship init fish | source
-          '';
-      };
-      hyprland = {
-        enable = true;
-        xwayland.enable = true;
-      };
+    ];
   };
 
-  hardware = {
-      graphics = {
-          enable = true;
-          enable32Bit = true;
-        };
-      nvidia = {
-          modesetting.enable = true;
-          open = false;
-          nvidiaSettings = true;
-          package = config.boot.kernelPackages.nvidiaPackages.stable;
-          powerManagement = {
-              enable = false;
-              finegrained = false;
-            };
-        };
-      bluetooth = {
-          enable = true;
-        };
-    };
-
-# fonts.packages = with pkgs; [
-#     nerd-fonts.symbols-only
-#     noto-fonts
-#     noto-fonts-cjk-sans
-#     noto-fonts-color-emoji
-#   ];
-
-services = {
-    flatpak = {
-        enable = true;
-        update = {
-            onActivation = true;
-          };
-        remotes = [{
-            name = "flathub";
-            location = "https://dl/flathub.org/repo/flathub.flatpakrepo";
-          }];
-          packages = [
-              "org.vinegarhq.Sober"
-            ];
-      };
+fileSystems = {
+  "/mnt/Cachyos" = {
+    device = "/dev/disk/by-uuid/aeab9848-46e9-407a-8569-6a2b918e478b";
+    fsType = "btrfs";
+    options = ["nofail" "subvol=@"];
   };
+  "/mnt/Backup" = {
+    device = "/dev/disk/by-uuid/E85E9A215E99E898";
+    fsType = "ntfs3";
+    options = [ "rw" "uid=1000" "gid=100" "umask=0022" "nofail" ];
+  };
+  "/mnt/Work" = {
+    device = "/dev/disk/by-uuid/6EFAE1F7FAE1BB89";
+    fsType = "ntfs3";
+    options = [ "rw" "uid=1000" "gid=100" "umask=0022" "nofail" ];
+  };
+  "/mnt/Games" = {
+    device = "/dev/disk/by-uuid/94FA6723FA6700BA";
+    fsType = "ntfs3";
+    options = [ 
+    "rw"
+    "uid=1000"
+    "gid=100"
+    "dmask=0022"
+    "fmask=0022"
+    "windows_names"  # Prevents creation of names Windows hates
+    "nofail"
+    ]; 
+  };
+}
 
-nix.settings = {
-  substituters = [
-    "https://attic.xuyh0120.win/lantian"
-  ];
-
-  trusted-public-keys = [
-    "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-  ];
-};
 
 #  nix = {
  #   gc = {

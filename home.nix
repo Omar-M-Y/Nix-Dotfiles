@@ -17,7 +17,7 @@
 
     home = {
         activation = {
-            refreshfontcache = lib.hm.dag.entryAfter ["writeboundary"] ''
+            refreshfontcache = lib.hm.dag.entryAfter ["writeBoundary"] ''
               verboseEcho "refreshing font cache..."
               $DRY_RUN_CMD ${pkgs.fontconfig}/bin/fc-cache -r
             '';
@@ -51,7 +51,6 @@
           efibootmgr
           pavucontrol
           alsa-utils
-          home-manager
           inputs.viu.packages.${pkgs.system}.default
           wootility
         ];
@@ -76,7 +75,7 @@
               };
           };
           home-manager = {
-              enable = false;
+              enable = true;
             };
           zen-browser = {
               enable = true;
