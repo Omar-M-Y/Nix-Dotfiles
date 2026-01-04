@@ -1,9 +1,9 @@
 # rofi/style-1.nix
-{ }: 
+{ colorsPath }:
 
 ''
-/* Import the Matugen colors */
-@import "~/.config/rofi/colors.rasi"
+/* Absolute path injected by Nix */
+@import "${colorsPath}"
 
 * {
     background-color: transparent;
@@ -85,6 +85,7 @@ element-text {
 element normal.normal {
     background-color: @normal-background;
     text-color: @normal-foreground;
+    background-color: transparent; /* Fix for transparency if needed */
 }
 
 element selected.normal {
