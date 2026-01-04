@@ -25,12 +25,15 @@
             withNodeJs = true;
             withPython3 = true;
           };
+          home-manager = {
+              enable = false;
+            };
       };
 
 
-    #xdg.configFile."nvim".source = ./modules/nvim;
+    xdg.configFile."nvim".source = ./modules/nvim;
     # Correct usage:
-    xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/nvim";
+    # xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/nvim";
    
     home.packages = with pkgs; [
         inputs.quickshell.packages.${pkgs.system}.default
@@ -77,13 +80,18 @@
 
         # microsoft-edge
         easyeffects
-        # discord
-        # steam
+        btop
+        discord
+        steam
+	      efibootmgr
+        pavucontrol
+        alsa-utils
+        home-manager
+
     ];
 
     fonts.fontconfig.enable = true;
   
-    programs.home-manager.enable = true;
 
 
     home = {
@@ -94,5 +102,7 @@
             GBM_BACKEND = "nvidia-drm";
             __GLX_VENDOR_LIBRARY_NAME = "nvidia";
           };
+        username = "yahya";
+        homeDirectory = "/home/yahya";
       };
 }

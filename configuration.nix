@@ -11,13 +11,15 @@
       ./hardware-configuration.nix  # VM Hardware
 #      ./modules/hyprland/default.nix
     ];
-
+boot.loader.systemd-boot.enable = false;
   boot = {
     loader.grub.enable = true;    
     loader.grub.device = "nodev";
     loader.grub.useOSProber = true;
     loader.grub.efiSupport = true;
-#    loader.grub.efiInstallAsRemovable = true;
+   loader.grub.efiInstallAsRemovable = true;
+   supportedFilesystems = [ "ntfs" ];
+   # loader.efi.canTouchEfiVariables = true;
     plymouth = {
       enable = true;
       theme = "mac-style";
@@ -39,7 +41,8 @@
     loader.timeout = 5;
 
     # Kernel - Cachyos
-#    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts;
+    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
 };
  
 services.scx = {
@@ -98,7 +101,16 @@ systemd.settings.Manager = {
         };
       videoDrivers = ["nvidia"];
     };
-
+  # In configuration.nix
+  security.rtkit.enable = true;
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+  # If you want to use JACK applications, uncomment this
+  # jack.enable = true;
+    };
   # Configure console keymap
   console.keyMap = "uk";
 
@@ -106,7 +118,7 @@ systemd.settings.Manager = {
   users.users.yahya = {
     isNormalUser = true;
     description = "yahya";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
     shell = pkgs.fish;
     packages = with pkgs; [];
   };
@@ -144,35 +156,84 @@ systemd.settings.Manager = {
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  	vim 
-  	wget
+environment.systemPackages = with pkgs; [
+    # --- Your Original Packages ---
+    vim 
+    wget
     git
     firefox
     google-chrome
     vscode
     fastfetch
-    kitty # Terminal
-
+    kitty
     imagemagick
     yazi
-
-    inputs.matugen.packages.${system}.default
-    
-
-  #	custom-astronaut
     sddm-astronaut
-    #kdePackages.qt5compat
     kdePackages.qtsvg
     kdePackages.qtmultimedia
-    #kdePackages.qtdeclarative
-  ];
 
+    # --- External Flakes ---
+    inputs.matugen.packages.${system}.default
+    inputs.ambxst.packages.${pkgs.system}.default
+
+    # --- Ambxst Core Dependencies (from install.sh) ---
+    tmux
+    fuzzel                # App launcher
+    networkmanagerapplet  # WiFi icon
+    blueman               # Bluetooth manager
+    
+    # --- Multimedia & Audio ---
+    playerctl             # Media keys
+    pwvucontrol           # Volume control GUI
+    easyeffects           # Audio effects
+    ffmpeg
+    mpvpaper              # Animated wallpapers
+    
+    # --- System Tools & Hardware Control ---
+    brightnessctl         # Keyboard/Screen brightness
+    ddcutil               # Monitor I2C control
+    jq                    # JSON processing
+    wl-clipboard          # Copy/Paste support
+    grim                  # Screenshot tool
+    slurp                 # Screen region selector
+    upower                # Battery/Power status
+    gpu-screen-recorder   # Recording support
+    
+    # --- Intelligence & OCR ---
+    tesseract             # Optical Character Recognition
+    pipx                  # For python-based toolus
+
+    xrandr
+  ];
+  fileSystems = {
+      "/mnt/Backup" = {
+          device = "/dev/disk/by-uuid/E85E9A215E99E898";
+          fsType = "ntfs3";
+          options = [ "rw" "uid=1000" "gid=100" "umask=0022" "nofail" ];
+        };
+      "/mnt/Work" = {
+          device = "/dev/disk/by-uuid/6EFAE1F7FAE1BB89";
+          fsType = "ntfs3";
+          options = [ "rw" "uid=1000" "gid=100" "umask=0022" "nofail" ];
+        };
+        "/mnt/Games" = {
+            device = "/dev/disk/by-uuid/94FA6723FA6700BA";
+            fsType = "ntfs3";
+            options = [ "rw" "uid=1000" "gid=100" "umask=0022" "nofail" ]; 
+          };
+    };
+
+  services.power-profiles-daemon.enable = true;
   services.displayManager.sddm = {
 	enable = true;	
 	wayland.enable = true;
-	#package = pkgs.kdePackages.sddm;
-	#theme = "sddm-astronaut-theme";
+	package = pkgs.kdePackages.sddm;
+	theme = "sddm-astronaut-theme";
+  setupScript = ''
+    ${pkgs.xorg.xrandr}/bin/xrandr \
+        --output DP-3 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
+        --output HDMI-A-3 --mode 1920x1080 --pos 0x0 --rotate normal --same-as DP-3
+  '';
 	extraPackages = with pkgs; [
 		kdePackages.qtsvg
 		kdePackages.qtmultimedia
@@ -207,7 +268,43 @@ systemd.settings.Manager = {
               finegrained = false;
             };
         };
+      bluetooth = {
+          enable = true;
+        };
     };
+
+fonts.packages = with pkgs; [
+    nerd-fonts.symbols-only
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+  ];
+
+services = {
+    flatpak = {
+        enable = true;
+        update = {
+            onActivation = true;
+          };
+        remotes = [{
+            name = "flathub";
+            location = "https://dl/flathub.org/repo/flathub.flatpakrepo";
+          }];
+          packages = [
+              "org.vinegarhq.Sober"
+            ];
+      };
+  };
+
+nix.settings = {
+  substituters = [
+    "https://attic.xuyh0120.win/lantian"
+  ];
+
+  trusted-public-keys = [
+    "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+  ];
+};
 
 #  nix = {
  #   gc = {
