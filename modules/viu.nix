@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
 
 {
   # 1. Ensure the external tools Viu needs are installed
