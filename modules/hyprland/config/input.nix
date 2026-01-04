@@ -5,6 +5,9 @@
             kb_options = "grp:alt_space_toggle";
             float_switch_override_focus = 2;
             follow_mouse = 1;
+
+            accel_profile = "flat";
+            force_no_accel = true;
         }; 
     };
 }
