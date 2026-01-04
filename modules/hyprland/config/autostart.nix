@@ -7,7 +7,7 @@
             "steam -silent" # Steam
             "matugen" # Colour Daemon
             "quickshell" # Desktop Shell
-            "easyeffects" # Audio 
+            "easyeffects --gapplication-service" # Audio 
             # "$terminal"
         ];
   };
