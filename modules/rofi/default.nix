@@ -8,7 +8,7 @@ in
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    # package = pkgs.rofi-wayland;
 
     # Basic Configuration
     font = "JetBrainsMono Nerd Font 10";
