@@ -45,9 +45,27 @@ boot = {
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
+
+    # --- ADD THESE FOR CACHYOS PARITY ---
+    "split_lock_detect=off"              # Prevent performance drops in some games
+    "transparent_hugepage=always"        # Improves memory management for heavy games
+    "nvidia.NVreg_UsePageAttributeTable=1" # Increases CPU-GPU bandwidth (Nvidia specific)
     ];
     kernelModules = ["ntsync"];
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
+
+    kernel = {
+        sysctl = {
+          "net.core.default_qdisc" = "cake";
+          "net.ipv4.tcp_congestion_control" = "bbr";
+
+          # Memory: Force games to use ZRAM instead of freezing when RAM is full
+          "vm.swappiness" = 180;             # CachyOS default (aggressive swap to ZRAM)
+          "vm.watermark_boost_factor" = 0;   # Prevent latency spikes
+          "vm.watermark_scale_factor" = 125;
+          "vm.page-cluster" = 0;    
+        };
+      };
 };
 
 services = {
@@ -120,6 +138,9 @@ services = {
         "org.vinegarhq.Sober"
       ];
   };
+  fstrim = {
+      enable = true;
+    };
 };
 
 zramSwap = {
@@ -130,6 +151,11 @@ zramSwap = {
 hardware = {
   wooting = {
       enable = true;
+  };
+  cpu = {
+      intel = {
+          updateMicrocode = true;
+      };
   };
   graphics = {
     enable = true;
