@@ -4,7 +4,7 @@
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    # package = pkgs.rofi-wayland;
     
     # 1. Set the theme name to "style-1"
     # Rofi will look for style-1.rasi in ~/.config/rofi/
