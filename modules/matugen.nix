@@ -132,15 +132,15 @@ in
     }
   '';
 
-
-# 7. Rofi Template (NEW)
+# 7. Rofi Template (Updated for Transparency)
   xdg.configFile."matugen/templates/rofi-colors.rasi".text = ''
     * {
-        background: {{colors.background.default.hex}};
+        /* Use 80% opacity (CC in hex) for the main window */
+        background: {{colors.background.default.hex}}CC;
+        
         foreground: {{colors.on_surface.default.hex}};
         border-color: {{colors.outline.default.hex}};
         
-        /* These match the variables used in your style-1.rasi */
         normal-background: transparent;
         normal-foreground: {{colors.on_surface.default.hex}};
         
@@ -151,4 +151,5 @@ in
         alternate-normal-foreground: {{colors.on_surface.default.hex}};
     }
   '';
+
 }
