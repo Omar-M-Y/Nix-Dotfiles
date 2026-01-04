@@ -40,10 +40,14 @@ in
     input_path = "${matugenConfigDir}/templates/fish-colors.fish"
     output_path = "${fishConfigDir}/matugen.fish"
 
-    # NEW: Quickshell Template
     [templates.quickshell]
     input_path = "${matugenConfigDir}/templates/quickshell-colors.qml"
     output_path = "${quickshellConfigDir}/Colors.qml"
+
+    [templates.rofi]
+    input_path = "${matugenConfigDir}/templates/rofi-colors.rasi"
+    output_path = "${rofiConfigDir}/colors.rasi"
+
   '';
 
   # 3. Hyprland Template
@@ -132,7 +136,7 @@ in
     }
   '';
 
-# 7. Rofi Template (Updated for Transparency)
+  # 7. Rofi Template (Updated for Transparency)
   xdg.configFile."matugen/templates/rofi-colors.rasi".text = ''
     * {
         /* Use 80% opacity (CC in hex) for the main window */
@@ -151,5 +155,4 @@ in
         alternate-normal-foreground: {{colors.on_surface.default.hex}};
     }
   '';
-
 }

@@ -6,6 +6,7 @@
         ./modules/matugen.nix
         ./modules/quickshell/default.nix
         ./modules/rofi/default.nix
+        ./modules/viu.nix
         inputs.zen-browser.homeModules.beta 
     ];
 
@@ -91,6 +92,8 @@
         pavucontrol
         alsa-utils
         home-manager
+        # ani-cli
+        inputs.viu.packages.${pkgs.system}.default
 
 
 

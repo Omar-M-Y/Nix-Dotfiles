@@ -2,11 +2,12 @@
     imports = [ ./keybinds.nix];
   wayland.windowManager.hyprland.settings = {
         exec-once = [
-            "swww-daemon"
-            "discord --start-minimized"
-            "steam -silent"
-            "matugen"
-            "quickshell"
+            "swww-daemon" # Wallpaper Daemon
+            "discord --start-minimized" # Discord
+            "steam -silent" # Steam
+            "matugen" # Colour Daemon
+            "quickshell" # Desktop Shell
+            "easyeffects" # Audio 
             # "$terminal"
         ];
   };
