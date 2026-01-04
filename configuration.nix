@@ -24,10 +24,10 @@ boot = {
             useOSProber = true;
             efiSupport = true;
             efiInstallAsRemovable = true;
-            supportedFilesystems = ["ntfs"];
           };
         timeout = 5;
       };
+    supportedFilesystems = ["ntfs"];
     plymouth = {
         enable = true;
         theme = "mac-style";
