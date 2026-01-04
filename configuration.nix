@@ -172,7 +172,7 @@ environment.systemPackages = with pkgs; [
 
     # --- External Flakes ---
     inputs.matugen.packages.${system}.default
-    inputs.ambxst.packages.${pkgs.system}.default
+    # inputs.ambxst.packages.${pkgs.system}.default
 
     # --- Ambxst Core Dependencies (from install.sh) ---
     tmux
