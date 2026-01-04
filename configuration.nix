@@ -38,7 +38,7 @@ boot.loader.systemd-boot.enable = false;
       "rd.udev.log_level=3"
       "udev.log_priority=3"
     ];
-    kernelModules = [ "ntsync" ]
+    kernelModules = [ "ntsync" ];
     loader.timeout = 5;
 
     # Kernel - Cachyos
