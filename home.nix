@@ -91,6 +91,10 @@
         alsa-utils
         home-manager
 
+
+
+        rofi
+
     ];
 
     fonts.fontconfig.enable = true;
