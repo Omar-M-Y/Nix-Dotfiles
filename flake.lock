@@ -1,26 +1,5 @@
 {
   "nodes": {
-    "ambxst": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "quickshell": "quickshell"
-      },
-      "locked": {
-        "lastModified": 1767484636,
-        "narHash": "sha256-PMnVu90wcNMO0pXcEV4juehXny6YXdETTLgtmJkXhoM=",
-        "owner": "Axenide",
-        "repo": "Ambxst",
-        "rev": "48723824fae5cd98aa31f110ce51524ce84da6cb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Axenide",
-        "repo": "Ambxst",
-        "type": "github"
-      }
-    },
     "cachyos-kernel": {
       "flake": false,
       "locked": {
@@ -268,27 +247,6 @@
     "quickshell": {
       "inputs": {
         "nixpkgs": [
-          "ambxst",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1766725085,
-        "narHash": "sha256-O2aMFdDUYJazFrlwL7aSIHbUSEm3ADVZjmf41uBJfHs=",
-        "ref": "refs/heads/master",
-        "rev": "41828c4180fb921df7992a5405f5ff05d2ac2fff",
-        "revCount": 715,
-        "type": "git",
-        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
-      }
-    },
-    "quickshell_2": {
-      "inputs": {
-        "nixpkgs": [
           "nixpkgs"
         ]
       },
@@ -308,14 +266,13 @@
     },
     "root": {
       "inputs": {
-        "ambxst": "ambxst",
         "home-manager": "home-manager",
         "mac-style-plymouth": "mac-style-plymouth",
         "matugen": "matugen",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_3",
-        "quickshell": "quickshell_2",
+        "quickshell": "quickshell",
         "zen-browser": "zen-browser"
       }
     },
