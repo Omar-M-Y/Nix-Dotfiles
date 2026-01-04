@@ -82,7 +82,7 @@
         easyeffects
         btop
         discord
-        steam
+        # steam
 	      efibootmgr
         pavucontrol
         alsa-utils

@@ -129,27 +129,24 @@ systemd.settings.Manager = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-rules-cachyos; # Use CachyOS's tuned rules
+    };
 
-  #
-#let 
-#  custom-astronaut = pkgs.sddm-astronaut.override {
-#		embbededTheme = "pixel_sakura";
-#		themeConfig = {
-#			ShowAppIcon = "false";
-#			FullBlur = "true";
-#		};
-#	};
-#in
-#  services.displayManager.sddm = {
-#	enable = true;
-#	wayland.enable = true;
-#	theme = "sddm-astronaut-theme";
-#	package = pkgs.kdePackages.sddm;
-#	extraPackages = with pkgs; [
-#		kdePackages.qtsvg
-#		kdePackages.qtmultimedia
-#	];
- # };
+  zramSwap.enable = true;
+  zramSwap.memoryPercent = 100; # CachyOS usually allocates 1:1, or you can do 50
+
+  programs.gamemode.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    gamescopeSession.enable = true; # Enable GameScope integration
+    }; 
+
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -204,6 +201,11 @@ environment.systemPackages = with pkgs; [
     pipx                  # For python-based toolus
 
     xrandr
+
+    mangohud
+    protonup-qt
+    lutris
+    heroic
   ];
   fileSystems = {
       "/mnt/Backup" = {
