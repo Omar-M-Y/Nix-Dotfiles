@@ -65,6 +65,10 @@
             ${pkgs.hyprland}/bin/hyprctl reload
         '')
         nerd-fonts.meslo-lg
+        nerd-fonts.symbols-only
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-color-emoji
 
         gcc           # Required for Treesitter compilation
         gnumake
@@ -92,14 +96,16 @@
         pavucontrol
         alsa-utils
         home-manager
-        # ani-cli
         inputs.viu.packages.${pkgs.system}.default
-
+        wootility
 
 
         # rofi
 
     ];
+
+
+  
 
     fonts.fontconfig.enable = true;
   
