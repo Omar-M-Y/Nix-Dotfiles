@@ -5,6 +5,7 @@
         ./modules/hyprland/default.nix
         ./modules/matugen.nix
         ./modules/quickshell/default.nix
+        ./modules/rofi/default.nix
         inputs.zen-browser.homeModules.beta 
     ];
 

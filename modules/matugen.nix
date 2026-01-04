@@ -7,6 +7,7 @@ let
   fishConfigDir = "${config.home.homeDirectory}/.config/fish/conf.d";
   # 1. Define Quickshell path
   quickshellConfigDir = "${config.home.homeDirectory}/.config/quickshell";
+  rofiConfigDir = "${config.home.homeDirectory}/.config/rofi";
 in
 {
   home.packages = [ inputs.matugen.packages.${pkgs.system}.default ];
@@ -128,6 +129,26 @@ in
         property color error: "{{colors.error.default.hex}}"
         
         property color outline: "{{colors.outline.default.hex}}"
+    }
+  '';
+
+
+# 7. Rofi Template (NEW)
+  xdg.configFile."matugen/templates/rofi-colors.rasi".text = ''
+    * {
+        background: {{colors.background.default.hex}};
+        foreground: {{colors.on_surface.default.hex}};
+        border-color: {{colors.outline.default.hex}};
+        
+        /* These match the variables used in your style-1.rasi */
+        normal-background: transparent;
+        normal-foreground: {{colors.on_surface.default.hex}};
+        
+        selected-normal-background: {{colors.primary.default.hex}};
+        selected-normal-foreground: {{colors.on_primary.default.hex}};
+        
+        alternate-normal-background: transparent;
+        alternate-normal-foreground: {{colors.on_surface.default.hex}};
     }
   '';
 }
