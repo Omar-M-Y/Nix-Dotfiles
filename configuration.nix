@@ -336,7 +336,7 @@ fileSystems = {
     "nofail"
     ]; 
   };
-}
+};
 
 
 #  nix = {
