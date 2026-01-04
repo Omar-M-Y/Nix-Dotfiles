@@ -230,6 +230,7 @@ environment.systemPackages = with pkgs; [
             "fmask=0022"
             "windows_names"  # Prevents creation of names Windows hates
             "ignore_case"    # Helps with case sensitivity issues 
+            "nofail"
             ]; 
           };
     };
