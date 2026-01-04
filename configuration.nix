@@ -16,7 +16,7 @@
 boot = {
     loader = {
         systemd-boot = {
-            enable = true;
+            enable = false;
           };
         grub = {
             enable = true;
