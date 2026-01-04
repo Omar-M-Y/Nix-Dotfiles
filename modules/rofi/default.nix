@@ -9,7 +9,6 @@ in
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
     
     # Rofi will look for "style-1.rasi" in ~/.config/rofi/
     theme = "style-1"; 
