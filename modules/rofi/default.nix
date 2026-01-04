@@ -6,7 +6,7 @@ in
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    # package = pkgs.rofi-wayland;
     theme = "style-1"; 
     font = "JetBrainsMono Nerd Font 10";
     extraConfig = {
