@@ -23,7 +23,6 @@
             '';
           };
         packages = with pkgs; [
-          inputs.quickshell.packages.${pkgs.system}.default
           nerd-fonts.meslo-lg
           nerd-fonts.symbols-only
           noto-fonts
@@ -51,8 +50,11 @@
           efibootmgr
           pavucontrol
           alsa-utils
-          inputs.viu.packages.${pkgs.system}.default
           wootility
+
+          inputs.quickshell.packages.${pkgs.system}.default
+          inputs.viu.packages.${pkgs.system}.default
+          inputs.home-manager.packages.${pkgs.system}.default
         ];
         stateVersion = "25.11";
         sessionVariables = {
@@ -75,7 +77,7 @@
               };
           };
           home-manager = {
-              enable = true;
+              enable = false;
             };
           zen-browser = {
               enable = true;

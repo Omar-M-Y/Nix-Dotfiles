@@ -128,6 +128,9 @@ zramSwap = {
 };
 
 hardware = {
+  wooting = {
+      enable = true;
+  };
   graphics = {
     enable = true;
     enable32Bit = true;
