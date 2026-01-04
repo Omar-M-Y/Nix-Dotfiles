@@ -1,25 +1,26 @@
 # rofi/default.nix
 { pkgs, config, ... }:
 
-let
-  # Extract mkLiteral from the Home Manager library
-  inherit (config.lib.formats.rasi) mkLiteral;
-in
 {
   programs.rofi = {
     enable = true;
-    # package = pkgs.rofi-wayland;
+    package = pkgs.rofi-wayland;
+    
+    # 1. Set the theme name to "style-1"
+    # Rofi will look for style-1.rasi in ~/.config/rofi/
+    theme = "style-1";
 
-    # Basic Configuration
     font = "JetBrainsMono Nerd Font 10";
+    
+    # Basic config options go here
     extraConfig = {
       modi = "drun";
       show-icons = true;
       display-drun = "Apps:";
       dpi = 0;
     };
-
-    # Import the theme from the separate file, passing mkLiteral to it
-    theme = import ./style-1.nix { inherit mkLiteral; };
   };
+
+  # 2. Generate the style-1.rasi file using the content from style-1.nix
+  xdg.configFile."rofi/style-1.rasi".text = import ./style-1.nix { };
 }
