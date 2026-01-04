@@ -18,8 +18,8 @@
     home = {
         activation = {
             refreshfontcache = lib.hm.dag.entryAfter ["writeboundary"] ''
-              verboseecho "refreshing font cache..."
-              $dry_run_cmd ${pkgs.fontconfig}/bin/fc-cache -r
+              verboseEcho "refreshing font cache..."
+              $DRY_RUN_CMD ${pkgs.fontconfig}/bin/fc-cache -r
             '';
           };
         packages = with pkgs; [
