@@ -6,7 +6,7 @@
             "discord --start-minimized"
             "steam -silent"
             # "matugen"
-            "ambxst"
+            # "ambxst"
             # "quickshell"
             # "$terminal"
         ];
