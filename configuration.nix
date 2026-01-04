@@ -228,7 +228,7 @@ environment.systemPackages = with pkgs; [
             "gid=100"
             "dmask=0022"
             "fmask=0022"
-            "windows_names"  # Prevents creation of names Windows hates
+            # "windows_names"  # Prevents creation of names Windows hates
             # "ignore_case"    # Helps with case sensitivity issues 
             "nofail"
             ]; 
