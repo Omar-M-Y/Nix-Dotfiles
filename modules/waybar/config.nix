@@ -13,5 +13,5 @@
     # modules-center = ;
     # modules-right= ;
     };
-    }  // builtins.import ./modules 
-}
+}  // builtins.import ./modules 
+
