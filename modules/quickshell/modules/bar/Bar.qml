@@ -39,16 +39,28 @@ Variants {
       }
       // Now we just use the custom component
       Clock {
+        id: clock
+
         anchors.right: parent.right
         anchors.rightMargin: 15
-        anchors.verticalCenter = parent.verticalCenter
+        anchors.verticalCenter: parent.verticalCenter
       }
 
       Tray {
-        anchors.right: parent.right
+        id: tray
+
+        anchors.right: clock.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: 10
+        anchors.rightMargin: 15
       }
+
+      Volume {
+        anchors.right: tray.left
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.rightMargin: 15
+      }
+
+
 
 
 

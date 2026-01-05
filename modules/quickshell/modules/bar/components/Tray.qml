@@ -19,18 +19,16 @@ RowLayout {
       source: modelData.icon
       fillMode: Image.PreserveAspectFit
 
-      MouseArea {
-        anchors.fill: parent
-        acceptedButtons: Qt.LeftButton | Qt.RightButton
-
-        onClicked: (mouse) => {
-          if (mouse.button === Qt.LeftButton) {
-            modelData.activate()
-          } else if (mouse.button === Qt.RightButton) {
-            modelData.menu.open()
-          }
-        }
-      }
+      // MouseArea {
+      //   anchors.fill: parent
+      //   acceptedButtons: Qt.LeftButton 
+      //
+      //   onClicked: (mouse) => {
+      //     modelData.activate
+      //
+      //
+        
+      
     }
   }
 }

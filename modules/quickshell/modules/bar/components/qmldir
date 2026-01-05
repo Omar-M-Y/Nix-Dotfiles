@@ -4,4 +4,5 @@ ActiveWindow 1.0 ActiveWindow.qml
 Workspaces 1.0 Workspaces.qml
 Audio 1.0 Audio.qml
 Tray 1.0 Tray.qml
+Volume 1.0 Volume.qml
 
