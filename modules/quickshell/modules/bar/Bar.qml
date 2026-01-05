@@ -41,7 +41,9 @@ Variants {
       Clock {}
 
       Tray {
-        Layout.rightMargin: 10
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.rightMargin: 10
       }
 
 
