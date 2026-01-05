@@ -38,7 +38,11 @@ Variants {
         anchors.centerIn: parent
       }
       // Now we just use the custom component
-      Clock {}
+      Clock {
+        anchors.right: parent.right
+        anchors.rightMargin: 15
+        anchors.verticalCenter = parent.verticalCenter
+      }
 
       Tray {
         anchors.right: parent.right
