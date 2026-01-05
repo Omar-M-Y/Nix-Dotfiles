@@ -9,6 +9,7 @@
 		./config/windowrules.nix
     ./config/autostart.nix
     ./config/environment.nix
+    ./hyprlock.nix
 		../matugen.nix
 	];
 
