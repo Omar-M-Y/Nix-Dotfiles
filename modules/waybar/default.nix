@@ -3,7 +3,7 @@
         waybar = {
             enable = true;
             settings = import ./config.nix;
-            style = builtsins.readFile ./style.css;
+            style = builtins.readFile ./style.css;
           };
       };
   }
