@@ -1,10 +1,10 @@
-{ ... }: {
-      mainBar = {
-          layer = "top";
-          position = "top";
-          height = 30;
-          # modules-left = ;
-          # modules-center = ;
-          # modules-right= ;
-        };
+{
+  mainBar = {
+    layer = "top";
+    position = "top";
+    height = 30;
+    # modules-left = ;
+    # modules-center = ;
+    # modules-right= ;
+    };
 }
