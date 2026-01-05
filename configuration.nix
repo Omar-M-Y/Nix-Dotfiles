@@ -288,7 +288,8 @@ environment = {
     firefox
     google-chrome
     vscode
-    fastfetch
+    neofetch
+    speedtest-cli
     kitty
     imagemagick
     yazi
