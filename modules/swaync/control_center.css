@@ -1,0 +1,366 @@
+/* * CONTROLCENTER.CSS (Frosted Glass / Pywal) with Animations
+ * Combines the detailed structure with the Pywal color theme.
+ */
+/* 1. Import your colors file */
+@import 'colors.css';
+
+/* === Global Reset === */
+* {
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 900;
+  font-family: "Fira Sans Semibold", "Font Awesome 7 Free",
+    "Font Awesome 7 Brands", "Font Awesome 6 Free", "Font Awesome 6 Brands",
+    FontAwesome;
+  transition: 200ms;
+}
+
+/* === ANIMATIONS === */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes notificationSlideIn {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* === Control Center Container === */
+.control-center {
+  background: transparent;
+  border-radius: 0px;
+  border: none;
+  padding: 8px 8px 0 8px;
+  position: relative;
+  
+  /* Add slide-in animation */
+  animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* === Create visual box around top widgets === */
+.widget-buttons-grid {
+  margin: 6px 12px 0px 12px;
+  border-radius: 0px;
+  animation: fadeIn 0.4s ease-out 0.1s both;
+  
+  /* Add background and top border */
+  background: alpha(var(--color0), 0.75);
+  border: 2px solid var(--color1);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 8px 6px 12px 6px;
+}
+
+/* Remove individual backgrounds from buttons */
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: var(--color8);
+  color: var(--foreground);
+  border-radius: 8px;
+  border: 2px solid var(--color1);
+  font-size: 15em;
+  transition: all 0.2s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: var(--color3);
+  color: var(--foreground);
+  transform: scale(1.05);
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background: var(--color1);
+  color: var(--background);
+  transform: scale(0.98);
+}
+
+/* === Brightness & Volume Sliders === */
+.widget-backlight,
+.widget-volume {
+  padding: 12px 16px;
+  margin: 0px 12px;
+  border-radius: 0px;
+  background: alpha(var(--color0), 0.75);
+  animation: fadeIn 0.4s ease-out 0.15s both;
+  
+  /* Add side borders only */
+  border-left: 2px solid var(--color1);
+  border-right: 2px solid var(--color1);
+  border-top: none;
+  border-bottom: none;
+}
+
+.widget-backlight trough,
+.widget-volume trough {
+  background: alpha(var(--color8), 0.8);
+  margin: 8px 8px;
+  border: 3px;
+}
+
+.widget-backlight progress,
+.widget-volume progress {
+  background-color: var(--color1);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.widget-backlight trough highlight,
+.widget-volume trough highlight {
+  background: var(--color2);
+  border: 2px solid var(--color2);
+  border-radius: 5px;
+}
+
+/* === Music Player === */
+.widget-mpris {
+  border-radius: 0px 0px 10px 10px;
+  margin: 0px 12px 12px 12px;
+  align-items: center;
+  color: var(--foreground);
+  animation: fadeIn 0.4s ease-out 0.2s both;
+  
+  /* Add background and bottom border */
+  background: alpha(var(--color0), 0.75);
+  border: 2px solid var(--color1);
+  border-top: none;
+  padding: 12px 8px;
+}
+
+.widget-mpris button {
+  background: alpha(var(--color0), 0.9);
+  border-radius: 20px;
+  padding: 4px;
+  margin: 20px 2px;
+  color: var(--foreground);
+  transition: all 0.2s ease;
+}
+
+.widget-mpris button:hover {
+  background: var(--color3);
+  transform: scale(1.1);
+}
+
+.widget-mpris-player {
+  border-radius: 10px;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  color: var(--foreground);
+}
+
+.widget-mpris-album-art {
+  border-radius: 1000px;
+  margin: 8px 0 0 8px;
+  transition: transform 0.3s ease;
+}
+
+.widget-mpris-album-art:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+.widget-mpris-title {
+  font-weight: 900;
+  font-size: 2em;
+  margin: 10px 20px 0 0;
+  color: var(--color2);
+  background-color: alpha(black, 0.6);
+}
+
+.widget-mpris-subtitle {
+  font-weight: 900;
+  font-size: 0.8rem;
+  margin: 0px 20px 5px 0px;
+  color: var(--foreground);
+  background-color: alpha(black, 0.6);
+}
+
+/* === Notification Clear Button ("widget-title") === */
+.widget-title {
+  font-size: 1.5rem;
+  margin: 0 12px 5px 12px;
+  color: var(--color2);
+  font-weight: bold;
+  animation: fadeIn 0.4s ease-out 0.1s both;
+}
+
+.widget-title button {
+  background: var(--color8);
+  color: var(--foreground);
+  border-radius: 8px;
+  padding: 4px 16px;
+  transition: all 0.2s ease;
+}
+
+.widget-title button:hover {
+  background: var(--color3);
+  transform: translateY(-2px);
+}
+
+/* === Do Not Disturb === */
+.widget-dnd {
+  margin: 5px 12px 0px 12px;
+  animation: fadeIn 0.4s ease-out 0.15s both;
+}
+
+.widget-dnd > switch {
+  color: var(--foreground);
+  background: var(--color8);
+  border-radius: 5px;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.widget-dnd > switch:hover {
+  background: var(--color3);
+}
+
+.widget-dnd > switch:checked {
+  background: var(--color8);
+  color: var(--foreground);
+}
+
+.widget-dnd > switch slider {
+  background: var(--color7);
+  border-radius: 5px;
+  border: 2px solid var(--color8);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.widget-dnd > switch:checked slider {
+  background: var(--color2);
+}
+
+/* === Notifications Section (TRANSPARENT) === */
+.control-center .notification-row {
+  background: transparent;
+}
+
+.control-center .notification-row .notification-background {
+  background: transparent;
+}
+
+.control-center .notification-row .notification-background .notification {
+  background-color: alpha(var(--color0), 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 10px;
+  margin: 5px 0px;
+  padding: 15px;
+  border: 2px solid var(--color8);
+  min-height: 2.5em;
+  animation: notificationSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s ease;
+}
+
+.control-center .notification-row .notification-background .notification:hover {
+  transform: translateX(-5px);
+  border-color: var(--color2);
+  background-color: alpha(var(--color0), 0.5);
+}
+
+.control-center .notification-row .notification-background .notification.critical {
+  border: 2px solid var(--color1);
+  background-color: alpha(var(--color0), 0.4);
+  animation: notificationSlideIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.control-center .notification-row .notification-background .close-button {
+  background-color: var(--color8);
+  border-radius: 5px;
+  color: var(--foreground);
+  padding: 5px;
+  transition: all 0.2s ease;
+}
+
+.control-center .notification-row .notification-background .close-button:hover {
+  background-color: alpha(var(--color1), 0.8);
+  transform: scale(1.15);
+}
+
+/* === Progress Bars (Generic) === */
+trough highlight {
+  background: var(--color1);
+  border: 2px solid var(--color2);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+/* === Notification Groups === */
+.notification-group {
+  background-color: transparent;
+  margin: 4px 12px 4px 12px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.notification-group-headers {
+  font-weight: 900;
+  font-size: 0;
+  border-color: transparent;
+}
+
+.notification-group-icon {
+  padding: 0px;
+}
+
+.notification-group-close-all-button {
+  margin-left: 20px;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+  background: var(--color8);
+  color: var(--foreground);
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.2s ease;
+}
+
+.notification-group-collapse-button:hover,
+.notification-group-close-all-button:hover {
+  background: var(--color3);
+  transform: scale(1.05);
+}
