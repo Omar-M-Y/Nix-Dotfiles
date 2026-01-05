@@ -8,10 +8,9 @@
     margin-right = 0;
     spacing = 5;
 
-    // builtins.import ./modules
 
     # modules-left = ;
     # modules-center = ;
     # modules-right= ;
-    };
+    } builtins.import ./modules 
 }
