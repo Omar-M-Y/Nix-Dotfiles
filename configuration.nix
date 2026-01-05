@@ -141,6 +141,9 @@ services = {
   };
   fstrim = {
       enable = true;
+  };
+  udisks2 = {
+      enable = true;
     };
 };
 
@@ -305,6 +308,10 @@ environment = {
     # sddm-astronaut
     kdePackages.qtsvg
     kdePackages.qtmultimedia
+    kdePackages.qtimageformats
+    kdePackages.kdegraphics-thumbnailers
+    kdePackages.ffmpegthumbs
+
     kdePackages.kio-fuse
     kdePackages.kio-extras # For extra protocol support like sftp, fish, MTP etc.
     kdePackages.dolphin
