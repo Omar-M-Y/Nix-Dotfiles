@@ -58,7 +58,7 @@
           color = "rgba(255, 255, 255, 0.6)";
           font_size = 120;
           font_family = "SF Pro Display Bold";
-          position = "0, -100";
+          position = "0, -120";
           halign = "center";
           valign = "top";
         }
@@ -123,7 +123,7 @@
       image = [
         {
           monitor = "DP-3";
-          path = "${config.home.homeDirectory}/.config/hypr/face.png";
+          path = "~/Profile-Pics/face.png";
           size = 120;
           rounding = -1;
           border_size = 3;
