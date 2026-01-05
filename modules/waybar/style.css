@@ -31,7 +31,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-  color: rgba(0,0,0,0);
+  color: alpha(@on_primary,.4);
   border: none;
   text-shadow: 0 0 2 rgba(0,0,0,.5);
   transition: all 1s ease;
