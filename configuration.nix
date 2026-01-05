@@ -141,6 +141,9 @@ services = {
   fstrim = {
       enable = true;
     };
+  uksmd = {
+      enable = true;
+    };
 };
 
 zramSwap = {
