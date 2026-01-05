@@ -249,9 +249,9 @@ programs = {
     };
     fish = {
         enable = true;
-        interactiveShellInit = ''
-          starship init fish | source
-        '';
+        # interactiveShellInit = ''
+        #   starship init fish | source
+        # '';
     };
     hyprland = {
         enable = true;
@@ -374,17 +374,6 @@ fileSystems = {
   };
 };
 
-
-#  nix = {
- #   gc = {
-  #    automatic = true;
-   #   dates = "weekly";
-    #  options = "--delete-older-than 7d";
-   # };
-   # settings = {
-   #     auto-optimise-store = true;
-   #   };
- # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
