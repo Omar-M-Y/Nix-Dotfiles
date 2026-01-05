@@ -110,7 +110,7 @@ services = {
         sddm = {
             enable = true;
             wayland = {
-                enable = true;
+                enable = false;
             };
             package = pkgs.kdePackages.sddm;
             theme = "sddm-astronaut-theme";
@@ -246,7 +246,6 @@ programs = {
         gamescopeSession = {
             enable = true;
           };
-    };
     fish = {
         enable = true;
         # interactiveShellInit = ''
