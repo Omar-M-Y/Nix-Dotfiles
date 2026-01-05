@@ -1,32 +1,31 @@
-/* Waypaper Frosted Glass Style with Pywal Colors */
-
-/* Import pywal colors from Waybar */
+/* Import Pywal colors (Absolute path is safest) */
 @import url("/home/yahya/.cache/wal/colors-waybar.css");
 
-/* Main Window - Background with pywal */
+/* Waypaper Frosted Glass Style with Pywal Colors */
+/* Place this in ~/.config/waypaper/style.css */
+
+
+
+/* Main Window */
 window {
-    background: linear-gradient(135deg, 
-                alpha(@color0, 0.95) 0%, 
-                alpha(@color1, 0.90) 100%);
+    background-color: alpha(@theme_bg_color, 0.85);
     border-radius: 16px;
-    border: 1px solid alpha(@color14, 0.3);
+    border: 1px solid alpha(@theme_selected_bg_color, 0.3);
 }
 
 /* Header Bar */
 headerbar {
-    background: linear-gradient(180deg, 
-                alpha(@color0, 0.95) 0%, 
-                alpha(@color0, 0.85) 100%);
-    color: @color15;
+    background-color: alpha(@theme_bg_color, 0.9);
+    color: @theme_fg_color;
     border-radius: 16px 16px 0 0;
-    border-bottom: 1px solid alpha(@color14, 0.2);
+    border-bottom: 1px solid alpha(@theme_selected_bg_color, 0.2);
     padding: 8px 12px;
     box-shadow: none;
 }
 
 headerbar button {
-    background-color: alpha(@color14, 0.2);
-    color: @color15;
+    background-color: alpha(@theme_selected_bg_color, 0.2);
+    color: @theme_fg_color;
     border-radius: 8px;
     border: none;
     padding: 6px 12px;
@@ -35,12 +34,11 @@ headerbar button {
 }
 
 headerbar button:hover {
-    background-color: alpha(@color14, 0.4);
+    background-color: alpha(@theme_selected_bg_color, 0.4);
 }
 
 headerbar button:active {
-    background-color: @color14;
-    color: @color0;
+    background-color: @theme_selected_bg_color;
 }
 
 /* Main Content Area */
@@ -48,51 +46,38 @@ box, scrolledwindow {
     background-color: transparent;
 }
 
-scrolledwindow > viewport {
+/* Image Grid/FlowBox */
+flowbox, flowboxchild {
     background-color: transparent;
-}
-
-/* Image Grid - UNIFORM SIZING */
-flowbox {
-    background-color: transparent;
-    padding: 12px;
 }
 
 flowboxchild {
-    background-color: alpha(@color0, 0.6);
-    border-radius: 12px;
-    margin: 8px;
-    padding: 8px;
+    border-radius: 10px;
+    margin: 6px;
+    padding: 6px;
     transition: all 0.2s ease;
-    border: 2px solid transparent;
-    min-width: 220px;
-    min-height: 160px;
 }
 
 flowboxchild:hover {
-    background-color: alpha(@color14, 0.3);
-    border-color: alpha(@color14, 0.5);
+    background-color: alpha(@theme_selected_bg_color, 0.2);
 }
 
 flowboxchild:selected {
-    background-color: alpha(@color14, 0.4);
-    border: 2px solid @color14;
-    box-shadow: 0 0 15px alpha(@color14, 0.5);
+    background-color: alpha(@theme_selected_bg_color, 0.4);
+    border: 2px solid @theme_selected_bg_color;
 }
 
-/* Image Thumbnails - UNIFORM SIZE */
-flowboxchild image {
+/* Image Thumbnails */
+image {
     border-radius: 8px;
-    min-width: 200px;
-    min-height: 130px;
 }
 
 /* Buttons */
 button {
-    background-color: alpha(@color0, 0.8);
-    color: @color15;
+    background-color: alpha(@theme_bg_color, 0.8);
+    color: @theme_fg_color;
     border-radius: 10px;
-    border: 1px solid alpha(@color14, 0.3);
+    border: 1px solid alpha(@theme_selected_bg_color, 0.3);
     padding: 8px 16px;
     margin: 4px;
     font-weight: 600;
@@ -100,70 +85,177 @@ button {
 }
 
 button:hover {
-    background-color: alpha(@color14, 0.3);
-    border-color: @color14;
+    background-color: alpha(@theme_selected_bg_color, 0.3);
+    border-color: @theme_selected_bg_color;
 }
 
 button:active {
-    background-color: @color14;
-    color: @color0;
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
 }
 
-/* Entry and Text Input */
+button.suggested-action {
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
+    border: none;
+}
+
+button.suggested-action:hover {
+    background-color: alpha(@theme_selected_bg_color, 0.8);
+}
+
+/* Entry/Text Input */
 entry {
-    background-color: alpha(@color0, 0.6);
-    color: @color15;
+    background-color: alpha(@theme_bg_color, 0.6);
+    color: @theme_fg_color;
     border-radius: 8px;
-    border: 1px solid alpha(@color14, 0.3);
+    border: 1px solid alpha(@theme_selected_bg_color, 0.3);
     padding: 8px 12px;
     margin: 4px;
 }
 
 entry:focus {
-    border-color: @color14;
-    background-color: alpha(@color0, 0.8);
+    border-color: @theme_selected_bg_color;
+    box-shadow: 0 0 0 2px alpha(@theme_selected_bg_color, 0.2);
 }
 
-/* Dropdown menu */
-menu, popover {
-    background-color: alpha(@color0, 0.95);
+/* Dropdown/ComboBox */
+combobox button {
+    background-color: alpha(@theme_bg_color, 0.8);
+    border-radius: 8px;
+}
+
+combobox button:hover {
+    background-color: alpha(@theme_selected_bg_color, 0.3);
+}
+
+/* Popover Menus */
+popover {
+    background-color: alpha(@theme_bg_color, 0.9);
     border-radius: 12px;
-    border: 1px solid alpha(@color14, 0.3);
+    border: 1px solid alpha(@theme_selected_bg_color, 0.3);
     padding: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+popover modelbutton {
+    background-color: transparent;
+    color: @theme_fg_color;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 2px;
+}
+
+popover modelbutton:hover {
+    background-color: alpha(@theme_selected_bg_color, 0.3);
 }
 
 /* Scrollbars */
+scrollbar {
+    background-color: transparent;
+    border-radius: 10px;
+}
+
 scrollbar slider {
-    background-color: alpha(@color15, 0.3);
+    background-color: alpha(@theme_fg_color, 0.3);
     border-radius: 10px;
     min-width: 8px;
+    min-height: 8px;
+    margin: 2px;
 }
 
 scrollbar slider:hover {
-    background-color: alpha(@color15, 0.5);
+    background-color: alpha(@theme_fg_color, 0.5);
+}
+
+scrollbar slider:active {
+    background-color: @theme_selected_bg_color;
 }
 
 /* Labels */
 label {
-    color: @color15;
+    color: @theme_fg_color;
 }
 
-/* Scale/Slider */
-scale trough {
-    background-color: alpha(@color0, 0.6);
-    border-radius: 10px;
-    min-height: 8px;
+/* Separators */
+separator {
+    background-color: alpha(@theme_fg_color, 0.2);
+    min-height: 1px;
+    min-width: 1px;
 }
 
-scale highlight {
-    background-color: @color14;
-    border-radius: 10px;
+/* Checkboxes and Radio Buttons */
+checkbutton, radiobutton {
+    background-color: transparent;
+    color: @theme_fg_color;
+    border-radius: 6px;
+    padding: 6px;
 }
 
-scale slider {
-    background-color: @color15;
-    border: 2px solid @color14;
-    border-radius: 50%;
+checkbutton:hover, radiobutton:hover {
+    background-color: alpha(@theme_selected_bg_color, 0.2);
+}
+
+check, radio {
+    background-color: alpha(@theme_bg_color, 0.6);
+    border: 1px solid alpha(@theme_selected_bg_color, 0.4);
+    border-radius: 4px;
     min-width: 18px;
     min-height: 18px;
+}
+
+check:checked, radio:checked {
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
+    border-color: @theme_selected_bg_color;
+}
+
+/* Tooltips */
+tooltip {
+    background-color: alpha(@theme_bg_color, 0.95);
+    color: @theme_fg_color;
+    border-radius: 8px;
+    border: 1px solid alpha(@theme_selected_bg_color, 0.3);
+    padding: 6px 10px;
+}
+
+tooltip label {
+    color: @theme_fg_color;
+}
+
+/* Progress Bar */
+progressbar {
+    background-color: alpha(@theme_bg_color, 0.6);
+    border-radius: 10px;
+}
+
+progressbar progress {
+    background-color: @theme_selected_bg_color;
+    border-radius: 10px;
+}
+
+/* Spinner */
+spinner {
+    color: @theme_selected_bg_color;
+}
+
+/* List Items */
+list, listview {
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+list row {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 2px;
+}
+
+list row:hover {
+    background-color: alpha(@theme_selected_bg_color, 0.2);
+}
+
+list row:selected {
+    background-color: alpha(@theme_selected_bg_color, 0.4);
 }

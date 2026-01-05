@@ -4,7 +4,7 @@ let
   walTemplatesDir = "${config.home.homeDirectory}/.config/wal/templates";
 in
 {
-  home.packages = [ pkgs.pywal ];
+  home.packages = with pkgs; [ pywal pywalfox-native ];
 
   # --- Pywal Templates ---
 

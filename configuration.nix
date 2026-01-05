@@ -292,7 +292,6 @@ environment = {
     vim 
     wget
     git
-    firefox
     google-chrome
     vscode
     neofetch

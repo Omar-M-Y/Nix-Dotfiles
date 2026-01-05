@@ -12,6 +12,7 @@
         ./modules/waybar/default.nix
         ./modules/pywal.nix
         ./modules/waypaper/default.nix
+        ./modules/gtk.nix
         inputs.zen-browser.homeModules.beta 
     ];
    
@@ -58,6 +59,7 @@
           wootility
 
           waypaper
+          
 
           libappindicator-gtk3
           libappindicator
@@ -95,6 +97,20 @@
             };
           fish = {
               enable = true;
+            };
+          firefox = {
+              enable = true;
+              nativeMessagingHosts = [
+                pkgs.pywalfox-native
+              ];
+              profiles = {
+                  default = {
+                      id = 0;
+                      settings = {
+                          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+                        };
+                    };
+                };
             };
       };
 

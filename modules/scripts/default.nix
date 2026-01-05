@@ -16,7 +16,8 @@ let
       ln -s ${pkgs.imagemagick}/bin/magick /tmp/convert
       export PATH=/tmp:$PATH
     fi
-
+    # Pywalfox update:
+    pywalfox update
     echo "Setting wallpaper..."
     
     # 3. Cache and Set Wallpaper
