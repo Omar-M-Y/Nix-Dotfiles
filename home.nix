@@ -60,6 +60,8 @@
           wootility
 
           waypaper
+          swaynotificationcenter
+          
 
           libappindicator-gtk3
           libappindicator
