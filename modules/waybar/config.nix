@@ -4,7 +4,7 @@
     position = "top";
     reload_style_on_change = true;
 
-    modules-left = [ "custom/notification" "clock" "custom/pacman" "tray" ];
+    modules-left = [ "custom/notification" "clock" "tray" ];
     modules-center = [ "hyprland/workspaces" ];
     modules-right = [ "group/expand" "bluetooth" "network" "battery" ];
 
@@ -43,13 +43,26 @@
     };
 
     network = {
-      format-wifi = "";
-      format-ethernet = "";
-      format-disconnected = "";
-      tooltip-format-disconnected = "Error";
-      tooltip-format-wifi = "{essid} ({signalStrength}%) ";
-      tooltip-format-ethernet = "{ifname} 🖧 ";
-      on-click = "kitty nmtui";
+      # Formatting
+      format-wifi = " {essid} ({signalStrength}%)";
+      format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
+      format-linked = "{ifname} (No IP) ";
+      format = "";
+      format-disconnected = "";
+      format-alt = "{ifname}: {ipaddr}/{cidr}";
+
+      # Tooltips
+      tooltip-format = " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n";
+      tooltip-format-wifi = " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}";
+
+      interval = 10;
+
+      # Actions
+      # Left Click: Launch GUI Network Manager
+      "on-click" = "nm-connection-editor"; 
+
+      # Right Click: Copy IP to clipboard (from your dotfiles)
+      "on-click-right" = "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)";
     };
 
     bluetooth = {
@@ -77,16 +90,6 @@
       format-plugged = "{capacity}% 󰂄 ";
       format-alt = "{time} {icon}";
       format-icons = [ "󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹" ];
-    };
-
-    "custom/pacman" = {
-      format = "󰅢 {}";
-      interval = 30;
-      exec = "checkupdates | wc -l";
-      exec-if = "exit 0";
-      on-click = "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar";
-      signal = 8;
-      tooltip = false;
     };
 
     "custom/expand" = {
