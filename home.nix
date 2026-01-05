@@ -23,6 +23,9 @@
             '';
           };
         packages = with pkgs; [
+          nautilus
+
+
           nerd-fonts.meslo-lg
           nerd-fonts.symbols-only
           noto-fonts
