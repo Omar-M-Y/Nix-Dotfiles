@@ -60,8 +60,6 @@
           wootility
 
           waypaper
-          swaync
-          
 
           libappindicator-gtk3
           libappindicator
@@ -113,6 +111,9 @@
                         };
                     };
                 };
+            };
+          swaync = {
+              enable = true;
             };
       };
 
