@@ -86,6 +86,9 @@
           zen-browser = {
               enable = true;
             };
+          fish = {
+              enable = true;
+            };
       };
 
     nixpkgs.config.allowUnfree = true;
