@@ -19,6 +19,8 @@
         "ignore_alpha 0.5, match:namespace waybar"
         "blur on, match:namespace waybar"
         "blur_popups on, match:namespace waybar"
+        "animation slide right, match:namespace swaync-control-center"
+        "animation slide, match:namespace waypaper"
     ];
 
   };
