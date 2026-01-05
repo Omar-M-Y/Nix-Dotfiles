@@ -247,12 +247,12 @@ programs = {
             enable = true;
           };
     };
-    fish = {
-        enable = true;
-        # interactiveShellInit = ''
-        #   starship init fish | source
-        # '';
-    };
+    # fish = {
+    #     enable = true;
+    #     # interactiveShellInit = ''
+    #     #   starship init fish | source
+    #     # '';
+    # };
     hyprland = {
         enable = true;
         xwayland = {
