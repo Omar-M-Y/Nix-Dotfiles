@@ -5,7 +5,6 @@
       };
 
     "hyprland/workspaces" = {
-        # all-outputs = true;
         format = "{name}";
         format-icons = {
             "1" = "";
@@ -24,6 +23,13 @@
           active-only = false;
           on-click = "activate";
       };
+
+      "clock" = {
+          format = "{:%a %e %b %H:%M}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          today-format = "<b>{}</b>";
+          # on-click = 
+        };
 
       "tray" = {
           icon-size = 16;
