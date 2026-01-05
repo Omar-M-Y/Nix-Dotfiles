@@ -5,7 +5,7 @@
       };
 
     "hyprland/workspaces" = {
-        all-outputs = true;
+        # all-outputs = true;
         format = "{name}";
         format-icons = {
             "1" = "";
