@@ -109,6 +109,9 @@ services = {
     displayManager = {
         sddm = {
             enable = true;
+            xserver = {
+                enable = true;
+            };
             wayland = {
                 enable = false;
             };
