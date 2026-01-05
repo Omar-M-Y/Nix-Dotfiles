@@ -3,13 +3,15 @@
         ./modules/kitty.nix
         ./modules/starship.nix
         ./modules/hyprland/default.nix
-        ./modules/matugen.nix
+        # ./modules/matugen.nix
         ./modules/quickshell/default.nix
         ./modules/rofi/default.nix
         ./modules/viu.nix
         ./modules/nvim/default.nix
         ./modules/scripts
         ./modules/waybar/default.nix
+        ./modules/pywal.nix
+        ./modules/waypaper/default.nix
         inputs.zen-browser.homeModules.beta 
     ];
    
@@ -54,6 +56,11 @@
           pavucontrol
           alsa-utils
           wootility
+
+          waypaper
+
+          libappindicator-gtk3
+          libappindicator
 
           inputs.quickshell.packages.${pkgs.system}.default
           inputs.viu.packages.${pkgs.system}.default

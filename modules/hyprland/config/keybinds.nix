@@ -19,7 +19,8 @@
       "$mainMod SHIFT, V, exec, ~/.config/rofi/clip-man/clipboard-menu.sh"
       # "$mainMod, SPACE, exec, ~/.config/rofi/launchers/launcher-3.sh"
       "$mainMod, SPACE, exec, rofi -show drun"
-      "$mainMod, W, exec, ~/.config/hypr/scripts/rofi_wallpaper_toggle.sh"
+      # "$mainMod, W, exec, ~/.config/hypr/scripts/rofi_wallpaper_toggle.sh"
+      "$mainMod, W, exec, toggle-waypaper"
       "$mainMod, M, exec, ~/.config/rofi/power-menu/rofi-powermenu.sh"
       "$mainMod, T, exec, swaync-client -t"
     ];

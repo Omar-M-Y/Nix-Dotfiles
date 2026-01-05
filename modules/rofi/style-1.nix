@@ -1,14 +1,10 @@
-# rofi/style-1.nix
 { colorsPath }:
 
 ''
-/* Absolute path injected by Nix */
+/* 1. Import the clean Pywal variables */
 @import "${colorsPath}"
 
-* {
-    background-color: transparent;
-    text-color: @foreground;
-}
+/* 2. Define Layout */
 
 window {
     background-color: @background;
@@ -18,20 +14,19 @@ window {
     padding: 10px;
     width: 30%;
     location: center;
-    x-offset: 0;
-    y-offset: 0;
 }
 
 mainbox {
     background-color: transparent;
+    children: [ inputbar, listview ];
 }
 
 inputbar {
     children: [ prompt, entry ];
-    background-color: @normal-background;
+    background-color: transparent;
     text-color: @normal-foreground;
     border: 0px 0px 2px 0px solid;
-    border-color: black; 
+    border-color: @border-color; 
     border-radius: 0px;
     padding: 8px;
     margin: 0px 0px 10px 0px;
@@ -77,15 +72,16 @@ element-icon {
 
 element-text {
     background-color: transparent;
-    text-color: @normal-foreground;
+    text-color: inherit;
     expand: true;
     vertical-align: 0.5;
 }
 
+/* 3. Apply Colors to States */
+
 element normal.normal {
     background-color: @normal-background;
     text-color: @normal-foreground;
-    background-color: transparent; /* Fix for transparency if needed */
 }
 
 element selected.normal {

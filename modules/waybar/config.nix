@@ -1,4 +1,4 @@
-{
+{ 
   mainBar = {
     # --------------------------------------------------------------------------
     # Global Waybar Configuration
@@ -7,7 +7,7 @@
     layer = "bottom";
     position = "top";
     height = 36;
-    
+
     margin-left = 0;
     margin-bottom = 0;
     margin-right = 0;
@@ -70,7 +70,7 @@
       format = "{:%a %e %b %H:%M}";
       tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
       today-format = "<b>{}</b>";
-      on-click = "swaync-client -t";
+      on-click = "swaync-client -t"; # Left-click to toggle the panel
     };
 
     bluetooth = {
@@ -82,9 +82,11 @@
         connected = "";
         disabled = "";
       };
+      # Click Actions
       on-click = "blueman-manager";
       on-click-right = "wl-copy $(bluetoothctl show | grep 'Controller ' | head -n1 | cut -d ' ' -f 3)";
       on-click-middle = "rfkill toggle bluetooth";
+      # Tooltip
       tooltip-format = "{device_alias}\n{device_address}";
       tooltip-format-connected = " {device_alias}\n{device_address}\nBattery: {device_battery_percentage}%";
       tooltip-format-disabled = "Bluetooth Off";
@@ -128,7 +130,7 @@
 
     cpu = {
       interval = 1;
-      format = "\uf4bc  {usage}%";
+      format = "  {usage}%";
       max-length = 13;
     };
 
@@ -148,7 +150,7 @@
     };
 
     "custom/power" = {
-      format = "\u23fb";
+      format = "⏻";
       tooltip = false;
       on-click = "~/.config/rofi/power-menu/rofi-powermenu.sh";
     };

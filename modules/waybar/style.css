@@ -1,8 +1,9 @@
-/* Import Matugen Colors */
-@import "colors.css";
+/* Import the Pywal colors */
+@import "/home/yahya/.cache/wal/colors-waybar.css";
 
 * {
     font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    /* font-size: 14px;  Slightly smaller font size */
     font-size: 11px;
     font-weight: 900;
     margin: 0;
@@ -16,12 +17,84 @@
     border: none;
     border-radius: 3px;
     min-height: 0;
+    /* margin: 0.2em 0.3em 0.2em 0.3em; */
     margin: 0.1em 0.3em;
 }
+
+/* Add this to modules/waybar/style.css */
+
+tooltip {
+    background: alpha(@color0, 0.7); /* Frosted background */
+    border: 1px solid @color14;      /* Accent border matching your theme */
+    border-radius: 12px;             /* Rounded corners */
+}
+
+tooltip label {
+    color: @color15;                 /* Text color */
+    font-family: "Fira Sans Semibold";
+    font-size: 11px;
+}
+
+menu,
+.menu,
+.context-menu {
+    /* Using @background with 0.5 alpha transparency */
+    background-color: alpha(@background, 0.5); 
+    color: @foreground;
+    border-radius: 12px;
+    
+    /* Using @color4 (Accent) for the border */
+    border: 1px solid alpha(@color4, 0.3); 
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+menuitem {
+    background-color: transparent;
+    color: @foreground;
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin: 2px;
+}
+
+menuitem:hover {
+    /* Using @color4 for hover with low opacity */
+    background-color: alpha(@color4, 0.3); 
+    color: @foreground;
+}
+
+menuitem:active,
+menuitem:selected {
+    /* Solid accent color for selected item */
+    background-color: @color4; 
+    
+    /* Using background color for text to ensure contrast */
+    color: @background; 
+}
+
+/* Separator styling */
+separator {
+    background-color: alpha(@foreground, 0.2);
+    min-height: 1px;
+    margin: 4px 8px;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* The whole bar */
 #waybar {
     background-color: transparent;
+    /* background-color: ; */
+    /* background-color: #00b093; */
+    /* color: @color15; */
     transition-property: background-color;
     transition-duration: 0.5s;
     border-radius: 0px;
@@ -29,57 +102,86 @@
 }
 
 window#waybar {
+    /* Forces the bar to touch the screen edges */
     margin: 0;
+    
+    /* Ensures the background is invisible so only the notch shows */
     background-color: transparent; 
 }
 
 window#waybar.hidden {
-  opacity: 0.2;
+  /* opacity: 0.2; */
 }
 
-#workspaces {
-    background-color: alpha(@background, 0.8);
-    border-radius: 20px;
-    padding: 3px 6px; 
-}
 
 #workspaces button {
+    /* padding: 3px 5px;  Adjusted padding to reduce height */
+    /* margin: 3px 5px;    Reduced margin slightly */
+    /* padding: 1px 1px; */
     padding: 1px 2px;
     margin: 1px 3px;
+    /* margin: 1px 5px; */
     border-radius: 10px;
-    background-color: alpha(@background, 0.8);
-    color: @primary;
+    /* color: @foreground; */
+    /* background-color: alpha(@color0, 0.8); */
+    background-color: transparent;
+
+    color: @color14;
+    /* border-bottom: 2px solid @color4; */
     transition: all 0.3s ease-in-out;
-    font-size: 13px; 
+    font-size: 13px;  /* Slightly smaller font size */
 }
 
 #workspaces button.active {
-    color: @background; /* Text becomes bg color */
-    background: @primary; /* Bg becomes primary color */
+    /* color: @color4; */
+    color: @color0;
+    /* color: @color50; */
+    /* @foreground; */
+    /* color: @foreground; */
+    /* color: red; */
+    /* background: @color30; */
+    background: @color14;
     border-radius: 10px;
+    /* background: #025939; */
     padding: 1px 10px;
 }
 
 #workspaces button:hover {
-    background-color: @surface;
+    /* background: #333333; */
+    background-color: @color0;
 }
 
 #workspaces button.urgent {
-    background-color: @error;
+    background-color: #eb4d4b;
+}
+
+
+#workspaces {
+    /* background-color: transparent; */
+    background-color: alpha(@color0, 0.8);
+    /* background-color: alpha(@color0, 0.6); */
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    /* background-color: #111827; */
+    border-radius: 20px;
+    /* border: 1px solid white; */
+    padding: 3px 6px; 
+    /* margin: -2; */
 }
 
 #window {
     background: transparent;
-    font-size: 15px; 
+    /* background-color: rgba(17, 24, 39, 0.6); */
+    font-size: 15px;   /* Slightly smaller font size */
     font-weight: 800;
-    color: @on_background;
+    color: @color15;
+    /* color: @foreground; */
     border-radius: 14px;
-    padding: 3px 6px; 
+    padding: 3px 6px;  /* Reduced padding */
     margin: 2px;
     opacity: 1;
 }
 
-/* General Module Styling */
+
 #clock,
 #battery,
 #cpu,
@@ -94,21 +196,52 @@ window#waybar.hidden {
 #mode,
 #mpris,
 #idle_inhibitor,
+/* #custom-wallpaper-menu, */
 #custom-wallpaper,
 #bluetooth,
 #custom-hyprPicker,
+/* #custom-power-menu, */
 #custom-power,
 #custom-swaync,
 #custom-spotify,
 #custom-gpu-temp,
-#custom-weather {
-    background-color: alpha(@background, 0.7);
+#custom-weather,
+#custom-weather.severe,
+#custom-weather.sunnyDay,
+#custom-weather.clearNight,
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight,
+#custom-weather.rainyDay,
+#custom-weather.rainyNight,
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight,
+#custom-weather.default {
+    /* background-color: @color0;p */
+    background-color: alpha(@color0, 0.7);
+    /* color: ; */
+    /* background-color: rgba(17, 24, 39, 0.6); */
+    /* background-color: #111827; */
     border-radius: 10px;
+
+    /* padding: 6px;  Adjusted padding */
     padding: 2px 6px;
+    /* opacity: 0.7; */
 }
 
+
+/* .accent-icon {
+    color: @color3;
+} */
+
+
+/* #pulseaudio .icon {
+    color: @color3;
+} */
+
 #custom-gpu-temp {
-    color: @primary;
+    color: @color14;
+    /* background-color: rgba(240, 147, 43, 0.6); */
+    /* background-color: #f0932b; */
     padding: 5px;
     padding-right: 5px;
     margin: 0px 5px 0px 0px;
@@ -116,94 +249,150 @@ window#waybar.hidden {
 }
 
 #custom-screenshot_t {
-    background-color: @background;
+    background-color: #111827;
     border-radius: 14px;
     padding: 6px;
 }
 
 #custom-spotify {
-    background-color: @background;
+    background-color: #111827;
     border-radius: 14px;
     padding: 3px 12px;
 }
 
 #wireplumber {
-    color: @on_background;
-    background-color: alpha(@background, 0.7);
+    /* color: #fb958b; */
+    color: @color15;
+    background-color: alpha(@color0, 0.7);
+    /* background-color: rgba(17, 24, 39, 0.8); */
+    /* background-color: #111827; */
     padding: 6px
 }
 
+
 #tray {
-    background-color: alpha(@background, 0.7);
+    background-color: alpha(@color0, 0.7);
+    /* background-color: transparent; */
+    /* background-color: rgba(17, 24, 39, 0.8); */
+    /* background-color: #111827; */
     border-radius: 10px;
-    padding: 6px; 
+    padding: 6px;  /* Adjusted padding */
+    /* margin: 0px 0px 0px 0px; */
 }
 
 #cpu {
-    color: @on_background;
+    /* color: #fb958b; */
+    color: @color15;
+    /* background-color: rgba(17, 24, 39, 0.8); */
+    /* background-color: #111827; */
     padding: 5px;
     margin: 0px;
     border-radius: 0px 10px 10px 0px;
 }
 
 #memory {
-    color: @on_background;
+    color: @color15;
+
+    /* color: #ebcb8b; */
+    /* background-color: @color0; */
+    /* background-color: rgba(17, 24, 39, 0.8); */
+    /* background-color: #111827; */
     padding: 5px;
     margin: 0px;
     border-radius: 10px 0px 0px 10px;
 }
 
 #custom-power {
-    color: @on_background;
+    color: @color15;
     font-size: 20px;
+    /* background-color: @color0; */
+    /* background-color: rgba(17, 24, 39, 0.8); */
+    /* background-color: #111827; */
     border-radius: 10px;
     transition-property: background-color;
     padding: 0px 10px;
+
 }
 
 #custom-wallpaper {
-    color: @on_background;
+    /* background-color: @color0; */
+    color: @color15;
     border-radius: 10px;
+    /* transition-property: background-color; */
     padding: 10px;
 }
 
 #custom-storage {
-    background-color: alpha(@background, 0.8);
+    background-color: rgba(17, 24, 39, 0.8);
+    /* background-color: #111827; */
     border-radius: 14px;
     padding: 6px;
 }
 
 #custom-launcher {
     background-color: #1b242b;
-    color: #6a92d7; /* Keeping hardcoded as requested or map to @primary */
+    color: #6a92d7;
     border-radius: 7.5px;
-    padding: 3px 6px;
+    padding: 3px 6px;  /* Adjusted padding */
 }
 
-/* Weather Conditions - mapped to static colors or variables */
-#custom-weather.severe { color: @error; }
-#custom-weather.sunnyDay { color: #c2ca76; }
-#custom-weather.clearNight { color: #cad3f5; }
+#custom-weather.severe {
+    color: #eb937d;
+}
+
+#custom-weather.sunnyDay {
+    color: #c2ca76;
+}
+
+#custom-weather.clearNight {
+    color: #cad3f5;
+}
+
 #custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight { color: #c2ddda; }
+#custom-weather.cloudyFoggyNight {
+    color: #c2ddda;
+}
+
 #custom-weather.rainyDay,
-#custom-weather.rainyNight { color: #5aaca5; }
+#custom-weather.rainyNight {
+    color: #5aaca5;
+}
+
 #custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight { color: #d6e7e5; }
-#custom-weather.default { color: #dbd9d8; }
+#custom-weather.snowyIcyNight {
+    color: #d6e7e5;
+}
 
-/* Margins for first/last workspaces */
-.modules-left > widget:first-child > #workspaces { margin-left: 0; }
-.modules-right > widget:last-child > #workspaces { margin-right: 0; }
+#custom-weather.default {
+    color: #dbd9d8;
+}
 
-#pulseaudio { color: #7d9bba; }
-#backlight { color: #8fbcbb; }
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#pulseaudio {
+    color: #7d9bba;
+}
+
+#backlight {
+    color: #8fbcbb;
+}
 
 #clock {
-    color: @on_background;
+    color: @color15;
+    /* color: #c8d2e0; */
 }
 
-#battery { color: #c0caf5; }
+#battery {
+    color: #c0caf5;
+}
 
 #battery.charging,
 #battery.full,
@@ -213,13 +402,13 @@ window#waybar.hidden {
 
 @keyframes blink {
     to {
-        background-color: alpha(@background, 0.5);
-        color: @on_background;
+        background-color: rgba(30, 34, 42, 0.5);
+        color: #abb2bf;
     }
 }
 
 #battery.critical:not(.charging) {
-    color: @error;
+    color: #f53c3c;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -231,22 +420,27 @@ label:focus {
     background-color: #000000;
 }
 
-#disk { background-color: #964b00; }
+#disk {
+    background-color: #964b00;
+}
 
 #bluetooth {
-    color: @on_background;
+    color: @color15;
+    /* background-color: @color0; */
+    /* color: #707d9d; */
 }
 
 #bluetooth.disconnected {
-    color: @error;
+    color: #f53c3c;
 }
 
 #network {
-    color: @secondary;
+    color: @color3;
+    /* color: #b48ead; */
 }
 
 #network.disconnected {
-    color: @error;
+    color: #f53c3c;
 }
 
 #custom-media {
@@ -255,22 +449,28 @@ label:focus {
     min-width: 100px;
 }
 
-#custom-media.custom-spotify { background-color: #66cc99; }
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
 
 #custom-media.custom-vlc {
-    color: @on_background;
-    background-color: @background;
+    color: @color15;
+    background-color: @color0;
+    /* background-color: #ffa000; */
 }
 
 #temperature {
-    color: @primary;
+    /* background-color: rgba(240, 147, 43, 0.6); */
+    /* background-color: @color0; */
+    color: @color14;
+    /* background-color: #f0932b; */
     padding: 5px;
     margin: 0px;
     border-radius: 10px 0px 0px 10px;
 }
 
 #temperature.critical {
-    background-color: @error;
+    background-color: #eb4d4b;
 }
 
 #tray > .passive {
@@ -279,7 +479,7 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: @error;
+    background-color: #eb4d4b;
 }
 
 #idle_inhibitor {
@@ -299,28 +499,66 @@ label:focus {
     min-width: 16px;
 }
 
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 0px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
 #custom-rofi {
     font-size:25px;
-    color: @outline;
+    color: @color8;
+    /* transform: translate(-50%, -50%); */
 }
+
+/* ~/.config/waybar/style.css */
 
 #mpris {
     padding: 0 10px;
     min-width: 24px;
 }
 
-#mpris.playing { color: @primary; }
-#mpris.paused { color: @secondary; }
-#mpris.stopped { color: @outline; }
+#mpris.playing {
+    color: @color14;
+}
 
-/* Group Expand Styling */
+#mpris.paused {
+    color: @color4;
+}
+
+#mpris.stopped {
+    color: @color10;
+}
+
+
+#group-expand{
+    padding: 0px 5px;
+    transition: all .3s ease; 
+}
+
+/* -----------------------------------------------------------------------------
+ * GROUP EXPAND SPACING & STYLING
+ * -------------------------------------------------------------------------- */
+
+/* 1. Ensure the group container has the background, not the items inside */
 #group-expand {
-    background-color: alpha(@background, 0.7);
+    background-color: alpha(@color0, 0.7);
     border-radius: 10px;
     padding: 2px 2px;
     transition: all 0.3s ease;
 }
 
+/* 2. Remove backgrounds from items INSIDE the drawer so they blend in */
 #group-expand #cpu,
 #group-expand #memory,
 #group-expand #temperature,
@@ -328,48 +566,60 @@ label:focus {
     background-color: transparent;
     padding: 0px 6px;
     margin: 0;
-    color: @on_background;
+    color: @color15;
 }
 
+/* 3. THE GAP: Push the temperature module away from the CPU/Memory */
 #group-expand #temperature {
-    margin-left: 12px;
-    border-left: 1px solid alpha(@on_background, 0.2);
-    padding-left: 12px; 
+    margin-left: 12px; /* Adjust this number to increase/decrease the gap */
+    border-left: 1px solid alpha(@color15, 0.2); /* Optional: Adds a subtle divider line */
+    padding-left: 12px; /* Adds space inside the border if you use it */
 }
 
+/* 4. Icon styling for the expand button */
 #custom-expand {
-    color: @on_background;
+    color: @color15;
     padding: 0px 8px;
     font-size: 14px;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
 }
 
-/* SwayNC Module */
+
+
+/* === SwayNC Waybar Module === */
 #custom-swaync {
-    border-radius: 10px;
-    padding: 0px 6px;
-    background-color: alpha(@background, 0.75);
-    color: @on_background;
-    border-radius: 12px;
+  /* padding: 0 12px; */
+  /* margin: 4px 3px; */
+  border-radius: 10px;
+  padding: 0px 6px;
+  /* Use pywal colors */
+  background-color: alpha(@color0, 0.75); /* Frosted glass */
+  color: @foreground;
+  
+  /* Curved, highlighted border */
+  border-radius: 12px;
+  /* border: 2px solid @color1; */
 }
 
+/* This style applies when you have new notifications */
 #custom-swaync.notifications-low,
 #custom-swaync.notifications-critical {
-    background-color: @error; 
-    color: @background;
-    border-color: @error;
+  background-color: @color1; /* Highlight color */
+  color: @background; /* Invert text */
+  border-color: @color2; /* Even brighter border */
 }
 
+/* This style applies when Do Not Disturb is on */
 #custom-swaync.dnd {
-    background-color: @outline; 
-    color: @on_background;
-    border-color: @outline;
+  background-color: @color8; /* Muted color */
+  color: @foreground;
+  border-color: @color8;
 }
 
 #custom-notion,
 #custom-discord,
 #custom-steam {
     font-size: 20px;
-    color: @on_background;
+    color: @color15;
     background-color: transparent;
 }

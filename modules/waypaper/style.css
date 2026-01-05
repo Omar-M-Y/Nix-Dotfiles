@@ -1,0 +1,169 @@
+/* Waypaper Frosted Glass Style with Pywal Colors */
+
+/* Import pywal colors from Waybar */
+@import url("/home/yahya/.cache/wal/colors-waybar.css");
+
+/* Main Window - Background with pywal */
+window {
+    background: linear-gradient(135deg, 
+                alpha(@color0, 0.95) 0%, 
+                alpha(@color1, 0.90) 100%);
+    border-radius: 16px;
+    border: 1px solid alpha(@color14, 0.3);
+}
+
+/* Header Bar */
+headerbar {
+    background: linear-gradient(180deg, 
+                alpha(@color0, 0.95) 0%, 
+                alpha(@color0, 0.85) 100%);
+    color: @color15;
+    border-radius: 16px 16px 0 0;
+    border-bottom: 1px solid alpha(@color14, 0.2);
+    padding: 8px 12px;
+    box-shadow: none;
+}
+
+headerbar button {
+    background-color: alpha(@color14, 0.2);
+    color: @color15;
+    border-radius: 8px;
+    border: none;
+    padding: 6px 12px;
+    margin: 2px;
+    transition: all 0.2s ease;
+}
+
+headerbar button:hover {
+    background-color: alpha(@color14, 0.4);
+}
+
+headerbar button:active {
+    background-color: @color14;
+    color: @color0;
+}
+
+/* Main Content Area */
+box, scrolledwindow {
+    background-color: transparent;
+}
+
+scrolledwindow > viewport {
+    background-color: transparent;
+}
+
+/* Image Grid - UNIFORM SIZING */
+flowbox {
+    background-color: transparent;
+    padding: 12px;
+}
+
+flowboxchild {
+    background-color: alpha(@color0, 0.6);
+    border-radius: 12px;
+    margin: 8px;
+    padding: 8px;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    min-width: 220px;
+    min-height: 160px;
+}
+
+flowboxchild:hover {
+    background-color: alpha(@color14, 0.3);
+    border-color: alpha(@color14, 0.5);
+}
+
+flowboxchild:selected {
+    background-color: alpha(@color14, 0.4);
+    border: 2px solid @color14;
+    box-shadow: 0 0 15px alpha(@color14, 0.5);
+}
+
+/* Image Thumbnails - UNIFORM SIZE */
+flowboxchild image {
+    border-radius: 8px;
+    min-width: 200px;
+    min-height: 130px;
+}
+
+/* Buttons */
+button {
+    background-color: alpha(@color0, 0.8);
+    color: @color15;
+    border-radius: 10px;
+    border: 1px solid alpha(@color14, 0.3);
+    padding: 8px 16px;
+    margin: 4px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: alpha(@color14, 0.3);
+    border-color: @color14;
+}
+
+button:active {
+    background-color: @color14;
+    color: @color0;
+}
+
+/* Entry and Text Input */
+entry {
+    background-color: alpha(@color0, 0.6);
+    color: @color15;
+    border-radius: 8px;
+    border: 1px solid alpha(@color14, 0.3);
+    padding: 8px 12px;
+    margin: 4px;
+}
+
+entry:focus {
+    border-color: @color14;
+    background-color: alpha(@color0, 0.8);
+}
+
+/* Dropdown menu */
+menu, popover {
+    background-color: alpha(@color0, 0.95);
+    border-radius: 12px;
+    border: 1px solid alpha(@color14, 0.3);
+    padding: 8px;
+}
+
+/* Scrollbars */
+scrollbar slider {
+    background-color: alpha(@color15, 0.3);
+    border-radius: 10px;
+    min-width: 8px;
+}
+
+scrollbar slider:hover {
+    background-color: alpha(@color15, 0.5);
+}
+
+/* Labels */
+label {
+    color: @color15;
+}
+
+/* Scale/Slider */
+scale trough {
+    background-color: alpha(@color0, 0.6);
+    border-radius: 10px;
+    min-height: 8px;
+}
+
+scale highlight {
+    background-color: @color14;
+    border-radius: 10px;
+}
+
+scale slider {
+    background-color: @color15;
+    border: 2px solid @color14;
+    border-radius: 50%;
+    min-width: 18px;
+    min-height: 18px;
+}

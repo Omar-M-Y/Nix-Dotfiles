@@ -15,7 +15,7 @@
       tab_bar_style = "powerline";
     };
     extraConfig = ''
-      include ~/.config/kitty/colors.conf
+      include ~/.cache/wal/colors-kitty.conf
     '';
   };
 }

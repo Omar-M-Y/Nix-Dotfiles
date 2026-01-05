@@ -1,29 +1,46 @@
-# rofi/default.nix
 { pkgs, config, ... }:
 
 let
-  # 1. Define the absolute path where Matugen writes the file
-  # This results in a string like "/home/yahya/.config/rofi/colors.rasi"
-  colorsPath = "${config.home.homeDirectory}/.config/rofi/colors.rasi";
+  # The location where Pywal will generate the colors
+  colorsPath = "${config.home.homeDirectory}/.cache/wal/colors-rofi-dark.rasi";
+
+  # The Template Content (What Pywal uses to build the file)
+  # We define it here so it's managed by Nix
+  pywalTemplate = ''
+    * {
+        background: {background};
+        foreground: {foreground};
+        accent:     {color4};
+
+        background-color:            @background;
+        border-color:                @accent;
+        
+        normal-background:           transparent;
+        normal-foreground:           @foreground;
+        alternate-normal-background: transparent;
+        alternate-normal-foreground: @foreground;
+
+        selected-normal-background:  @accent;
+        selected-normal-foreground:  {background};
+    }
+  '';
 in
 {
   programs.rofi = {
     enable = true;
-    
-    # Rofi will look for "style-1.rasi" in ~/.config/rofi/
-    theme = "style-1"; 
-    
+    theme = "style-1";
     font = "JetBrainsMono Nerd Font 10";
-    
     extraConfig = {
       modi = "drun";
       show-icons = true;
       display-drun = "Apps:";
-      dpi = 0;
     };
   };
 
-  # 2. Generate the file, injecting the absolute path variable
+  # Declaratively create the Pywal template file
+  xdg.configFile."wal/templates/colors-rofi-dark.rasi".text = pywalTemplate;
+
+  # Create the Rofi style file
   xdg.configFile."rofi/style-1.rasi".text = import ./style-1.nix {
     inherit colorsPath; 
   };
