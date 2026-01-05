@@ -48,6 +48,10 @@ in
     input_path = "${matugenConfigDir}/templates/rofi-colors.rasi"
     output_path = "${rofiConfigDir}/colors.rasi"
 
+    [templates.waybar]
+    input_path = "${matugenConfigDir}/templates/waybar-colors.css"
+    output_path = "${config.home.homeDirectory}/.config/waybar/colors.css"
+
   '';
 
   # 3. Hyprland Template
@@ -155,4 +159,19 @@ in
         alternate-normal-foreground: {{colors.on_surface.default.hex}};
     }
   '';
+
+# 8. Waybar Template (Add this)
+  xdg.configFile."matugen/templates/waybar-colors.css".text = ''
+    @define-color primary {{colors.primary.default.hex}};
+    @define-color on_primary {{colors.on_primary.default.hex}};
+    @define-color secondary {{colors.secondary.default.hex}};
+    @define-color on_secondary {{colors.on_secondary.default.hex}};
+    @define-color surface {{colors.surface.default.hex}};
+    @define-color on_surface {{colors.on_surface.default.hex}};
+    @define-color outline {{colors.outline.default.hex}};
+    @define-color background {{colors.background.default.hex}};
+    @define-color on_background {{colors.on_background.default.hex}};
+    @define-color error {{colors.error.default.hex}};
+    @define-color on_error {{colors.on_error.default.hex}};
+  '';  
 }

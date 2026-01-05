@@ -9,6 +9,7 @@
         ./modules/viu.nix
         ./modules/nvim/default.nix
         ./modules/scripts
+        ./modules/waybar/default.nix
         inputs.zen-browser.homeModules.beta 
     ];
    

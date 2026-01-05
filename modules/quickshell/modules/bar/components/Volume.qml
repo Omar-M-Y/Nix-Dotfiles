@@ -9,13 +9,21 @@ Item {
 
   MouseArea {
     anchors.fill: parent
-    onClicked: console.log("Registered Click")
+    onClicked: {
+      if (Pipewire.defaultAudioSink) {
+        console.log("Registered Click")
+        Pipewire.defaultAudioSink.muted = !Pipewire.defaultAudioSink.muted 
+      }
+    }
   }
 
   Text {
     anchors.centerIn: parent
-    text: Pipewire.defaultAudioSink.muted ? "" : ""
-    color: "f8f8f2"
+    text: Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.muted
+      ? "" 
+      : ""
+    color: "white"
+    // color: "f8f8f2"
     font.pixelSize: 16
   }
 }

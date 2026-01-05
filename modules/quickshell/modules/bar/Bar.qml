@@ -57,7 +57,7 @@ Variants {
       Volume {
         anchors.right: tray.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: 15
+        anchors.rightMargin: 10
       }
 
 

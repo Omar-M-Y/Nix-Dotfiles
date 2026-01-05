@@ -6,7 +6,7 @@
             "discord --start-minimized" # Discord
             "steam -silent" # Steam
             "matugen" # Colour Daemon
-            "quickshell" # Desktop Shell
+            # "quickshell" # Desktop Shell
             "easyeffects --gapplication-service" # Audio 
             # "$terminal"
         ];
