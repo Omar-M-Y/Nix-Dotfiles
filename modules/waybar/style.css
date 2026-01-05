@@ -1,187 +1,225 @@
-/* @import "colors.css"; */
-/**/
-/* * { */
-/*    font-family: "CodeNewRoman Nerd Font Propo"; */
-/*    font-size: 11px; */
-/*    font-weight: 900; */
-/*    margin: 0; */
-/*    padding: 0; */
-/*    transition-property: background-color; */
-/*    transition-duration: 0.5s; */
-/*    color: @primary;  */
-/* } */
-/**/
-/* window#waybar { */
-/*   all: unset; */
-/* } */
-/**/
-/* #waybar { */
-/*   background-color: transparent; */
-/*   transition-property: background-color; */
-/* } */
-/**/
-/* #workspaces { */
-/*   padding: 0 5; */
-/* } */
-/**/
-/* #workspaces button { */
-/*   all:unset; */
-/*   padding: 0 5; */
-/*   color: alpha(@surface,.4); */
-/*   transition: all .2s ease; */
-/* } */
-/**/
-/* #workspaces button:hover { */
-/*   color: alpha(@on_primary,.4); */
-/*   border: none; */
-/*   text-shadow: 0 0 2 rgba(0,0,0,.5); */
-/*   transition: all 1s ease; */
-/* } */
-
-/* 1. Import Matugen colors */
+/* Import Matugen Colors */
 @import "colors.css";
 
 * {
-    font-size: 15px;
-    font-family: "CodeNewRoman Nerd Font Propo";
+    font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    margin: 0;
+    padding: 0;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 3px;
+    min-height: 0;
+    margin: 0.1em 0.3em;
+}
+
+/* The whole bar */
+#waybar {
+    background-color: transparent;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    border-radius: 0px;
+    margin: 0px 0px;
 }
 
 window#waybar {
-    all: unset;
+    margin: 0;
+    background-color: transparent; 
 }
 
-.modules-left {
-    padding: 7px;
-    margin: 10px 0 5px 10px;
-    border-radius: 10px;
-    background: alpha(@background, 0.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+window#waybar.hidden {
+  opacity: 0.2;
 }
-
-.modules-center {
-    padding: 7px;
-    margin: 10px 0 5px 0;
-    border-radius: 10px;
-    background: alpha(@background, 0.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
-}
-
-.modules-right {
-    padding: 7px;
-    margin: 10px 10px 5px 0;
-    border-radius: 10px;
-    background: alpha(@background, 0.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
-}
-
-tooltip {
-    background: @background;
-    color: @on_surface;
-}
-
-#clock:hover,
-/* #custom-pacman:hover, */
-#custom-notification:hover,
-#bluetooth:hover,
-#network:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover {
-    transition: all 0.3s ease;
-    color: @primary;
-}
-
-#custom-notification {
-    padding: 0px 5px;
-    transition: all 0.3s ease;
-    color: @on_surface;
-}
-
-#clock {
-    padding: 0px 5px;
-    color: @on_surface;
-    transition: all 0.3s ease;
-}
-
-/* #custom-pacman { */
-/*     padding: 0px 5px; */
-/*     transition: all 0.3s ease; */
-/*     color: @on_surface; */
-/* } */
 
 #workspaces {
-    padding: 0px 5px;
+    background-color: alpha(@background, 0.8);
+    border-radius: 20px;
+    padding: 3px 6px; 
 }
 
 #workspaces button {
-    all: unset;
-    padding: 0px 5px;
-    /* Using primary with transparency for inactive items */
-    color: alpha(@primary, 0.4);
-    transition: all 0.2s ease;
-}
-
-#workspaces button:hover {
-    color: rgba(0, 0, 0, 0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
-    transition: all 1s ease;
+    padding: 1px 2px;
+    margin: 1px 3px;
+    border-radius: 10px;
+    background-color: alpha(@background, 0.8);
+    color: @primary;
+    transition: all 0.3s ease-in-out;
+    font-size: 13px; 
 }
 
 #workspaces button.active {
+    color: @background; /* Text becomes bg color */
+    background: @primary; /* Bg becomes primary color */
+    border-radius: 10px;
+    padding: 1px 10px;
+}
+
+#workspaces button:hover {
+    background-color: @surface;
+}
+
+#workspaces button.urgent {
+    background-color: @error;
+}
+
+#window {
+    background: transparent;
+    font-size: 15px; 
+    font-weight: 800;
+    color: @on_background;
+    border-radius: 14px;
+    padding: 3px 6px; 
+    margin: 2px;
+    opacity: 1;
+}
+
+/* General Module Styling */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#mode,
+#mpris,
+#idle_inhibitor,
+#custom-wallpaper,
+#bluetooth,
+#custom-hyprPicker,
+#custom-power,
+#custom-swaync,
+#custom-spotify,
+#custom-gpu-temp,
+#custom-weather {
+    background-color: alpha(@background, 0.7);
+    border-radius: 10px;
+    padding: 2px 6px;
+}
+
+#custom-gpu-temp {
     color: @primary;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    padding-right: 5px;
+    margin: 0px 5px 0px 0px;
+    border-radius: 0px 10px 10px 0px;
 }
 
-#workspaces button.empty {
-    color: rgba(0, 0, 0, 0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.2);
+#custom-screenshot_t {
+    background-color: @background;
+    border-radius: 14px;
+    padding: 6px;
 }
 
-#workspaces button.empty:hover {
-    color: rgba(0, 0, 0, 0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
-    transition: all 1s ease;
+#custom-spotify {
+    background-color: @background;
+    border-radius: 14px;
+    padding: 3px 12px;
 }
 
-#workspaces button.empty.active {
-    color: @primary;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+#wireplumber {
+    color: @on_background;
+    background-color: alpha(@background, 0.7);
+    padding: 6px
 }
 
-#bluetooth {
-    padding: 0px 5px;
-    transition: all 0.3s ease;
-    color: @on_surface;
+#tray {
+    background-color: alpha(@background, 0.7);
+    border-radius: 10px;
+    padding: 6px; 
 }
 
-#network {
-    padding: 0px 5px;
-    transition: all 0.3s ease;
-    color: @on_surface;
+#cpu {
+    color: @on_background;
+    padding: 5px;
+    margin: 0px;
+    border-radius: 0px 10px 10px 0px;
 }
 
-#battery {
-    padding: 0px 5px;
-    transition: all 0.3s ease;
-    color: @on_surface;
+#memory {
+    color: @on_background;
+    padding: 5px;
+    margin: 0px;
+    border-radius: 10px 0px 0px 10px;
 }
 
-#battery.charging {
-    color: #26A65B;
+#custom-power {
+    color: @on_background;
+    font-size: 20px;
+    border-radius: 10px;
+    transition-property: background-color;
+    padding: 0px 10px;
 }
 
-#battery.warning:not(.charging) {
-    color: #ffbe61;
+#custom-wallpaper {
+    color: @on_background;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#custom-storage {
+    background-color: alpha(@background, 0.8);
+    border-radius: 14px;
+    padding: 6px;
+}
+
+#custom-launcher {
+    background-color: #1b242b;
+    color: #6a92d7; /* Keeping hardcoded as requested or map to @primary */
+    border-radius: 7.5px;
+    padding: 3px 6px;
+}
+
+/* Weather Conditions - mapped to static colors or variables */
+#custom-weather.severe { color: @error; }
+#custom-weather.sunnyDay { color: #c2ca76; }
+#custom-weather.clearNight { color: #cad3f5; }
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight { color: #c2ddda; }
+#custom-weather.rainyDay,
+#custom-weather.rainyNight { color: #5aaca5; }
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight { color: #d6e7e5; }
+#custom-weather.default { color: #dbd9d8; }
+
+/* Margins for first/last workspaces */
+.modules-left > widget:first-child > #workspaces { margin-left: 0; }
+.modules-right > widget:last-child > #workspaces { margin-right: 0; }
+
+#pulseaudio { color: #7d9bba; }
+#backlight { color: #8fbcbb; }
+
+#clock {
+    color: @on_background;
+}
+
+#battery { color: #c0caf5; }
+
+#battery.charging,
+#battery.full,
+#battery.plugged {
+    color: #26a65b;
+}
+
+@keyframes blink {
+    to {
+        background-color: alpha(@background, 0.5);
+        color: @on_background;
+    }
 }
 
 #battery.critical:not(.charging) {
-    color: #f53c3c;
+    color: @error;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -189,52 +227,149 @@ tooltip {
     animation-direction: alternate;
 }
 
+label:focus {
+    background-color: #000000;
+}
+
+#disk { background-color: #964b00; }
+
+#bluetooth {
+    color: @on_background;
+}
+
+#bluetooth.disconnected {
+    color: @error;
+}
+
+#network {
+    color: @secondary;
+}
+
+#network.disconnected {
+    color: @error;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify { background-color: #66cc99; }
+
+#custom-media.custom-vlc {
+    color: @on_background;
+    background-color: @background;
+}
+
+#temperature {
+    color: @primary;
+    padding: 5px;
+    margin: 0px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#temperature.critical {
+    background-color: @error;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @error;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#custom-rofi {
+    font-size:25px;
+    color: @outline;
+}
+
+#mpris {
+    padding: 0 10px;
+    min-width: 24px;
+}
+
+#mpris.playing { color: @primary; }
+#mpris.paused { color: @secondary; }
+#mpris.stopped { color: @outline; }
+
+/* Group Expand Styling */
 #group-expand {
-    padding: 0px 5px;
+    background-color: alpha(@background, 0.7);
+    border-radius: 10px;
+    padding: 2px 2px;
     transition: all 0.3s ease;
+}
+
+#group-expand #cpu,
+#group-expand #memory,
+#group-expand #temperature,
+#group-expand #custom-gpu-temp {
+    background-color: transparent;
+    padding: 0px 6px;
+    margin: 0;
+    color: @on_background;
+}
+
+#group-expand #temperature {
+    margin-left: 12px;
+    border-left: 1px solid alpha(@on_background, 0.2);
+    padding-left: 12px; 
 }
 
 #custom-expand {
-    padding: 0px 5px;
-    /* Using text color with transparency */
-    color: alpha(@on_surface, 0.2);
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
-    transition: all 0.3s ease;
+    color: @on_background;
+    padding: 0px 8px;
+    font-size: 14px;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
 }
 
-#custom-expand:hover {
-    color: rgba(255, 255, 255, 0.2);
-    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
+/* SwayNC Module */
+#custom-swaync {
+    border-radius: 10px;
+    padding: 0px 6px;
+    background-color: alpha(@background, 0.75);
+    color: @on_background;
+    border-radius: 12px;
 }
 
-#custom-colorpicker {
-    padding: 0px 5px;
+#custom-swaync.notifications-low,
+#custom-swaync.notifications-critical {
+    background-color: @error; 
+    color: @background;
+    border-color: @error;
 }
 
-#cpu,
-#memory,
-#temperature {
-    padding: 0px 5px;
-    transition: all 0.3s ease;
-    color: @on_surface;
+#custom-swaync.dnd {
+    background-color: @outline; 
+    color: @on_background;
+    border-color: @outline;
 }
 
-#custom-endpoint {
-    color: transparent;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
-}
-
-#tray {
-    padding: 0px 5px;
-    transition: all 0.3s ease;
-}
-
-#tray menu * {
-    padding: 0px 5px;
-    transition: all 0.3s ease;
-}
-
-#tray menu separator {
-    padding: 0px 5px;
-    transition: all 0.3s ease;
+#custom-notion,
+#custom-discord,
+#custom-steam {
+    font-size: 20px;
+    color: @on_background;
+    background-color: transparent;
 }
