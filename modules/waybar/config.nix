@@ -12,5 +12,6 @@
     # modules-left = ;
     # modules-center = ;
     # modules-right= ;
+    };
     } builtins.import ./modules 
 }
