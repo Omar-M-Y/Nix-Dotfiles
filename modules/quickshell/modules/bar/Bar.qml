@@ -40,6 +40,10 @@ Variants {
       // Now we just use the custom component
       Clock {}
 
+      Tray {
+        Layout.rightMargin: 10
+      }
+
 
 
     }
