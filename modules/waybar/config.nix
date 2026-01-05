@@ -43,26 +43,32 @@
     };
 
     network = {
-      # Formatting
-      format-wifi = " {essid} ({signalStrength}%)";
-      format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
-      format-linked = "{ifname} (No IP) ";
-      format = "";
+      # --- Formats (Icons only) ---
+      # Wi-Fi: Uses the dynamic 'format-icons' list below based on signal strength
+      format-wifi = "{icon}";
+      
+      # Ethernet: Uses a static cable icon
+      format-ethernet = "";
+      
+      # Disconnected: A slashed icon
       format-disconnected = "";
-      format-alt = "{ifname}: {ipaddr}/{cidr}";
 
-      # Tooltips
-      tooltip-format = " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n";
-      tooltip-format-wifi = " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}";
+      # (Optional) Linked: connected to cable but no IP
+      format-linked = " (No IP)";
 
-      interval = 10;
+      # --- Icons ---
+      # Define the icon progression for Wi-Fi signal strength (0% to 100%)
+      format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
 
-      # Actions
-      # Left Click: Launch GUI Network Manager
-      "on-click" = "nm-connection-editor"; 
+      # --- Tooltips (Rich Information) ---
+      # Since the bar only shows icons, we keep the detailed info in the hover tooltip
+      tooltip-format-wifi = "  {essid} ({signalStrength}%)\nFrequency: {frequency}MHz\nIP: {ipaddr}";
+      tooltip-format-ethernet = "  {ifname}\nIP: {ipaddr}";
+      tooltip-format-disconnected = "Disconnected";
 
-      # Right Click: Copy IP to clipboard (from your dotfiles)
-      "on-click-right" = "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)";
+      # --- Actions ---
+      # Left Click: Open GUI Network Manager
+      on-click = "nm-connection-editor";
     };
 
     bluetooth = {
