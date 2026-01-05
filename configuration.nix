@@ -301,6 +301,9 @@ environment = {
     imagemagick
     yazi
 
+    xsensors
+    nvtopPackages.nvidia
+
     (sddm-astronaut.override {
       embeddedTheme = "japanese_aesthetic"; # <--- CHANGE THIS to your preferred theme
     })
