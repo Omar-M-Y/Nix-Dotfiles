@@ -10,6 +10,7 @@
     ./config/autostart.nix
     ./config/environment.nix
     ./hyprlock.nix
+    ./hypridle.nix
 		../matugen.nix
 	];
 
