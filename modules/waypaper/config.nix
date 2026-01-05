@@ -12,7 +12,7 @@
     show_hidden = false;
     show_gifs_only = false;
     use_xdg_state = false;
-    post_command = "set-wallpaper $wallpaper";
+    post_command = "set-wallpaper $wallpaper && pywal update";
     
     # SWWW Transition settings
     swww_transition_type = "grow";
