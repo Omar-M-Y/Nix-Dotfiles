@@ -74,6 +74,7 @@ services = {
         scheduler = "scx_rusty";
     };
     xserver = {
+      enable = true;
       xkb = {
         layout = "gb";
         variant = "";
@@ -109,9 +110,6 @@ services = {
     displayManager = {
         sddm = {
             enable = true;
-            xserver = {
-                enable = true;
-            };
             wayland = {
                 enable = false;
             };
