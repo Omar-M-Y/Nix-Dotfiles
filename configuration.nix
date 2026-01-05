@@ -305,6 +305,8 @@ environment = {
     # sddm-astronaut
     kdePackages.qtsvg
     kdePackages.qtmultimedia
+    kdePackages.kio-fuse
+    kdePackages.kio-extras # For extra protocol support like sftp, fish, MTP etc.
     kdePackages.dolphin
 
     # --- External Flakes ---
