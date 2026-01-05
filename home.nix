@@ -60,7 +60,7 @@
           wootility
 
           waypaper
-          swaynotificationcenter
+          swaync
           
 
           libappindicator-gtk3
