@@ -13,6 +13,7 @@
         ./modules/pywal.nix
         ./modules/waypaper/default.nix
         ./modules/gtk.nix
+        ./modules/swaync/default.nix
         inputs.zen-browser.homeModules.beta 
     ];
    
@@ -59,6 +60,7 @@
           wootility
 
           waypaper
+          swaynotificationcenter
           
 
           libappindicator-gtk3
