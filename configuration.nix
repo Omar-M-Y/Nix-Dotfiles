@@ -118,7 +118,7 @@ services = {
             setupScript = ''
               ${pkgs.xorg.xrandr}/bin/xrandr \
               --output DP-3 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
-              --output HDMI-A-3 --mode 1920x1080 --pos 0x0 --rotate normal --same-as DP-3
+              --output HDMI-A-3 --off 
               '';
             extraPackages = with pkgs; [
               kdePackages.qtsvg
