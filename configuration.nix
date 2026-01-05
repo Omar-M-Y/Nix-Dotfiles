@@ -305,6 +305,7 @@ environment = {
     # sddm-astronaut
     kdePackages.qtsvg
     kdePackages.qtmultimedia
+    kdePackages.dolphin
 
     # --- External Flakes ---
     inputs.matugen.packages.${system}.default

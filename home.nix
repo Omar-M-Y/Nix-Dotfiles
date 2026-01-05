@@ -23,7 +23,6 @@
             '';
           };
         packages = with pkgs; [
-          nautilus
 
 
           nerd-fonts.meslo-lg
