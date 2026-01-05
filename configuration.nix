@@ -116,9 +116,14 @@ services = {
             package = pkgs.kdePackages.sddm;
             theme = "sddm-astronaut-theme";
             setupScript = ''
-              ${pkgs.xorg.xrandr}/bin/xrandr \
-              --output DP-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
-              --output HDMI-0 --off 
+# Debug: Print available monitors to a file we can read later
+    ${pkgs.xorg.xrandr}/bin/xrandr -q > /tmp/sddm-monitors.txt
+    
+    # Try the standard Nvidia naming convention (common guess)
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --primary --mode 1920x1080 --rotate normal --output HDMI-0 --off
+    
+    # Keep your original line just in case
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-3 --primary --mode 1920x1080 --rotate normal --output HDMI-A-3 --off
               '';
             extraPackages = with pkgs; [
               kdePackages.qtsvg
