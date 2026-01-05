@@ -297,7 +297,12 @@ environment = {
     kitty
     imagemagick
     yazi
-    sddm-astronaut
+
+    (sddm-astronaut.override {
+      embeddedTheme = "japanese_aesthetic"; # <--- CHANGE THIS to your preferred theme
+    })
+
+    # sddm-astronaut
     kdePackages.qtsvg
     kdePackages.qtmultimedia
 
