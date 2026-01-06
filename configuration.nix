@@ -68,6 +68,10 @@ boot = {
       };
 };
 
+permittedInsecurePackages = [
+    "ventoy-1.1.07"
+ ];
+
 services = {
     scx = {
         enable = true;
