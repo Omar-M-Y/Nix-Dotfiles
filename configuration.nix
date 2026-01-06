@@ -299,6 +299,7 @@ environment = {
     kitty
     imagemagick
     yazi
+    ventoy
 
 
     xsensors

@@ -58,7 +58,6 @@
           pavucontrol
           alsa-utils
           wootility
-          ventoy
 
           waypaper
           swaynotificationcenter
