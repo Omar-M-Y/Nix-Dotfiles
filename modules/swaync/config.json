@@ -1,5 +1,4 @@
 {
-  "$schema": "/etc/xdg/swaync/configSchema.json",
   "ignore-gtk-theme": true,
   "positionX": "right",
   "positionY": "top",
@@ -101,7 +100,6 @@
           "command": "sh -c '~/.config/swaync/scripts/toggle_airplanemode.sh'",
           "update-command": "sh -c 'set +e;[[ $(nmcli radio wifi) == \"enabled\" ]] || bluetoothctl show | grep -qF Powered:\\ yes && echo false || echo true'"
         },
-
         {
           "label": "",
           "type": "toggle",
@@ -116,7 +114,6 @@
           "command": "swayosd-client --input-volume mute-toggle;pactl set-source-volume @DEFAULT_SOURCE@ 25%",
           "update-command": "sh -c 'set +e;pactl get-source-mute @DEFAULT_SOURCE@ | grep -q \"no\" && echo true || echo false'"
         },
-
         {
           "label": "",
           "type": "toggle",
@@ -160,7 +157,6 @@
     }
   },
   "script-fail-notify": false,
-
   "scripts": {
     "play-sound": {
       "exec": "~/.config/swaync/scripts/notify_sound.sh",
