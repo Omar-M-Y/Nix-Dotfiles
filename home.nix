@@ -52,7 +52,7 @@
           stylua        # lua formatter
           nodePackages.typescript-language-server 
           easyeffects
-          btop
+          
           discord
           efibootmgr
           pavucontrol

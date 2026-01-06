@@ -300,6 +300,7 @@ environment = {
     imagemagick
     yazi
 
+
     xsensors
     nvtopPackages.nvidia
 
