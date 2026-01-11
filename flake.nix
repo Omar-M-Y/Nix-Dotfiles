@@ -23,25 +23,25 @@
 		matugen = {
 			url = "github:InioX/Matugen";
 		};
+    catppuccin = {
+        url = "github:catppuccin/nix";
+      };
     viu = {
         url = "github:viu-media/viu";
       };
-    # ambxst = {
-    #     url = "github:Axenide/Ambxst";
-    #     inputs.nixpkgs.follows = "nixpkgs";
-    #   };
     zen-browser = {
         url = "github:0xc000022070/zen-browser-flake";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.home-manager.follows = "home-manager";
       };
 	};
-	outputs = { self, nixpkgs, quickshell, mac-style-plymouth, nix-cachyos-kernel, nix-flatpak, matugen, viu, home-manager, zen-browser, ... }@inputs: {
+	outputs = { self, nixpkgs, quickshell, mac-style-plymouth, nix-cachyos-kernel, nix-flatpak, matugen, viu, home-manager, catppuccin, zen-browser, ... }@inputs: {
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			specialArgs = { inherit inputs; };
 			modules = [
 				./configuration.nix
         nix-flatpak.nixosModules.nix-flatpak
+        catppuccin.nixosModules.catppuccin
 				home-manager.nixosModules.home-manager {
 					home-manager.useGlobalPkgs = true;
 					home-manager.useUserPackages = true;

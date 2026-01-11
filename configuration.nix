@@ -19,12 +19,21 @@ boot = {
             enable = false;
           };
         grub = {
-            enable = true;
-            device = "nodev";
-            useOSProber = true;
-            efiSupport = true;
-            efiInstallAsRemovable = true;
+            enable = false;
           };
+        limine = {
+            enable = true;
+            secureBoot = {
+                enable = true;
+              };
+            extraConfig = ''
+            # Windows 11
+            /Systems/Windows 11
+            protocol: efi_chainload
+            # We use guid() here to target the specific partition unique ID
+            image_path: guid(95439b78-a46b-4bee-aae3-5afbf67613f4):/EFI/Microsoft/Boot/bootmgfw.efi
+            '';
+        };
         timeout = 5;
       };
     supportedFilesystems = ["ntfs"];
@@ -51,9 +60,13 @@ boot = {
     "transparent_hugepage=always"        # Improves memory management for heavy games
     "nvidia.NVreg_UsePageAttributeTable=1" # Increases CPU-GPU bandwidth (Nvidia specific)
     ];
-    kernelModules = ["ntsync"];
+    kernelModules = [
+              "ntsync"
+              "r8125"
+              ];
+    blacklistedKernelModules = [ "r8169" ];
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
-
+    extraModulePackages = with config.boot.kernelPackages; [ r8125 ];
     kernel = {
         sysctl = {
           "net.core.default_qdisc" = "cake";
@@ -68,9 +81,17 @@ boot = {
       };
 };
 
-permittedInsecurePackages = [
-    "ventoy-1.1.07"
- ];
+catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    plymouth = {
+        enable = false;
+      };
+    sddm = {
+        enable = false;
+      };
+  };
+
 
 services = {
     scx = {
@@ -225,7 +246,7 @@ users = {
         yahya = {
             isNormalUser = true;
             description = "yahya";
-            extraGroups = ["networkmanager" "wheel" "audio" "video"];
+            extraGroups = ["networkmanager" "wheel" "audio" "video" "libvirtd"];
             shell = pkgs.fish;
             packages = with pkgs; [];
           };
@@ -264,7 +285,12 @@ programs = {
             enable = true;
         };
     };
+    virt-manager = {
+        enable = true;
+      };
 };
+
+virtualisation.libvirtd.enable = true;
 
 nix = {
     settings = {
@@ -303,14 +329,18 @@ environment = {
     kitty
     imagemagick
     yazi
-    ventoy
+
+    # btop-cuda
+
+    os-prober
+    sbctl
 
 
     xsensors
     nvtopPackages.nvidia
 
     (sddm-astronaut.override {
-      embeddedTheme = "japanese_aesthetic"; # <--- CHANGE THIS to your preferred theme
+      embeddedTheme = "black_hole"; # <--- CHANGE THIS to your preferred theme
     })
 
     # sddm-astronaut

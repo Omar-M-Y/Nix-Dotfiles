@@ -12,7 +12,7 @@
         ./modules/waybar/default.nix
         ./modules/pywal.nix
         ./modules/waypaper/default.nix
-        ./modules/gtk.nix
+        # ./modules/gtk.nix
         ./modules/swaync/default.nix
         inputs.zen-browser.homeModules.beta 
     ];
@@ -58,6 +58,7 @@
           pavucontrol
           alsa-utils
           wootility
+
 
           waypaper
           swaynotificationcenter

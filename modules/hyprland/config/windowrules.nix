@@ -9,6 +9,7 @@
     windowrule = [
         "opacity 0.92 match:class discord|firefox"
         "match:fullscreen class:^steam_app_\d+$"
+
         # "opacity 0.85 0.85, match:class:^(.*)(menu|popup)(.*)$"
         # "blur on,class:^(.*)(menu|popup)(.*)$"
     ];
