@@ -32,7 +32,8 @@
             ];
         };
         supportedFilesystems = [ "ntfs" ];
-        kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-x86_64-v3;
+       kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-x86_64-v3;
+	# kernelPackages = pkgs.linuxPackages_latest;
         kernelModules = [
             "ntsync"
         ];

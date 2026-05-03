@@ -59,22 +59,38 @@
           kdePackages.qtsvg
           kdePackages.qtmultimedia
           ];
+          settings = {
+              Wayland = {
+                  InputMethod = "";
+                };
+            };
       };
       openssh = {
           enable = true;
           settings.PasswordAuthentication = true;
       };
       flatpak = {
-          enable = true;
-          update.onActivation = true;
-          remotes = [{
-              name = "flathub";
-              location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-          }];
-          packages = [
-              "org.vinegarhq.Sober"
-              # "com.discordapp.Discord"
-          ];
+        enable = true;
+        update.onActivation = true;
+        remotes = [{
+          name = "flathub";
+          location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+        }];
+        packages = [
+          "org.vinegarhq.Sober"
+        ];
+        overrides = {
+          "org.vinegarhq.Sober" = {
+            filesystems = {
+              "xdg-data/icons" = "ro";
+              "~/.icons" = "ro";
+            };
+            environment = {
+              XCURSOR_THEME = "Bibata-Modern-Classic";
+              XCURSOR_SIZE = "24";
+            };
+          };
+        };
       };
       fstrim.enable = true;
       udisks2.enable = true;

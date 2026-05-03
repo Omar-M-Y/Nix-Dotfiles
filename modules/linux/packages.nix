@@ -10,23 +10,23 @@
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
       easyeffects
-      pavucontrol
+      # pavucontrol
       alsa-utils
       efibootmgr
       wootility
       libappindicator-gtk3
       libappindicator
       protonup-qt
+      bibata-cursors
+      papirus-icon-theme
       # plasma-panel-colorizer
 
-      #heroic
-      #osu-lazer
-      # google-chrome
+      heroic
+      osu-lazer
       # kdePackages.kolourpaint
       drawing
-      microsoft-edge
 
-      # uxplay
+      uxplay
       # lutris
       # pactl
       # inputs.viu.packages.${pkgs.system}.default
@@ -34,7 +34,7 @@
 
       obsidian
 
-      xrandr
+      # xrandr
     ];
   };
 
@@ -52,5 +52,12 @@
         };
       };
     };
+    chromium = {
+        enable = true;
+        package = pkgs.brave;
+        extensions = [
+          { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+        ];
+      };
   };
 }

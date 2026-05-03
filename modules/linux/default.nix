@@ -3,9 +3,9 @@
         ./packages.nix
         ./kitty.nix
         ./ghostty.nix
-        ./DE/KDE/default.nix
+       # ./DE/KDE/default.nix
         # ./viu.nix
-        ./DE/noctalia.nix
+        #./DE/noctalia.nix
         # ./DE/hyprland/default.nix
     ];
 }

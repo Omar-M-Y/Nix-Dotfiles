@@ -14,11 +14,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        plasma-manager = {
-            url = "github:nix-community/plasma-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
-            inputs.home-manager.follows = "home-manager";
-          };
+#        plasma-manager = {
+#            url = "github:nix-community/plasma-manager";
+#            inputs.nixpkgs.follows = "nixpkgs";
+#            inputs.home-manager.follows = "home-manager";
+#          };
 
         matugen = {
             url = "github:InioX/Matugen";
@@ -40,7 +40,7 @@
 
     };
 
-    outputs = { self, nixpkgs, nix-darwin, home-manager, plasma-manager, viu, ... }@inputs: {
+    outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs: {
         nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = {inherit inputs;  };
@@ -60,7 +60,7 @@
                             users.yahya = {
                                 imports = [
                                   ./home/nixos.nix
-                                  inputs.plasma-manager.homeModules.plasma-manager
+                                  #inputs.plasma-manager.homeModules.plasma-manager
                                 ];
                             };
                         };
@@ -88,7 +88,7 @@
                     extraSpecialArgs = { inherit inputs; isDarwin = false; };
                     modules = [
                         ./home/nixos.nix
-                        inputs.plasma-manager.homeModules.plasma-manager
+                        #inputs.plasma-manager.homeModules.plasma-manager
                         { nixpkgs.config.allowUnfree = true; }
                         ];
                     };
