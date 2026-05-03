@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }: {
     boot = {
         loader = {
+            timeout = 2;
             systemd-boot.enable = false;
             grub.enable = false;
             # efi.canTouchEfiVariables = true;
@@ -21,7 +22,6 @@
 
                 '';
             };
-            timeout = 2;
         };
         plymouth = {
             enable = true;
@@ -32,7 +32,7 @@
             ];
         };
         supportedFilesystems = [ "ntfs" ];
-       kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-x86_64-v3;
+       kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
 	# kernelPackages = pkgs.linuxPackages_latest;
         kernelModules = [
             "ntsync"
