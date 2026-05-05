@@ -5,9 +5,9 @@
       enable = true;
       useBabelfish = true;
     };
-    # coolercontrol = {
-    #    enable = true;
-    #   };
+    coolercontrol = {
+       enable = true;
+      };
     gamemode.enable = true;
     steam = {
       enable = true;

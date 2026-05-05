@@ -33,7 +33,7 @@
         };
         supportedFilesystems = [ "ntfs" ];
        kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
-	# kernelPackages = pkgs.linuxPackages_latest;
+       # kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts;
         kernelModules = [
             "ntsync"
         ];
@@ -48,8 +48,9 @@
             "nvidia.NVreg_UsePageAttributeTable=1"
             "pcie_aspm=off"
             "nvidia-drm.modeset=1"
-            "nvidia-drm.fbdev=1"
-            "i915.modeset=0"
+            "nvidia-drm.fbdev=0"
+            "module_blacklist=i915,xe"
+            # "i915.modeset=0"
             "video=card0-DP-4:d"
             "video=card0-HDMI-A-2:d"
             "video=card0-HDMI-A-3:d"

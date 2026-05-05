@@ -19,8 +19,9 @@
       protonup-qt
       bibata-cursors
       papirus-icon-theme
-      # plasma-panel-colorizer
+      plasma-panel-colorizer
 
+      r2modman
       heroic
       osu-lazer
       # kdePackages.kolourpaint
