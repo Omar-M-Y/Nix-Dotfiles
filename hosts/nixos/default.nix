@@ -59,7 +59,7 @@
           yahya = {
               isNormalUser = true;
               description = "yahya";
-              extraGroups = [ "networkmanager" "wheel"];
+              extraGroups = [ "networkmanager" "wheel" "video" "input"];
               shell = pkgs.fish;
             };
         };
@@ -76,16 +76,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-   nix.settings = {
-         substituters = [
-           "https://attic.xuyh0120.win/lantian"
-           "https://cache.garnix.io"
-         ];
-         trusted-public-keys = [
-           "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-           "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-         ];
-     };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

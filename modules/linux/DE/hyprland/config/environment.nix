@@ -33,11 +33,11 @@
   # 2. The "Nix Way" to handle Cursors
   # This automatically downloads the package and sets up the GTK/X11 links
   # so you don't get a missing cursor in some apps.
-  home.pointerCursor = {
-    name = "Bibata-Modern-Classic";
-    package = pkgs.bibata-cursors;
-    size = 24;
-    gtk.enable = true;
-    x11.enable = true;
-  };
+  # home.pointerCursor = {
+  #   name = "Bibata-Modern-Classic";
+  #   package = pkgs.bibata-cursors;
+  #   size = 24;
+  #   gtk.enable = true;
+  #   x11.enable = true;
+  # };
 }

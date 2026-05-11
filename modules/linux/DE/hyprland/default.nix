@@ -12,7 +12,7 @@
     ./hyprlock.nix
     ./hypridle.nix
     # ../noctalia.nix
-    ../matugen.nix
+    ../../matugen.nix
     # ../pywal.nix
   ];
 
