@@ -13,7 +13,7 @@
       # pavucontrol
       alsa-utils
       efibootmgr
-      wootility
+      # wootility
       libappindicator-gtk3
       libappindicator
       protonup-qt

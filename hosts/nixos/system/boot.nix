@@ -7,7 +7,7 @@
             # efi.canTouchEfiVariables = true;
             limine = {
                 enable = true;
-                secureBoot.enable = false;
+                secureBoot.enable = true;
                 extraConfig = ''
 
                 DEFAULT_ENTRY: 3
@@ -32,8 +32,8 @@
             ];
         };
         supportedFilesystems = [ "ntfs" ];
-       kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
-       #kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts;
+       # kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
+       kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts;
         kernelModules = [
             "ntsync"
         ];
