@@ -4,14 +4,13 @@
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
   };
   nix.gc = {
     automatic = true;
     interval = { Weekday = 0; Hour = 0; Minute = 0; };
     options = "--delete-older-than 7d";
   };
-
+  nix.optimise.automatic = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = 5;
@@ -67,7 +66,7 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
-      cleanup = "zap";
+      # cleanup = "zap";
     };
     brews = [
       # "mas"
@@ -79,7 +78,9 @@
       "font-meslo-lg-nerd-font"
       "onedrive"
       "google-drive"
-      "zen"
+      "zoom"
+      # "zen"
+      "firefox"
       # "helium-browser"
       # "drivedx"
     ];

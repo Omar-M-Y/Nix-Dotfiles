@@ -1,7 +1,9 @@
 # home/darwin.nix
 { pkgs, ... }: {
   imports = [
-    ../modules/darwin/default.nix
+
+  ../modules/darwin/default.nix
+  ./shared.nix
   ];
 
   home = {

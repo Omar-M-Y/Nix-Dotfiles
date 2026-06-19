@@ -5,30 +5,31 @@
     nixpkgs.url = "nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
-    nix-darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
-    matugen = {
-      url = "github:InioX/Matugen";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+        nix-darwin = {
+            url = "github:LnL7/nix-darwin/nix-darwin-25.11";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+        home-manager = {
+            url = "github:nix-community/home-manager/release-25.11";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        matugen = {
+            url = "github:InioX/Matugen";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+          };
+
+        nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+        nix-flatpak.url = "github:gmodena/nix-flatpak";
+
+        noctalia = {
+            url = "github:noctalia-dev/noctalia-shell";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+          };
+
+        viu.url = "github:viu-media/viu";
     };
-
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    viu.url = "github:viu-media/viu";
-  };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs: {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {

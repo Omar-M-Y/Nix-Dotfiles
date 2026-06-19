@@ -50,5 +50,8 @@
     fish = {
       enable = true;
     };
+  direnv = {
+      enable = true;
+    };
   };
 }
