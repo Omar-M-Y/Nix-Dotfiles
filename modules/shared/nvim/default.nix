@@ -11,7 +11,7 @@
     extraLuaConfig = ''
       vim.opt.shell = "fish"
     '';
-    
+
     # Optional: If you use extraLuaConfig, you can add it here too
     # extraLuaConfig = ''
     #   -- config here

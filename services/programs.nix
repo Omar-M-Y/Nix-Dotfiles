@@ -6,8 +6,8 @@
       useBabelfish = true;
     };
     coolercontrol = {
-       enable = true;
-      };
+      enable = true;
+    };
     gamemode.enable = true;
     steam = {
       enable = true;

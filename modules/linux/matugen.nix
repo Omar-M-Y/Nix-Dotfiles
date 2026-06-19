@@ -110,25 +110,25 @@ in
     set -g fish_color_cancel {{colors.error.default.hex_stripped}}
   '';
 
-xdg.configFile."matugen/templates/quickshell-colors.qml".text = ''
-  pragma Singleton
-  import QtQuick
+  xdg.configFile."matugen/templates/quickshell-colors.qml".text = ''
+    pragma Singleton
+    import QtQuick
 
-  QtObject {
-    property color primary: "{{colors.primary.default.hex}}"
-    property color primaryForeground: "{{colors.on_primary.default.hex}}"
-    property color secondary: "{{colors.secondary.default.hex}}"
-    property color secondaryForeground: "{{colors.on_secondary.default.hex}}"
-    property color background: "{{colors.background.default.hex}}"
-    property color backgroundForeground: "{{colors.on_background.default.hex}}"
-    property color surface: "{{colors.surface.default.hex}}"
-    property color surfaceForeground: "{{colors.on_surface.default.hex}}"
-    property color error: "{{colors.error.default.hex}}"
-    property color outline: "{{colors.outline.default.hex}}"
-  }
-'';
+    QtObject {
+      property color primary: "{{colors.primary.default.hex}}"
+      property color primaryForeground: "{{colors.on_primary.default.hex}}"
+      property color secondary: "{{colors.secondary.default.hex}}"
+      property color secondaryForeground: "{{colors.on_secondary.default.hex}}"
+      property color background: "{{colors.background.default.hex}}"
+      property color backgroundForeground: "{{colors.on_background.default.hex}}"
+      property color surface: "{{colors.surface.default.hex}}"
+      property color surfaceForeground: "{{colors.on_surface.default.hex}}"
+      property color error: "{{colors.error.default.hex}}"
+      property color outline: "{{colors.outline.default.hex}}"
+    }
+  '';
 
-xdg.configFile."matugen/templates/foot-colors.ini".text = ''
+  xdg.configFile."matugen/templates/foot-colors.ini".text = ''
     [colors-dark] # <--- Change this from [colors]
     foreground={{colors.on_surface.default.hex_stripped}}
     background={{colors.surface.default.hex_stripped}}
@@ -151,93 +151,93 @@ xdg.configFile."matugen/templates/foot-colors.ini".text = ''
   '';
 
 
-# xdg.configFile."matugen/templates/waybar-colors.css".text = ''
-#     @define-color foreground {{colors.on_surface.default.hex}};
-#     @define-color background {{colors.surface.default.hex}};
-#     @define-color cursor {{colors.primary.default.hex}};
-#
-#     @define-color color0 {{colors.surface.default.hex}};
-#     @define-color color1 {{colors.error.default.hex}};
-#     @define-color color2 {{colors.primary.default.hex}};
-#     @define-color color3 {{colors.tertiary.default.hex}};
-#     @define-color color4 {{colors.secondary.default.hex}};
-#     @define-color color5 {{colors.tertiary.default.hex}};
-#     @define-color color6 {{colors.inverse_primary.default.hex}};
-#     @define-color color7 {{colors.on_surface.default.hex}};
-#     @define-color color8 {{colors.surface_variant.default.hex}};
-#     @define-color color9 {{colors.error_container.default.hex}};
-#     @define-color color10 {{colors.primary_container.default.hex}};
-#     @define-color color11 {{colors.tertiary_container.default.hex}};
-#     @define-color color12 {{colors.secondary_container.default.hex}};
-#     @define-color color13 {{colors.tertiary_container.default.hex}};
-#     @define-color color14 {{colors.inverse_on_surface.default.hex}};
-#     @define-color color15 {{colors.inverse_surface.default.hex}};
-#   '';
-#
-#
-#   xdg.configFile."matugen/templates/rofi-colors.rasi".text = ''
-#     * {
-#         background: {{colors.surface.default.hex}};
-#         foreground: {{colors.on_surface.default.hex}};
-#         accent:     {{colors.primary.default.hex}};
-#
-#         background-color:            @background;
-#         border-color:                @accent;
-#
-#         normal-background:           transparent;
-#         normal-foreground:           @foreground;
-#         alternate-normal-background: transparent;
-#         alternate-normal-foreground: @foreground;
-#
-#         selected-normal-background:  @accent;
-#         selected-normal-foreground:  {{colors.on_primary.default.hex}}; 
-#     }
-#   '';
+  # xdg.configFile."matugen/templates/waybar-colors.css".text = ''
+  #     @define-color foreground {{colors.on_surface.default.hex}};
+  #     @define-color background {{colors.surface.default.hex}};
+  #     @define-color cursor {{colors.primary.default.hex}};
+  #
+  #     @define-color color0 {{colors.surface.default.hex}};
+  #     @define-color color1 {{colors.error.default.hex}};
+  #     @define-color color2 {{colors.primary.default.hex}};
+  #     @define-color color3 {{colors.tertiary.default.hex}};
+  #     @define-color color4 {{colors.secondary.default.hex}};
+  #     @define-color color5 {{colors.tertiary.default.hex}};
+  #     @define-color color6 {{colors.inverse_primary.default.hex}};
+  #     @define-color color7 {{colors.on_surface.default.hex}};
+  #     @define-color color8 {{colors.surface_variant.default.hex}};
+  #     @define-color color9 {{colors.error_container.default.hex}};
+  #     @define-color color10 {{colors.primary_container.default.hex}};
+  #     @define-color color11 {{colors.tertiary_container.default.hex}};
+  #     @define-color color12 {{colors.secondary_container.default.hex}};
+  #     @define-color color13 {{colors.tertiary_container.default.hex}};
+  #     @define-color color14 {{colors.inverse_on_surface.default.hex}};
+  #     @define-color color15 {{colors.inverse_surface.default.hex}};
+  #   '';
+  #
+  #
+  #   xdg.configFile."matugen/templates/rofi-colors.rasi".text = ''
+  #     * {
+  #         background: {{colors.surface.default.hex}};
+  #         foreground: {{colors.on_surface.default.hex}};
+  #         accent:     {{colors.primary.default.hex}};
+  #
+  #         background-color:            @background;
+  #         border-color:                @accent;
+  #
+  #         normal-background:           transparent;
+  #         normal-foreground:           @foreground;
+  #         alternate-normal-background: transparent;
+  #         alternate-normal-foreground: @foreground;
+  #
+  #         selected-normal-background:  @accent;
+  #         selected-normal-foreground:  {{colors.on_primary.default.hex}}; 
+  #     }
+  #   '';
 
-xdg.configFile."matugen/templates/yazi-theme.toml".text = ''
-  [manager]
-  hovered         = { bg = "{{colors.secondary_container.default.hex}}", fg = "{{colors.on_secondary_container.default.hex}}" }
-  preview_hovered = { bg = "{{colors.surface_variant.default.hex}}" }
-  border_style    = { fg = "{{colors.outline.default.hex}}" }
+  xdg.configFile."matugen/templates/yazi-theme.toml".text = ''
+    [manager]
+    hovered         = { bg = "{{colors.secondary_container.default.hex}}", fg = "{{colors.on_secondary_container.default.hex}}" }
+    preview_hovered = { bg = "{{colors.surface_variant.default.hex}}" }
+    border_style    = { fg = "{{colors.outline.default.hex}}" }
 
-  [status]
-  separator_open  = ""
-  separator_close = ""
+    [status]
+    separator_open  = ""
+    separator_close = ""
   
-  # Normal Mode
-  primary_normal   = { bg = "{{colors.primary.default.hex}}", fg = "{{colors.on_primary.default.hex}}", bold = true }
-  secondary_normal = { bg = "{{colors.surface_variant.default.hex}}", fg = "{{colors.on_surface_variant.default.hex}}" }
-  tertiary_normal  = { bg = "{{colors.surface.default.hex}}", fg = "{{colors.on_surface.default.hex}}" }
+    # Normal Mode
+    primary_normal   = { bg = "{{colors.primary.default.hex}}", fg = "{{colors.on_primary.default.hex}}", bold = true }
+    secondary_normal = { bg = "{{colors.surface_variant.default.hex}}", fg = "{{colors.on_surface_variant.default.hex}}" }
+    tertiary_normal  = { bg = "{{colors.surface.default.hex}}", fg = "{{colors.on_surface.default.hex}}" }
 
-  # Select Mode
-  primary_select   = { bg = "{{colors.tertiary.default.hex}}", fg = "{{colors.on_tertiary.default.hex}}", bold = true }
-  secondary_select = { bg = "{{colors.surface_variant.default.hex}}", fg = "{{colors.on_surface_variant.default.hex}}" }
-  tertiary_select  = { bg = "{{colors.surface.default.hex}}", fg = "{{colors.on_surface.default.hex}}" }
+    # Select Mode
+    primary_select   = { bg = "{{colors.tertiary.default.hex}}", fg = "{{colors.on_tertiary.default.hex}}", bold = true }
+    secondary_select = { bg = "{{colors.surface_variant.default.hex}}", fg = "{{colors.on_surface_variant.default.hex}}" }
+    tertiary_select  = { bg = "{{colors.surface.default.hex}}", fg = "{{colors.on_surface.default.hex}}" }
 
-  # Unset Mode
-  primary_unset    = { bg = "{{colors.error.default.hex}}", fg = "{{colors.on_error.default.hex}}", bold = true }
-  secondary_unset  = { bg = "{{colors.surface_variant.default.hex}}", fg = "{{colors.on_surface_variant.default.hex}}" }
-  tertiary_unset   = { bg = "{{colors.surface.default.hex}}", fg = "{{colors.on_surface.default.hex}}" }
+    # Unset Mode
+    primary_unset    = { bg = "{{colors.error.default.hex}}", fg = "{{colors.on_error.default.hex}}", bold = true }
+    secondary_unset  = { bg = "{{colors.surface_variant.default.hex}}", fg = "{{colors.on_surface_variant.default.hex}}" }
+    tertiary_unset   = { bg = "{{colors.surface.default.hex}}", fg = "{{colors.on_surface.default.hex}}" }
 
-  [select]
-  border   = { fg = "{{colors.primary.default.hex}}" }
-  active   = { fg = "{{colors.primary.default.hex}}", bold = true }
-  inactive = { fg = "{{colors.on_surface.default.hex}}" }
+    [select]
+    border   = { fg = "{{colors.primary.default.hex}}" }
+    active   = { fg = "{{colors.primary.default.hex}}", bold = true }
+    inactive = { fg = "{{colors.on_surface.default.hex}}" }
 
-  [input]
-  border   = { fg = "{{colors.primary.default.hex}}" }
-  title    = { fg = "{{colors.primary.default.hex}}", bold = true }
-  value    = { fg = "{{colors.on_surface.default.hex}}" }
-  selected = { bg = "{{colors.secondary_container.default.hex}}" }
+    [input]
+    border   = { fg = "{{colors.primary.default.hex}}" }
+    title    = { fg = "{{colors.primary.default.hex}}", bold = true }
+    value    = { fg = "{{colors.on_surface.default.hex}}" }
+    selected = { bg = "{{colors.secondary_container.default.hex}}" }
 
-  [completion]
-  border   = { fg = "{{colors.primary.default.hex}}" }
-  active   = { bg = "{{colors.secondary_container.default.hex}}", fg = "{{colors.on_secondary_container.default.hex}}" }
-  inactive = { fg = "{{colors.on_surface.default.hex}}" }
+    [completion]
+    border   = { fg = "{{colors.primary.default.hex}}" }
+    active   = { bg = "{{colors.secondary_container.default.hex}}", fg = "{{colors.on_secondary_container.default.hex}}" }
+    inactive = { fg = "{{colors.on_surface.default.hex}}" }
 
-  [tasks]
-  border  = { fg = "{{colors.primary.default.hex}}" }
-  title   = { fg = "{{colors.primary.default.hex}}", bold = true }
-  hovered = { bg = "{{colors.secondary_container.default.hex}}", fg = "{{colors.on_secondary_container.default.hex}}" }
-'';
+    [tasks]
+    border  = { fg = "{{colors.primary.default.hex}}" }
+    title   = { fg = "{{colors.primary.default.hex}}", bold = true }
+    hovered = { bg = "{{colors.secondary_container.default.hex}}", fg = "{{colors.on_secondary_container.default.hex}}" }
+  '';
 }

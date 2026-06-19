@@ -1,22 +1,22 @@
 { pkgs, inputs, ... }:
 
 {
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     mpv
     fzf
     chafa
     ffmpeg
     python3
     yt-dlp
-(pkgs.writeShellScriptBin "viu" ''
-  chmod -R u+w ~/.cache/viu 2>/dev/null || true
-  (while sleep 2; do chmod -R u+w ~/.cache/viu 2>/dev/null; done) &
-  CHMOD_PID=$!
-  ${inputs.viu.packages.${pkgs.system}.default}/bin/viu "$@"
-  EXIT_CODE=$?
-  kill $CHMOD_PID 2>/dev/null
-  exit $EXIT_CODE
-'')
+    (pkgs.writeShellScriptBin "viu" ''
+      chmod -R u+w ~/.cache/viu 2>/dev/null || true
+      (while sleep 2; do chmod -R u+w ~/.cache/viu 2>/dev/null; done) &
+      CHMOD_PID=$!
+      ${inputs.viu.packages.${pkgs.system}.default}/bin/viu "$@"
+      EXIT_CODE=$?
+      kill $CHMOD_PID 2>/dev/null
+      exit $EXIT_CODE
+    '')
   ];
 
   xdg.configFile."viu/config.toml".text = ''

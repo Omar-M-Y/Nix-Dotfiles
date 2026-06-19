@@ -16,13 +16,13 @@
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = 5;
   programs.fish.enable = true;
- users = {
-      users = {
-          yahya = {
-              shell = pkgs.fish;
-              home = "/Users/yahya/";
-          };
+  users = {
+    users = {
+      yahya = {
+        shell = pkgs.fish;
+        home = "/Users/yahya/";
       };
+    };
   };
 
   system.defaults = {
@@ -38,7 +38,7 @@
       AppleShowAllExtensions = true;
       ShowPathbar = true;
       ShowStatusBar = false;
-      FXPreferredViewStyle = "icnv";        # icon view (required for snap to grid)
+      FXPreferredViewStyle = "icnv"; # icon view (required for snap to grid)
       FXDefaultSearchScope = "SCcf";
       FXEnableExtensionChangeWarning = false;
     };
@@ -70,7 +70,7 @@
       cleanup = "zap";
     };
     brews = [
-    # "mas"
+      # "mas"
     ];
     casks = [
       "microsoft-outlook"
@@ -98,5 +98,5 @@
   ];
 
 
-environment.variables.SHELL = "${pkgs.fish}/bin/fish";
+  environment.variables.SHELL = "${pkgs.fish}/bin/fish";
 }

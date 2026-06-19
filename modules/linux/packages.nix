@@ -54,11 +54,11 @@
       };
     };
     chromium = {
-        enable = true;
-        package = pkgs.brave;
-        extensions = [
-          { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-        ];
-      };
+      enable = true;
+      package = pkgs.brave;
+      extensions = [
+        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      ];
+    };
   };
 }

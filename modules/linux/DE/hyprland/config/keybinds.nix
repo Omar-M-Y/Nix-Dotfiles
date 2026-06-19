@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: 
+{ pkgs, inputs, ... }:
 # let
 #   # This grabs the absolute path to the binary from the flake
 #   noctalia-bin = "${inputs.noctalia.packages.${pkgs.system}.default}/bin/noctalia-shell";
@@ -16,7 +16,7 @@
     "$browser" = "firefox";
     "$editor" = "code";
     "$ipc" = "noctalia-shell ipc call";
-    
+
     # Screenshots
     "$shot-screen" = "hyprshot -m output -o ~/Pictures/Screenshots";
     "$shot-region" = "hyprshot -m region -o ~/Pictures/Screenshots";
@@ -53,12 +53,12 @@
       # "$mainMod, L, Lock the screen, exec, hyprlock"
       "$mainMod, L, Lock the screen, exec, $ipc lockScreen lock"
       # "$mainMod, O, Reload/restarts Waybar, exec, killall -SIGUSR2 waybar"
-      
+
       # Window Management
       "$mainMod, F, Toggles fullscreen, fullscreen"
       "$mainMod, Y, Pin current window, pin"
       "$mainMod, J, Toggles split mode, togglesplit,"
-      
+
       # Groups
       "$mainMod, K, Toggles group mode, togglegroup,"
       "$mainMod, Tab, Switches to next window in group, changegroupactive, f"

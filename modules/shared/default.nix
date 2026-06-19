@@ -1,8 +1,8 @@
 { ... }: {
-    imports = [
-        ./packages.nix
-        ./starship.nix
-        ./btop.nix
-        ./nvim/default.nix
-    ];
+  imports = [
+    ./packages.nix
+    ./starship.nix
+    ./btop.nix
+    ./nvim/default.nix
+  ];
 }

@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./desktop/default.nix
       ./system/default.nix
@@ -20,14 +21,14 @@
 
   # Enable networking
   networking = {
-      hostName = "Yahya-PC";
-      networkmanager.enable = true;
-      nameservers = ["1.1.1.1"];
+    hostName = "Yahya-PC";
+    networkmanager.enable = true;
+    nameservers = [ "1.1.1.1" ];
 
-      firewall = {
-          allowedTCPPorts = [ 7000 7001 7100 ];
-          allowedUDPPorts = [ 6000 6001 6100 ];
-        };
+    firewall = {
+      allowedTCPPorts = [ 7000 7001 7100 ];
+      allowedUDPPorts = [ 6000 6001 6100 ];
+    };
   };
 
   # Set your time zone.
@@ -55,15 +56,15 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
-      users = {
-          yahya = {
-              isNormalUser = true;
-              description = "yahya";
-              extraGroups = [ "networkmanager" "wheel" "video" "input"];
-              shell = pkgs.fish;
-            };
-        };
+    users = {
+      yahya = {
+        isNormalUser = true;
+        description = "yahya";
+        extraGroups = [ "networkmanager" "wheel" "video" "input" "i2c" ];
+        shell = pkgs.fish;
+      };
     };
+  };
   # users.users.yahya = {
   #   isNormalUser = true;
   #   description = "yahya";

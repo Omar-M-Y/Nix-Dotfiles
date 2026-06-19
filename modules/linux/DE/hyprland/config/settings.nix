@@ -4,7 +4,7 @@
     # --- Rendering ---
     render = {
       direct_scanout = true;
-      ctm_animation = 0; 
+      ctm_animation = 0;
     };
 
     # --- Dwindle Layout ---

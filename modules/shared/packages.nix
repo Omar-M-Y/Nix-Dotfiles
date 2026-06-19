@@ -1,54 +1,54 @@
 { pkgs, ... }: {
-    home = {
-        packages = with pkgs; [
-        gcc
-        gnumake
-        unzip
-        wget
-        curl
-        ripgrep
-        fd
-        git
-        fzf
+  home = {
+    packages = with pkgs; [
+      gcc
+      gnumake
+      unzip
+      wget
+      curl
+      ripgrep
+      fd
+      git
+      fzf
 
-        # Lua - Mainly for Neovim
-        lua-language-server
-        nil
-        nixpkgs-fmt
-        stylua
-        typescript-language-server
+      # Lua - Mainly for Neovim
+      lua-language-server
+      nil
+      nixpkgs-fmt
+      stylua
+      typescript-language-server
 
-        # Commented out for VM
+      # Commented out for VM
 
-        home-manager
-        discord
-        uv
-        yazi
-        #        notion-app
-        # btop
-        vscode
-        ruff
-        R
-        rPackages.languageserver
-        prismlauncher
+      home-manager
+      discord
+      uv
+      yazi
+      #        notion-app
+      # btop
+      vscode
+      ruff
+      R
+      rPackages.languageserver
+      prismlauncher
 
-        # wezterm
-        #
-        ];
-    };
+      # wezterm
+      #
+    ];
+  };
 
-programs = {
-  git = {
-    enable = true;
-    settings = {
-      user.name = "Omar-M-Y";
-      user.email = "yahya.omar_@outlook.com";
-      init.defaultBranch = "main";
-      credential.helper = "store";
+  programs = {
+    git = {
+      enable = true;
+      settings = {
+        user.name = "Omar-M-Y";
+        user.email = "yahya.omar_@outlook.com";
+        init.defaultBranch = "main";
+        credential.helper = "store";
       };
     };
-  fish = {
-    enable = true;
+    fish = {
+      enable = true;
     };
   };
 }

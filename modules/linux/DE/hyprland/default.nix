@@ -23,11 +23,11 @@
 
     # DECLARATIVE CONFIGURATION
     settings = {
-      
+
       # 1. Source the Pywal colors
       source = "${config.home.homeDirectory}/.config/hypr/colors.conf";
       # source = "${config.home.homeDirectory}/.config/hypr/noctalia/noctalia-colors.conf";
-      
+
 
       # 2. General Settings
 
@@ -36,16 +36,16 @@
         gaps_in = 3;
         gaps_out = 6;
         border_size = 2;
-        
+
         # Pywal Color Mappings:
         # $color14 -> Accent (Cyan/Primary)
         # $color8  -> Muted (Grey/Outline)
         "col.active_border" = "$primary";
         "col.inactive_border" = "$surface";
-        
+
         layout = "dwindle";
         allow_tearing = false;
-        
+
         snap = {
           enabled = true;
         };
@@ -71,7 +71,7 @@
         shadow = {
           enabled = true;
           range = 6;
-          
+
           # Shadow uses accent ($color14) and background ($color0)
           color = "$primary";
           color_inactive = "$surface";
@@ -82,11 +82,11 @@
       # 4. Group
       group = {
         "col.border_active" = "$primary";
-        "col.border_inactive" = "$outline"; 
+        "col.border_inactive" = "$outline";
         # "$outline";
-        
+
         groupbar = {
-          text_color = "$on_surface"; 
+          text_color = "$on_surface";
           # "$on_surface";
           "col.active" = "$primary";
           "col.inactive" = "$surface";
@@ -112,8 +112,8 @@
     };
   };
 
-  home.sessionVariables = { 
-    NIXOS_OZONE_WL = "1"; 
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
   };
 
   home.packages = [

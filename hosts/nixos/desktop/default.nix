@@ -1,5 +1,5 @@
 { ... }: {
-    imports = [
-        ./KDE.nix
-    ];
+  imports = [
+    ./KDE.nix
+  ];
 }

@@ -1,6 +1,6 @@
 { ... }: {
-    imports = [
+  imports = [
     ./packages.nix
     ./ghostty.nix
-    ];
-  }
+  ];
+}

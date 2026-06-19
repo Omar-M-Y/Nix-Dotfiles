@@ -1,13 +1,13 @@
 # home/darwin.nix
 { pkgs, ... }: {
   imports = [
-  ../modules/darwin/default.nix
+    ../modules/darwin/default.nix
   ];
 
-home = {
-  username = "yahya";
-  homeDirectory = "/Users/yahya/";
-  stateVersion = "25.11";
+  home = {
+    username = "yahya";
+    homeDirectory = "/Users/yahya/";
+    stateVersion = "25.11";
 
   };
 

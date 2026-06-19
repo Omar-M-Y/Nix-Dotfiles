@@ -6,7 +6,7 @@
   hardware = {
     nvidia = {
       modesetting.enable = true;
-      open = true; 
+      open = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       powerManagement = {
@@ -20,11 +20,11 @@
     };
   };
 
-#  home-manager.users.yahya = {
-#    home.sessionVariables = {
-#      LIBVA_DRIVER_NAME = "nvidia";
-#      # GBM_BACKEND = "nvidia-drm";
-#      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-#    };
-#  };
+  #  home-manager.users.yahya = {
+  #    home.sessionVariables = {
+  #      LIBVA_DRIVER_NAME = "nvidia";
+  #      # GBM_BACKEND = "nvidia-drm";
+  #      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  #    };
+  #  };
 }

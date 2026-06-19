@@ -8,9 +8,9 @@
         # Added playerctl pause and fixed typo (pidoff -> pidof)
         # Using pkgs.procps for 'pidof' and pkgs.playerctl for 'playerctl'
         lock_cmd = "${pkgs.playerctl}/bin/playerctl --all-players pause; noctalia-shell ipc call lockScreen lock";
-        
+
         before_sleep_cmd = "loginctl lock-session";
-        
+
         # THE FIX: This 1s delay gives the GPU time to wake up before turning the screen on
         after_sleep_cmd = "sleep 1 && hyprctl dispatch dpms on";
       };

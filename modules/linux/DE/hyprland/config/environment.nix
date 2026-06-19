@@ -14,9 +14,9 @@
     # -- Theming Variables --
     GTK_THEME = "Adwaita-Dark";
     GTK_APPLICATION_PREFER_DARK_THEME = "1";
-    
+
     # Tell Qt apps to use the GTK theme so they look consistent
-    QT_QPA_PLATFORMTHEME = "gtk3"; 
+    QT_QPA_PLATFORMTHEME = "gtk3";
 
     # -- Cursor Variables --
     # (Note: The 'home.pointerCursor' block below handles the actual package install)
