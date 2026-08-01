@@ -7,6 +7,7 @@ inputs.nixpkgs.lib.nixosSystem {
     modules = [
         ../hosts/${hostname}/default.nix
         inputs.home-manager.nixosModules.home-manager
+        #inputs.noctalia.nixosModules.default 
         {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
@@ -19,7 +20,12 @@ inputs.nixpkgs.lib.nixosSystem {
                 useUserPackages = true;
                 backupFileExtension = "backup";
                 extraSpecialArgs = { inherit inputs; isDarwin = false; };
-                users.${user}.imports = [ ../home/nixos.nix ];
+                users.${user} = {
+                    imports = [
+                        ../home/nixos.nix
+                        #inputs.noctalia.homeModules.default
+                    ];
+                };
             };
         }
     ];

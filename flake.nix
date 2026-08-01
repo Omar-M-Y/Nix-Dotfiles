@@ -16,17 +16,20 @@
         
         matugen = {
             url = "github:InioX/Matugen";
-            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
+        
+        nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+        nix-flatpak.url = "github:gmodena/nix-flatpak";
         
         noctalia = {
-            url = "github:noctalia-dev/noctalia-shell";
+            url = "github:noctalia-dev/noctalia/legacy-v4";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        
+    };
         outputs = {self, nixpkgs, nixpkgs-unstable, ... }@inputs:
         let
-            lib = import ./lib {inherit inputs; };
+            lib = import ./lib { inherit inputs; };
         in
         {
             nixosConfigurations = {
@@ -50,5 +53,4 @@
                 };
             };
         };
-    };
 }

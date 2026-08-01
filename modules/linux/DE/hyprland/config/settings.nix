@@ -10,7 +10,7 @@
     # --- Dwindle Layout ---
     dwindle = {
       special_scale_factor = 0.8;
-      pseudotile = true;
+      # pseudotile = true;
       preserve_split = true;
       smart_resizing = true;
       default_split_ratio = 1;

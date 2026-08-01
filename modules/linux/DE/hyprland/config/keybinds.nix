@@ -57,7 +57,7 @@
       # Window Management
       "$mainMod, F, Toggles fullscreen, fullscreen"
       "$mainMod, Y, Pin current window, pin"
-      "$mainMod, J, Toggles split mode, togglesplit,"
+      # "$mainMod, J, Toggles split mode, togglesplit,"
 
       # Groups
       "$mainMod, K, Toggles group mode, togglegroup,"

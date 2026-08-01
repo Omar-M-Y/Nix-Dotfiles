@@ -17,7 +17,7 @@
             wl-clipboard
             grim
             slurp
-            pipx
+            #pipx
             killall
             fastfetch
         ];

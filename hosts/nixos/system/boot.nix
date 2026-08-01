@@ -6,7 +6,7 @@
             grub.enable = false;
             limine = {
                 enable = true;
-                secureBoot.enable = true;
+                secureBoot.enable = false;
                 extraConfig = ''
                 
                     DEFAULT_ENTRY: 3

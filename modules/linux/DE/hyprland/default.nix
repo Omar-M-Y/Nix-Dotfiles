@@ -75,7 +75,7 @@
           # Shadow uses accent ($color14) and background ($color0)
           color = "$primary";
           color_inactive = "$surface";
-          ignore_window = true;
+          # ignore_window = true;
         };
       };
 
@@ -106,7 +106,7 @@
         enable_swallow = true;
         swallow_regex = "^(nautilus|nemo|thunar|btrfs-assistant.)$";
         focus_on_activate = true;
-        vfr = true;
+        # vfr = true;
         vrr = 2;
       };
     };

@@ -7,14 +7,12 @@
         xwayland.enable = true;
     };
 
-    # Cage — minimal Wayland compositor for greetd/Quickshell greeter
-    environment.systemPackages = [ pkgs.cage ];
-
     services.greetd = {
         enable = true;
         settings = {
             default_session = {
-                command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.tuigreet}/bin/tuigreet --cmd Hyprland";
+                # command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.tuigreet}/bin/tuigreet --cmd Hyprland";
+                command = "${pkgs.tuigreet}/bin/tuigreet --cmd Hyprland --time --remember";
                 user    = "greeter";
           };
         };
@@ -49,5 +47,6 @@
     environment.systemPackages = with pkgs; [
         polkit_gnome
         kdePackages.xdg-desktop-portal-kde
+        cage # Cage — minimal Wayland compositor for greetd/Quickshell greeter
     ];
 }
