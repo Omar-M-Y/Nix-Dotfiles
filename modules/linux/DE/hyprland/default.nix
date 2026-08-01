@@ -11,7 +11,7 @@
     ./config/environment.nix
     ./hyprlock.nix
     ./hypridle.nix
-    # ../noctalia.nix
+    ../noctalia.nix
     ../../matugen.nix
     # ../pywal.nix
   ];
