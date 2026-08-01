@@ -9,7 +9,7 @@
     home = {
         username      = "yahya";
         homeDirectory = "/home/yahya";
-        stateVersion  = "25.11";
+        stateVersion  = "26.05";
         sessionVariables = {
             XDG_SESSION_TYPE = "wayland";
         };

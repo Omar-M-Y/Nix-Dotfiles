@@ -20,6 +20,7 @@
       bibata-cursors
       papirus-icon-theme
       plasma-panel-colorizer
+      awww
 
       r2modman
       heroic
