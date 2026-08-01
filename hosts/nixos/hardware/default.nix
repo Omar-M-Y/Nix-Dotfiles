@@ -1,0 +1,9 @@
+{ ... }: {
+    imports = [
+        ./audio.nix
+        #./bluetooth.nix
+        ./cpu.nix
+        ./misc.nix
+        ./nvidia.nix
+    ]
+}
