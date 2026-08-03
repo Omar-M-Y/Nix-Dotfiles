@@ -8,15 +8,62 @@
     };
 
     services.greetd = {
-        enable = true;
-        settings = {
-            default_session = {
-                # command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.tuigreet}/bin/tuigreet --cmd Hyprland";
-                command = "${pkgs.tuigreet}/bin/tuigreet --cmd Hyprland --time --remember";
-                user    = "greeter";
-          };
+      enable = true;
+      settings = {
+        terminal.vt = 1;
+        default_session = {
+          command = "env HYPRLAND_CONFIG=${pkgs.writeText "hyprland-greeter.conf" ''
+            exec-once = ${pkgs.quickshell}/bin/quickshell -c /etc/quickshell/greeter
+
+            env = XCURSOR_THEME,Bibata-Modern-Classic
+            env = XCURSOR_SIZE,24
+            env = HYPRCURSOR_SIZE,24
+
+            monitor = DP-1, 1920x1080@240, 0x0, 1
+            monitor = HDMI-A-1, disable
+
+            animations {
+              enabled = false
+            }
+            cursor {
+              no_hardware_cursors = true
+            }
+            misc {
+              background_color = rgba(0E0E0EFF)
+              disable_hyprland_logo = true
+              disable_splash_rendering = true
+            }
+          ''} ${pkgs.hyprland}/bin/start-hyprland";
+          user = "greeter";
         };
+      };
     };
+    # services.greetd = {
+    #     enable = true;
+    #     settings = {
+    #         default_session = {
+    #             # command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.tuigreet}/bin/tuigreet --cmd Hyprland";
+    #             # command = "${pkgs.tuigreet}/bin/tuigreet --cmd Hyprland --time --remember";
+    #             #command = "${pkgs.cage}/bin/cage -s -- ${pkgs.quickshell}/bin/quickshell -c /etc/quickshell/greeter";
+    #             command = "${pkgs.cage}/bin/cage -d -s -m last -- ${pkgs.quickshell}/bin/quickshell -c /etc/quickshell/greeter";
+    #             user    = "greeter";
+    #       };
+    #     };
+    # };
+# services.greetd = {
+#   enable = true;
+#   settings = {
+#     terminal.vt = 1;
+#     default_session = {
+#       command = "sh -c 'printf \"\\033[2J\\033[H\\033[?25l\" > /dev/tty1; exec env HYPRLAND_CONFIG=${pkgs.writeText "hyprland-greeter.conf" ''
+#         exec-once = sleep 0.5 && ${pkgs.quickshell}/bin/quickshell -c /etc/quickshell/greeter && uwsm stop
+#         ...
+#       ''} uwsm start hyprland.desktop'";
+#       user = "greeter";
+#     };
+#   };
+# };
+    environment.etc."quickshell/greeter".source = /home/yahya/quickshell-desktop/greeter;
 
     # XDG portal — KDE for screen sharing, hyprland for everything else
     xdg.portal = {
@@ -47,6 +94,6 @@
     environment.systemPackages = with pkgs; [
         polkit_gnome
         kdePackages.xdg-desktop-portal-kde
-        cage # Cage — minimal Wayland compositor for greetd/Quickshell greeter
+        # cage # Cage — minimal Wayland compositor for greetd/Quickshell greeter
     ];
 }

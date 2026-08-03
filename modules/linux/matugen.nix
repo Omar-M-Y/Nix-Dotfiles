@@ -14,7 +14,6 @@ let
 in
 {
   home.packages = [ inputs.matugen.packages.${pkgs.system}.default ];
-
   xdg.configFile."matugen/config.toml".text = ''
     [config]
     reload_apps = true
@@ -40,6 +39,10 @@ in
     [templates.quickshell]
     input_path = "${matugenConfigDir}/templates/quickshell-colors.qml"
     output_path = "${quickshellConfigDir}/Colors.qml"
+
+    [templates.quickshell-json]
+    input_path = "${matugenConfigDir}/templates/quickshell-colors.json"
+    output_path = "/tmp/current-colors.json"
 
     [templates.foot-colors]
     input_path = "${matugenConfigDir}/templates/foot-colors.ini"
@@ -127,7 +130,20 @@ in
       property color outline: "{{colors.outline.default.hex}}"
     }
   '';
-
+  xdg.configFile."matugen/templates/quickshell-colors.json".text = ''
+    {
+      "primary": "{{colors.primary.default.hex}}",
+      "primaryForeground": "{{colors.on_primary.default.hex}}",
+      "secondary": "{{colors.secondary.default.hex}}",
+      "secondaryForeground": "{{colors.on_secondary.default.hex}}",
+      "background": "{{colors.background.default.hex}}",
+      "backgroundForeground": "{{colors.on_background.default.hex}}",
+      "surface": "{{colors.surface.default.hex}}",
+      "surfaceForeground": "{{colors.on_surface.default.hex}}",
+      "error": "{{colors.error.default.hex}}",
+      "outline": "{{colors.outline.default.hex}}"
+    }
+  '';
   xdg.configFile."matugen/templates/foot-colors.ini".text = ''
     [colors-dark] # <--- Change this from [colors]
     foreground={{colors.on_surface.default.hex_stripped}}

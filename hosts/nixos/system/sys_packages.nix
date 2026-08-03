@@ -18,6 +18,8 @@
             grim
             slurp
             #pipx
+            #
+            bibata-cursors
             killall
             fastfetch
         ];

@@ -6,7 +6,7 @@
             grub.enable = false;
             limine = {
                 enable = true;
-                secureBoot.enable = false;
+                secureBoot.enable = true;
                 extraConfig = ''
                 
                     DEFAULT_ENTRY: 3
@@ -42,6 +42,16 @@
             verbose = false;
         };
         kernelParams = [
+
+            "systemd.log_level=0"
+            "systemd.log_target=null"
+            
+            # Suppress watchdog messages specifically
+            "nowatchdog"
+            "nmi_watchdog=0"
+
+            # "fbcon=map:0"
+            "nofb"
             "split_lock_detect=off"
             "transparent_hugepage=madvise"
             "nvidia-drm.modeset=1"

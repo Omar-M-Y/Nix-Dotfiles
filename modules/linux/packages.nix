@@ -21,6 +21,10 @@
       papirus-icon-theme
       plasma-panel-colorizer
 
+      # niri
+
+
+      kdePackages.dolphin
       r2modman
       heroic
       osu-lazer

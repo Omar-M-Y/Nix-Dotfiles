@@ -9,5 +9,6 @@
         ./network.nix
         ./locale.nix
         ./users.nix
+        ./security.nix
     ];
 }
