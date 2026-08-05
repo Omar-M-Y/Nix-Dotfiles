@@ -8,7 +8,8 @@
     vimAlias = true;
     withNodeJs = true;
     withPython3 = true;
-    extraLuaConfig = ''
+    withRuby = true;
+    initLua = ''
       vim.opt.shell = "fish"
     '';
 
