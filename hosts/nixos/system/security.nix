@@ -1,8 +1,17 @@
-{ ... }: {
-    security.wrappers.openvt = {
-      owner = "root";
-      group = "root";
-      capabilities = "cap_sys_tty_config+ep";
-      source = "${pkgs.kbd}/bin/openvt";
-    };
+{ pkgs, ... }: {
+    security.sudo.extraRules = [
+      {
+        users = [ "yahya" ];
+        commands = [
+          {
+            command = "${pkgs.kbd}/bin/openvt";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "${pkgs.kbd}/bin/chvt";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+      }
+    ];
   }
