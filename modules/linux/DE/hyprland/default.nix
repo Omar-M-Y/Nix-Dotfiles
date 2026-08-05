@@ -103,7 +103,9 @@
         splash_font_family = "Fira Sans";
         disable_hyprland_logo = true;
         "col.splash" = "$primary";
-        background_color = "$surface";
+        # background_color = "$surface";
+        disable_splash_rendering = true;
+        background_color = "0x0e0e0e";
         enable_swallow = true;
         swallow_regex = "^(nautilus|nemo|thunar|btrfs-assistant.)$";
         focus_on_activate = true;

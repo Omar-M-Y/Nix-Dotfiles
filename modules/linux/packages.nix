@@ -21,7 +21,7 @@
       papirus-icon-theme
       plasma-panel-colorizer
       awww
-
+      material-symbols
       # niri
 
 
