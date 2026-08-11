@@ -5,6 +5,8 @@
       package = pkgs.zathura;
 
       options = {
+        pages-per-row = 2;
+        first-page-column = "1:2";
         scroll-step = 40;
         scroll-full-overlap = "0.01";
         incremental-search = true;
