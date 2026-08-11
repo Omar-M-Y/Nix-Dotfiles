@@ -27,6 +27,7 @@
             url = "github:noctalia-dev/noctalia/cachix";
             # inputs.nixpkgs.follows = "nixpkgs";
         };
+        niri.url = "github:sodiboo/niri-flake";
         noctalia-greeter = {
             url = "github:noctalia-dev/noctalia-greeter";
             inputs.nixpkgs.follows = "nixpkgs";

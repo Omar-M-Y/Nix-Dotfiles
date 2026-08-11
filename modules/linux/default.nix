@@ -5,7 +5,8 @@
     # ./ghostty.nix
     # ./viu.nix
     ./DE/noctalia.nix
-    ./DE/hyprland/default.nix
+    #./DE/niri/default.nix
+     ./DE/hyprland/default.nix
     ./matugen.nix
   ];
 }

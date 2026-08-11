@@ -8,6 +8,8 @@ inputs.home-manager.lib.homeManagerConfiguration {
         config.allowUnfree = true;
     };
     extraSpecialArgs = { inherit inputs isDarwin; };
-    modules = [ homeFile ];
+    modules = [ 
+      homeFile 
+    ];
 }
 
