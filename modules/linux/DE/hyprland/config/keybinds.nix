@@ -15,7 +15,7 @@
     "$filemanager" = "kitty -e yazi";
     "$browser" = "firefox";
     "$editor" = "code";
-    "$ipc" = "noctalia-shell ipc call";
+    "$ipc" = "noctalia msg";
 
     # Screenshots
     "$shot-screen" = "hyprshot -m output -o ~/Pictures/Screenshots";
@@ -26,18 +26,18 @@
       "CTRL SHIFT, 3, exec, $shot-region"
       "CTRL SHIFT, 4, exec, $shot-screen"
       # "CTRL SHIFT, 5, exec, ~/.config/hypr/scripts/rec_gui.sh"
-      "$mainMod SHIFT, V, exec, $ipc launcher clipboard"
+      "$mainMod SHIFT, V, exec, $ipc panel-toggle clipboard"
       # "$mainMod SHIFT, V, exec, ~/.config/rofi/clip-man/clipboard-menu.sh"
       # "$mainMod, SPACE, exec, ~/.config/rofi/launchers/launcher-3.sh"
       # "$mainMod, SPACE, exec, rofi -show drun"
-      "$mainMod, SPACE, exec, $ipc launcher toggle"
+      "$mainMod, SPACE, exec, $ipc panel-toggle launcher"
       # "$mainMod, W, exec, ~/.config/hypr/scripts/rofi_wallpaper_toggle.sh"
-      "$mainMod, W, exec, $ipc wallpaper toggle"
+      "$mainMod, W, exec, $ipc panel-toggle wallpaper"
       # "$mainMod, W, exec, $ipc plugin:wallcards toggle"
-      "$mainMod, M, exec, $ipc sessionMenu toggle"
+      "$mainMod, M, exec, $ipc panel-toggle session"
       # "$mainMod, M, exec, ~/.config/rofi/power-menu/rofi-powermenu.sh"
       # "$mainMod, T, exec, swaync-client -t"
-      "$mainMod, T, exec, $ipc controlCenter toggle"
+      "$mainMod, T, exec, $ipc panel-toggle control-cente2r"
       "$mainMod, G, exec, $ipc volume togglePanel"
     ];
 
@@ -51,7 +51,7 @@
       "$mainMod, B, Opens Browser, exec, $browser"
       "$mainMod, C, Open Code Editor, exec, $editor"
       # "$mainMod, L, Lock the screen, exec, hyprlock"
-      "$mainMod, L, Lock the screen, exec, $ipc lockScreen lock"
+      "$mainMod, L, Lock the screen, exec, $ipc session lock"
       # "$mainMod, O, Reload/restarts Waybar, exec, killall -SIGUSR2 waybar"
 
       # Window Management

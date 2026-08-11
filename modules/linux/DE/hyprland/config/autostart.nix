@@ -8,14 +8,14 @@
       "sleep 6 && discord --start-minimized"
       "steam -silent" # steam
       # "waybar"
-      "noctalia-shell"
+      "noctalia"
       # "quickshell" # Desktop Shell
       "sleep 6 && easyeffects --gapplication-service" # Audio
       "coolercontrol --minimized"
       # "qs -c noctalia-shell"
       # "$terminal"
       "hyprctl dispatch movecursor 2880 540"
-      # "rm -f /tmp/desktop-ready && sleep 2 && touch /tmp/desktop-ready"
+      "rm -f /tmp/desktop-ready && sleep 2 && touch /tmp/desktop-ready"
     ];
   };
 }

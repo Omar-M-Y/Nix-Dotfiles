@@ -26,8 +26,8 @@
     settings = {
 
       # 1. Source the Pywal colors
-      source = "${config.home.homeDirectory}/.config/hypr/colors.conf";
-      # source = "${config.home.homeDirectory}/.config/hypr/noctalia/noctalia-colors.conf";
+      # source = "${config.home.homeDirectory}/.config/hypr/colors.conf";
+      source = "${config.home.homeDirectory}/.config/hypr/noctalia.conf";
 
 
       # 2. General Settings
@@ -83,16 +83,16 @@
       # 4. Group
       group = {
         "col.border_active" = "$primary";
-        "col.border_inactive" = "$outline";
+        "col.border_inactive" = "$surface_lowest";
         # "$outline";
 
         groupbar = {
-          text_color = "$on_surface";
+          text_color = "$tertiary";
           # "$on_surface";
           "col.active" = "$primary";
           "col.inactive" = "$surface";
           "col.locked_active" = "$secondary"; # Secondary accent
-          "col.locked_inactive" = "$outline";
+          "col.locked_inactive" = "$surface_lowest";
           font_family = "Fira Sans";
         };
       };
@@ -121,7 +121,7 @@
 
   home.packages = [
     # inputs.quickshell.packages.${pkgs.system}.default
-    pkgs.kitty
+    # pkgs.kitty
     pkgs.libnotify
     pkgs.swww
     pkgs.networkmanagerapplet

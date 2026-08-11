@@ -17,7 +17,7 @@
       shell = "fish";
     };
     extraConfig = ''
-      include ~/.config/kitty/colors.conf
+      include ~/.config/kitty/themes/noctalia.conf
     '';
   };
 }

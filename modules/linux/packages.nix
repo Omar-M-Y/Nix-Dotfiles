@@ -1,7 +1,9 @@
 # Linux Packages - NixOS
 { pkgs, inputs, ... }:
 {
-
+# imports = [
+#   inputs.noctalia.nixosModules.default
+# ];
   home = {
     packages = with pkgs; [
       nerd-fonts.meslo-lg
