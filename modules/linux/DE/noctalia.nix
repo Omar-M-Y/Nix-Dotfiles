@@ -156,6 +156,7 @@ in
         background_opacity = 0.97;
         offset_x           = 20;
         offset_y           = 8;
+        monitors = ["DP-1"];
       };
 
       # ── OSD ────────────────────────────────────────────────────────────────
@@ -303,6 +304,26 @@ in
         end    = [  "tray" "volume" "network"
                    "bluetooth"
                    "control-center" "clock" "notifications"];
+      };
+
+      # ── Bar Widgets ────────────────────────────────────────────────────────
+      
+      widget = {
+          active_window = {
+              min_length = 0;
+              max_length = 260;
+              display = "icon_and_text";
+              icon_size = 20;
+              title_scroll = "on_hover";
+              show_empty_label = true;
+          };
+          launcher = {
+              glyph = "menu-2";
+          };
+      };
+
+      control_center = {
+          sidebar = "None";
       };
 
       # ── Dock ───────────────────────────────────────────────────────────────

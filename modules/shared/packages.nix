@@ -54,5 +54,23 @@
       enable = true;
       nix-direnv.enable = true;  
     };
+    yazi = {
+      settings = {
+        opener = {
+          comic = [
+            { run = "zathura \"$@\""; desc = "Zathura"; }
+          ];
+        };
+        open = {
+          rules = [
+            { mime = "application/vnd.comicbook+zip"; use = "comic"; }
+            { mime = "application/vnd.comicbook-rar"; use = "comic"; }
+            { name = "*.cbz"; use = "comic"; }
+            { name = "*.cbr"; use = "comic"; }
+            { name = "*.cb7"; use = "comic"; }
+          ];
+        };
+      };
+    };
   };
 }
