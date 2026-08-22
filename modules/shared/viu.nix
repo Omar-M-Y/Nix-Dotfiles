@@ -1,5 +1,58 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, config, ... }:
 
+let
+  python = pkgs.python312Packages;
+  
+  viu-media = python.buildPythonApplication rec {
+    pname = "viu";
+    version = "3.1.0";
+    pyproject = true;
+
+    src = inputs.viu-src;
+
+    build-system = with python; [ hatchling ];
+
+    dependencies = with python; [
+      click
+      inquirerpy
+      requests
+      rich
+      thefuzz
+      yt-dlp
+      dbus-python
+      hatchling
+      (plyer.overridePythonAttrs (old: {
+        doCheck = false;
+        meta = (old.meta or { }) // { broken = false; };
+      }))
+      mpv
+      fastapi
+      pycryptodome
+      pypresence
+      httpx
+    ];
+
+    postPatch = ''
+      substituteInPlace pyproject.toml \
+        --replace-fail "pydantic>=2.11.7" "pydantic>=2.11.4"
+    '';
+
+    makeWrapperArgs = [
+      "--prefix PATH : ${lib.makeBinPath [ pkgs.mpv ]}"
+    ];
+
+    doCheck = false;
+
+    meta = {
+      description = "Your browser anime experience from the terminal";
+      homepage = "https://github.com/viu-media/Viu";
+      mainProgram = "viu";
+    };
+  };
+
+  # Path to python site-packages assets inside the nix store
+  sitePackages = "${viu-media}/lib/python3.12/site-packages/viu_media/assets";
+in
 {
   home.packages = with pkgs; [
     mpv
@@ -12,7 +65,7 @@
       chmod -R u+w ~/.cache/viu 2>/dev/null || true
       (while sleep 2; do chmod -R u+w ~/.cache/viu 2>/dev/null; done) &
       CHMOD_PID=$!
-      ${inputs.viu.packages.${pkgs.system}.default}/bin/viu "$@"
+      ${viu-media}/bin/viu "$@"
       EXIT_CODE=$?
       kill $CHMOD_PID 2>/dev/null
       exit $EXIT_CODE
@@ -62,7 +115,7 @@
 
     [downloads]
     downloader = "auto"
-    downloads_dir = "/home/yahya/Videos/viu"
+    downloads_dir = "${config.home.homeDirectory}/Videos/viu"
     enable_tracking = true
     max_concurrent_downloads = 3
     max_retry_attempts = 2
@@ -124,10 +177,10 @@
     """
 
     [rofi]
-    theme_main = "/nix/store/ypsb9gjdcv823s050piy8s09r2n8i6l8-viu-3.1.0/lib/python3.12/site-packages/viu_media/assets/defaults/rofi-themes/main.rasi"
-    theme_preview = "/nix/store/ypsb9gjdcv823s050piy8s09r2n8i6l8-viu-3.1.0/lib/python3.12/site-packages/viu_media/assets/defaults/rofi-themes/preview.rasi"
-    theme_confirm = "/nix/store/ypsb9gjdcv823s050piy8s09r2n8i6l8-viu-3.1.0/lib/python3.12/site-packages/viu_media/assets/defaults/rofi-themes/confirm.rasi"
-    theme_input = "/nix/store/ypsb9gjdcv823s050piy8s09r2n8i6l8-viu-3.1.0/lib/python3.12/site-packages/viu_media/assets/defaults/rofi-themes/input.rasi"
+    theme_main = "${sitePackages}/defaults/rofi-themes/main.rasi"
+    theme_preview = "${sitePackages}/defaults/rofi-themes/preview.rasi"
+    theme_confirm = "${sitePackages}/defaults/rofi-themes/confirm.rasi"
+    theme_input = "${sitePackages}/defaults/rofi-themes/input.rasi"
 
     [mpv]
     args = ""
@@ -137,11 +190,11 @@
     args = ""
 
     [media_registry]
-    media_dir = "/home/yahya/Videos/viu/.registry"
-    index_dir = "/home/yahya/.config/viu"
+    media_dir = "${config.home.homeDirectory}/Videos/viu/.registry"
+    index_dir = "${config.home.homeDirectory}/.config/viu"
 
     [sessions]
-    dir = "/home/yahya/.config/viu/.sessions"
+    dir = "${config.home.homeDirectory}/.config/viu/.sessions"
 
     [worker]
     enabled = true

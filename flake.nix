@@ -32,6 +32,10 @@
             url = "github:noctalia-dev/noctalia-greeter";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        viu-src = {
+            url = "github:viu-media/viu";
+            flake = false;
+        };
     };
         outputs = {self, nixpkgs, nixpkgs-unstable, ... }@inputs:
         let
