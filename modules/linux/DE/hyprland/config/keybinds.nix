@@ -37,8 +37,8 @@
       "$mainMod, M, exec, $ipc panel-toggle session"
       # "$mainMod, M, exec, ~/.config/rofi/power-menu/rofi-powermenu.sh"
       # "$mainMod, T, exec, swaync-client -t"
-      "$mainMod, T, exec, $ipc panel-toggle control-cente2r"
-      "$mainMod, G, exec, $ipc volume togglePanel"
+      "$mainMod, T, exec, $ipc panel-toggle control-center"
+      "$mainMod, G, exec, $ipc panel-toggle control-center audio"
     ];
 
     # --- Binds with Descriptions (bindd) ---
