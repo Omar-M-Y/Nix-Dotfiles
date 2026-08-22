@@ -11,6 +11,7 @@
       git
       fzf
 
+      mpv
       # Lua - Mainly for Neovim
       lua-language-server
       nil

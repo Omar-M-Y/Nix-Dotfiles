@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, lib,  ... }: {
   programs = {
-    zathura = {
+    zathura = lib.mkIf (!pkgs.stdenv.isDarwin) {
       enable = true;
       package = pkgs.zathura;
 

@@ -79,6 +79,7 @@
       "onedrive"
       "google-drive"
       "zoom"
+      "yacreader"
       # "zen"
       "firefox"
       # "helium-browser"
