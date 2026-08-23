@@ -25,7 +25,9 @@ let
         doCheck = false;
         meta = (old.meta or { }) // { broken = false; };
       }))
-      mpv
+      (mpv.overridePythonAttrs (_: {
+        doCheck = false;
+      }))
       fastapi
       pycryptodome
       pypresence
@@ -50,7 +52,6 @@ let
     };
   };
 
-  # Path to python site-packages assets inside the nix store
   sitePackages = "${viu-media}/lib/python3.12/site-packages/viu_media/assets";
 in
 {

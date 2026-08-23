@@ -81,7 +81,7 @@
       "zoom"
       "yacreader"
       # "zen"
-      "firefox"
+      # "firefox"
       # "helium-browser"
       # "drivedx"
     ];

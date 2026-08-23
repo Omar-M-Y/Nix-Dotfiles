@@ -38,7 +38,27 @@
     ];
   };
 
+
   programs = {
+    chromium = {
+      enable = true;
+      package = pkgs.brave;
+      extensions = [
+        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      ];
+    };
+    firefox = {
+      enable = true;
+      nativeMessagingHosts = [ pkgs. pywalfox-native ];
+      profiles.default = {
+        id = 0;
+        settings = {
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "browser.tabs.drawInTitlebar" = true;
+          "browser.tabs.inTitlebar" = 1;
+        };
+      };
+    };
     git = {
       enable = true;
       settings = {
