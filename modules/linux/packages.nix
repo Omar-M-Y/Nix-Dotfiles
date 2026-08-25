@@ -46,26 +46,26 @@
     ];
   };
 
-  programs = {
-    firefox = {
-      enable = true;
-      # package = pkgs.librewolf;
-      nativeMessagingHosts = [ pkgs.pywalfox-native ];
-      profiles.default = {
-        id = 0;
-        settings = {
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "browser.tabs.drawInTitlebar" = true;
-          "browser.tabs.inTitlebar" = 1;
-        };
-      };
-    };
-    chromium = {
-      enable = true;
-      package = pkgs.brave;
-      extensions = [
-        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-      ];
-    };
-  };
+   programs = {
+     firefox = {
+       enable = true;
+       # package = pkgs.librewolf;
+       nativeMessagingHosts = [ pkgs.pywalfox-native ];
+       profiles.default = {
+         id = 0;
+         settings = {
+           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+           "browser.tabs.drawInTitlebar" = true;
+           "browser.tabs.inTitlebar" = 1;
+         };
+       };
+     };
+     chromium = {
+       enable = true;
+       package = pkgs.brave;
+       extensions = [
+         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+       ];
+     };
+   };
 }

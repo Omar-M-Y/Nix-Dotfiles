@@ -66,7 +66,7 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
-      # cleanup = "zap";
+      cleanup = "zap";
     };
     brews = [
       # "mas"
@@ -81,7 +81,7 @@
       "zoom"
       "yacreader"
       # "zen"
-      # "firefox"
+      "firefox"
       # "helium-browser"
       # "drivedx"
     ];
