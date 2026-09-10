@@ -3,6 +3,7 @@
     packages = with pkgs; [
       iina
       utm
+      gram
     ];
   };
 }
