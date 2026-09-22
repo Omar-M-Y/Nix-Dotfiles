@@ -80,6 +80,7 @@
       "google-drive"
       "zoom"
       "yacreader"
+      # "gram"
       # "zen"
       "firefox"
       # "helium-browser"

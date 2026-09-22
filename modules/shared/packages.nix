@@ -30,6 +30,7 @@
       ruff
       R
       rPackages.languageserver
+      gram
 
       prismlauncher
 
